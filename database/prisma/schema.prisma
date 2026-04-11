@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserRole {
+  LEARNER
+  ADMIN
+}
+
+enum PracticeKind {
+  DICTATION
+  SHADOWING
+  REVIEW
+}
+
+enum PracticeStatus {
+  PLANNED
+  ACTIVE
+  COMPLETED
+}
+
+model User {
+  id                String            @id @default(cuid())
+  email             String            @unique
+  passwordHash      String
+  displayName       String
+  preferredLanguage String            @default("vi")
+  dailyGoalMinutes  Int               @default(15)
+  avatarUrl         String?
+  role              UserRole          @default(LEARNER)
+  createdAt         DateTime          @default(now())
+  updatedAt         DateTime          @updatedAt
+  practiceSessions  PracticeSession[]
+}
+
+model PracticeSession {
+  id              String         @id @default(cuid())
+  title           String
+  kind            PracticeKind
+  durationMinutes Int
+  status          PracticeStatus @default(PLANNED)
+  notes           String?
+  scheduledFor    DateTime?
+  createdAt       DateTime       @default(now())
+  updatedAt       DateTime       @updatedAt
+  userId          String
+  user            User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+}

@@ -1,0 +1,117 @@
+@import url("https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --app-shell-header-h: 7.25rem;
+  --surface-page: 248 245 239;
+  --surface-panel: 255 252 247;
+  --surface-panel-soft: 255 248 240;
+  --line-soft: 226 214 197;
+  --ink-main: 31 41 55;
+}
+
+@layer base {
+  * {
+    @apply box-border;
+  }
+
+  html {
+    @apply scroll-smooth;
+  }
+
+  body {
+    @apply min-h-[100dvh] bg-[rgb(var(--surface-page))] font-sans text-[rgb(var(--ink-main))] antialiased;
+    background-image:
+      radial-gradient(circle at top right, rgba(245, 158, 11, 0.08), transparent 30%),
+      radial-gradient(circle at bottom left, rgba(15, 118, 110, 0.08), transparent 26%);
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  a {
+    @apply text-inherit no-underline;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+}
+
+@layer components {
+  .page-shell {
+    @apply mx-auto w-full max-w-[1360px] px-4 sm:px-6 lg:px-8;
+  }
+
+  .surface-panel {
+    @apply rounded-panel border border-[rgb(226,214,197)] bg-[rgb(255,252,247)] shadow-panel;
+  }
+
+  .surface-panel-soft {
+    @apply rounded-panel border border-white/70 bg-[rgb(255,248,240)] shadow-[0_18px_48px_-36px_rgba(15,23,42,0.28)];
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white/70 px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.16em] text-brand-700;
+  }
+
+  .button-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-brand-500 px-5 py-3 text-sm font-semibold text-white transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[1px] hover:bg-brand-600 active:translate-y-[1px] active:scale-[0.98];
+  }
+
+  .button-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-[rgb(231,220,204)] bg-white/85 px-5 py-3 text-sm font-semibold text-stone-700 shadow-[0_18px_32px_-28px_rgba(120,53,15,0.24)] transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[1px] hover:border-brand-200 hover:bg-white hover:text-ink-950 active:translate-y-[1px] active:scale-[0.98];
+  }
+
+  .field-shell {
+    @apply flex flex-col gap-2;
+  }
+
+  .field-label {
+    @apply text-sm font-medium text-slate-700;
+  }
+
+  .field-input {
+    @apply rounded-2xl border border-[rgb(226,214,197)] bg-white px-4 py-3 text-sm text-slate-900 outline-none transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] placeholder:text-slate-400 focus:border-brand-300 focus:ring-4 focus:ring-brand-100;
+  }
+
+  .section-title {
+    @apply text-3xl font-semibold leading-[1.08] tracking-[-0.045em] text-ink-950 sm:text-4xl lg:text-5xl;
+    text-wrap: pretty;
+  }
+
+  .section-copy {
+    @apply max-w-[65ch] text-base leading-relaxed text-slate-600;
+  }
+
+  .display-title {
+    @apply font-semibold leading-[1.06] tracking-[-0.055em] text-ink-950;
+    text-wrap: pretty;
+  }
+
+  .page-heading {
+    @apply font-semibold leading-[1.08] tracking-[-0.045em] text-ink-950;
+    text-wrap: balance;
+  }
+
+  .workspace-viewport {
+    @apply min-h-[100dvh] overflow-y-auto bg-transparent lg:h-[100dvh];
+  }
+
+  .workspace-canvas {
+    @apply overflow-hidden rounded-shell border border-[rgb(226,214,197)] bg-[rgb(255,252,247)] shadow-panel;
+  }
+
+  .workspace-section {
+    @apply px-5 py-5 sm:px-6 sm:py-6 lg:px-8;
+  }
+}

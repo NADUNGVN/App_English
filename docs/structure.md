@@ -1,17 +1,16 @@
-**Frontend:** React + HTML + CSS + JavaScript
-
-**Backend:** Python + Lambda + SQS + Linux
-
-**Database/Data Storage:** DynamoDB + RDS + S3 + Kafka
-
 **Trong đó:**
 
 **Ở Frontend:**
 
-* **HTML** : tạo khung giao diện
-* **CSS** : tạo giao diện, màu sắc, bố cục
-* **JavaScript** : xử lý hành vi và tương tác
-* **React** : thư viện/framework hỗ trợ xây dựng UI
+* **1 frontend cho mobile app:**
+  * **React Native**
+  * **TypeScript**
+* **1 frontend cho web app trên trình duyệt**
+  * **Next.js**
+  * **React**
+  * **TypeScript**
+  * **HTML**
+  * **CSS / Tailwind**
 
 **Ở Backend:**
 
