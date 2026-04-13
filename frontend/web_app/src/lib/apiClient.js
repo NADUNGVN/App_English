@@ -1,4 +1,4 @@
-const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:3001/api";
+export const API_BASE_URL = import.meta.env.VITE_API_URL ?? "http://localhost:3001/api";
 
 export class ApiError extends Error {
   constructor(message, status) {
@@ -8,13 +8,17 @@ export class ApiError extends Error {
   }
 }
 
+export function buildApiUrl(path) {
+  return `${API_BASE_URL}${path}`;
+}
+
 export async function request(path, options = {}) {
-  const { body, token, headers = {}, ...rest } = options;
-  const response = await fetch(`${API_BASE_URL}${path}`, {
+  const { body, headers = {}, ...rest } = options;
+  const response = await fetch(buildApiUrl(path), {
     ...rest,
+    credentials: "include",
     headers: {
       "Content-Type": "application/json",
-      ...(token ? { Authorization: `Bearer ${token}` } : {}),
       ...headers,
     },
     body: body ? JSON.stringify(body) : undefined,

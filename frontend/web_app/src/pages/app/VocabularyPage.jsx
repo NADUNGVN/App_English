@@ -6,7 +6,10 @@ import { mockContentRepository } from "../../repositories/mockContentRepository.
 
 export function VocabularyPage() {
   const { locale } = useAppContext();
-  const { data, loading } = useAsyncValue(() => mockContentRepository.getVocabulary(locale), [locale]);
+  const { data, loading } = useAsyncValue(
+    () => mockContentRepository.getVocabulary(locale),
+    [locale],
+  );
 
   if (loading || !data) {
     return <LoadingPanel className="min-h-[420px]" lines={8} />;
@@ -31,16 +34,22 @@ export function VocabularyPage() {
         {data.summary.map((item, index) => (
           <div
             key={item.label}
-            className={`px-5 py-5 sm:px-6 lg:px-8 ${index > 0 ? "border-t border-sand-200 sm:border-t-0" : ""}`}
+            className={`px-4 py-4 sm:px-5 lg:px-6 ${
+              index > 0 ? "border-t border-sand-200 sm:border-t-0" : ""
+            }`}
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">{item.label}</p>
-            <p className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-ink-950">{item.value}</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+              {item.label}
+            </p>
+            <p className="mt-3 text-[2.15rem] font-semibold tracking-[-0.05em] text-ink-950">
+              {item.value}
+            </p>
           </div>
         ))}
       </section>
 
       <WorkspaceSection className="border-b border-sand-200">
-        <h2 className="text-2xl font-semibold tracking-[-0.04em] text-ink-950">
+        <h2 className="text-[1.625rem] font-semibold tracking-[-0.04em] text-ink-950 sm:text-[1.75rem]">
           {locale === "vi" ? "Danh sách từ đang học" : "Vocabulary in rotation"}
         </h2>
       </WorkspaceSection>
@@ -49,26 +58,30 @@ export function VocabularyPage() {
         <table className="min-w-full border-collapse text-left">
           <thead className="bg-white/60 text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
             <tr>
-              <th className="px-6 py-4">{locale === "vi" ? "Từ" : "Term"}</th>
-              <th className="px-6 py-4">{locale === "vi" ? "Nghĩa" : "Meaning"}</th>
-              <th className="px-6 py-4">{locale === "vi" ? "Ví dụ" : "Example"}</th>
-              <th className="px-6 py-4">{locale === "vi" ? "Mức" : "Level"}</th>
-              <th className="px-6 py-4">{locale === "vi" ? "Độ vững" : "Mastery"}</th>
+              <th className="px-5 py-3.5">{locale === "vi" ? "Từ" : "Term"}</th>
+              <th className="px-5 py-3.5">{locale === "vi" ? "Nghĩa" : "Meaning"}</th>
+              <th className="px-5 py-3.5">{locale === "vi" ? "Ví dụ" : "Example"}</th>
+              <th className="px-5 py-3.5">{locale === "vi" ? "Mức" : "Level"}</th>
+              <th className="px-5 py-3.5">{locale === "vi" ? "Độ vững" : "Mastery"}</th>
             </tr>
           </thead>
           <tbody>
             {data.words.map((word) => (
               <tr key={word.id} className="border-t border-sand-200 align-top">
-                <td className="px-6 py-5">
+                <td className="px-5 py-4">
                   <div className="space-y-1">
-                    <p className="text-lg font-semibold text-ink-950">{word.term}</p>
+                    <p className="text-[1.05rem] font-semibold text-ink-950">
+                      {word.term}
+                    </p>
                     <p className="text-sm capitalize text-slate-500">{word.status}</p>
                   </div>
                 </td>
-                <td className="px-6 py-5 text-sm text-slate-600">{word.meaning}</td>
-                <td className="px-6 py-5 text-sm text-slate-500">{word.example}</td>
-                <td className="px-6 py-5 text-sm font-semibold text-brand-700">{word.level}</td>
-                <td className="px-6 py-5">
+                <td className="px-5 py-4 text-sm text-slate-600">{word.meaning}</td>
+                <td className="px-5 py-4 text-sm text-slate-500">{word.example}</td>
+                <td className="px-5 py-4 text-sm font-semibold text-brand-700">
+                  {word.level}
+                </td>
+                <td className="px-5 py-4">
                   <div className="flex min-w-[160px] items-center gap-3">
                     <div className="h-2.5 flex-1 overflow-hidden rounded-full bg-sand-100">
                       <div
@@ -76,7 +89,9 @@ export function VocabularyPage() {
                         style={{ width: `${word.mastery}%` }}
                       />
                     </div>
-                    <span className="text-sm font-semibold text-ink-950">{word.mastery}%</span>
+                    <span className="text-sm font-semibold text-ink-950">
+                      {word.mastery}%
+                    </span>
                   </div>
                 </td>
               </tr>

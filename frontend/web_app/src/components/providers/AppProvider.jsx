@@ -1,51 +1,31 @@
 import { createContext, useEffect, useMemo, useState } from "react";
-import {
-  clearSession,
-  loadLocale,
-  loadSession,
-  saveLocale,
-  saveSession,
-} from "../../lib/storage";
+import { loadLocale, saveLocale } from "../../lib/storage";
 import { authRepository } from "../../repositories/authRepository";
 
 export const AppContext = createContext(null);
 
 export function AppProvider({ children }) {
-  const initialSession = loadSession();
-  const [session, setSession] = useState(initialSession);
-  const [locale, setLocaleState] = useState(() =>
-    loadLocale(initialSession?.user?.preferredLanguage ?? "vi"),
-  );
-  const [isBooting, setIsBooting] = useState(() => Boolean(initialSession?.accessToken));
+  const [session, setSession] = useState(null);
+  const [locale, setLocaleState] = useState(() => loadLocale("vi"));
+  const [isBooting, setIsBooting] = useState(true);
 
   useEffect(() => {
-    if (!initialSession?.accessToken) {
-      setIsBooting(false);
-      return undefined;
-    }
-
     let cancelled = false;
 
     authRepository
-      .getMe(initialSession.accessToken)
+      .getMe()
       .then((payload) => {
         if (cancelled) {
           return;
         }
 
-        const nextSession = {
-          accessToken: initialSession.accessToken,
-          user: payload.user,
-        };
-        setSession(nextSession);
-        saveSession(nextSession);
+        setSession({ user: payload.user });
         setLocaleState(payload.user.preferredLanguage);
         saveLocale(payload.user.preferredLanguage);
       })
       .catch(() => {
         if (!cancelled) {
           setSession(null);
-          clearSession();
         }
       })
       .finally(() => {
@@ -59,38 +39,25 @@ export function AppProvider({ children }) {
     };
   }, []);
 
-  const persistSession = (nextSession) => {
-    setSession(nextSession);
-    saveSession(nextSession);
-  };
-
   const login = async (payload) => {
     const result = await authRepository.login(payload);
-    persistSession(result);
+    setSession({ user: result.user });
     setLocaleState(result.user.preferredLanguage);
     saveLocale(result.user.preferredLanguage);
     return result;
+  };
+
+  const loginWithGoogle = () => {
+    authRepository.loginWithGoogle();
   };
 
   const register = async (payload) => {
-    const result = await authRepository.register(payload);
-    persistSession(result);
-    setLocaleState(result.user.preferredLanguage);
-    saveLocale(result.user.preferredLanguage);
-    return result;
+    return authRepository.register(payload);
   };
 
   const updateProfile = async (payload) => {
-    if (!session?.accessToken) {
-      return null;
-    }
-
-    const response = await authRepository.updateProfile(session.accessToken, payload);
-    const nextSession = {
-      accessToken: session.accessToken,
-      user: response.user,
-    };
-    persistSession(nextSession);
+    const response = await authRepository.updateProfile(payload);
+    setSession({ user: response.user });
     setLocaleState(response.user.preferredLanguage);
     saveLocale(response.user.preferredLanguage);
     return response.user;
@@ -100,7 +67,7 @@ export function AppProvider({ children }) {
     setLocaleState(nextLocale);
     saveLocale(nextLocale);
 
-    if (session?.accessToken && session.user.preferredLanguage !== nextLocale) {
+    if (session?.user && session.user.preferredLanguage !== nextLocale) {
       try {
         await updateProfile({ preferredLanguage: nextLocale });
       } catch {
@@ -109,17 +76,21 @@ export function AppProvider({ children }) {
     }
   };
 
-  const logout = () => {
-    setSession(null);
-    clearSession();
+  const logout = async () => {
+    try {
+      await authRepository.logout();
+    } finally {
+      setSession(null);
+    }
   };
 
   const value = useMemo(
     () => ({
-      isAuthenticated: Boolean(session?.accessToken),
+      isAuthenticated: Boolean(session?.user),
       isBooting,
       locale,
       login,
+      loginWithGoogle,
       logout,
       register,
       session,

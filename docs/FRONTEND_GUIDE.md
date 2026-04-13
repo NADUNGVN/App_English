@@ -1,82 +1,121 @@
-# Frontend Guide
+# App English — Web Frontend Documentation
 
-## Hiện trạng frontend
+> **React + Vite + Tailwind CSS**  
+> Modern Web App  
+> Local development: **http://localhost:5173**
 
-Frontend web hiện tại chạy bằng:
-- React
-- Vite
-- Tailwind CSS v3
-- React Router
+---
 
-Entry point hiện tại:
-- `frontend/web_app/src/main.jsx`
+## 📸 Giao diện thực tế (chụp từ app đang chạy)
 
-Route tree hiện tại:
-- `frontend/web_app/src/app/App.jsx`
+| Dashboard | Thư Viện |
+|-----------|----------|
+| ![Dashboard](./screenshots/web_dashboard.png) | ![Learning](./screenshots/web_learning.png) |
 
-## Public và authenticated app
+| Xếp Hạng | Thống Kê |
+|----------|----------|
+| ![Leaderboard](./screenshots/web_leaderboard.png) | ![Statistics](./screenshots/web_statistics.png) |
 
-Frontend được chia thành 2 nhánh chính:
+---
 
-### Public
-- `/`
-- `/login`
-- `/register`
+## 🚀 Hướng dẫn chạy
 
-Layout:
-- `frontend/web_app/src/layouts/PublicLayout.jsx`
+### Yêu cầu
 
-### Authenticated app
-- `/dashboard`
-- `/learning`
-- `/dictation`
-- `/vocabulary`
-- `/dictionary`
-- `/leaderboard`
-- `/statistics`
-- `/shadowing`
+| Công cụ | Phiên bản | Ghi chú |
+|---------|-----------|---------|
+| Node.js | v18+ | `node -v` |
+| npm | v9+ | `npm -v` |
 
-Layout:
-- `frontend/web_app/src/layouts/AppShell.jsx`
+### Lệnh chạy
 
-## Cấu trúc chính
+```powershell
+cd D:\work\web_app\App_English\frontend\web_app
+
+# Cài đặt dependencies (nếu chưa có)
+npm install
+
+# Start development server
+npm run dev
+```
+
+---
+
+## 🗂️ Cấu trúc thư mục
 
 ```text
 frontend/web_app/
-├── archive/
-│   └── legacy-vanilla/
-├── public/
+├── public/                 ← Assets tĩnh (favicon, v.v.)
 ├── src/
-│   ├── app/
+│   ├── app/                ← Root App + Navigation config
 │   ├── components/
-│   │   ├── app/
-│   │   ├── common/
-│   │   └── providers/
-│   ├── data/
-│   ├── hooks/
-│   ├── layouts/
-│   ├── lib/
+│   │   ├── app/            ← Layout components (Sidebar, Topbar)
+│   │   ├── common/         ← Shared UI components (Buttons, Inputs)
+│   │   └── providers/      ← Context providers
+│   ├── data/               ← Mock data / constants
+│   ├── hooks/              ← Custom React hooks
+│   ├── layouts/            ← AppShell & PublicLayout
+│   ├── lib/                ← Utilities & API base
 │   ├── pages/
-│   │   ├── app/
-│   │   ├── auth/
-│   │   └── public/
-│   ├── repositories/
-│   └── styles/
-└── tailwind.config.js
+│   │   ├── app/            ← Authenticated pages
+│   │   ├── auth/           ← Login/Register
+│   │   └── public/         ← Landing page
+│   ├── repositories/       ← Data fetch logic
+│   └── styles/             ← Tailwind base & custom CSS
+├── tailwind.config.js      ← Design system tokens
+└── vite.config.js          ← Vite settings
 ```
 
-## Nguyên tắc tổ chức
+---
 
-- `layouts/` giữ khung điều hướng và vùng cuộn lớn.
-- `pages/app/` chỉ render nội dung page bên trong app shell.
-- `components/app/` giữ các module chrome dùng chung cho phần sau đăng nhập.
-- `components/common/` giữ brand, toggle ngôn ngữ, state panels và primitive dùng lại.
-- `repositories/` là lớp đọc dữ liệu; hiện tại phần lớn vẫn mock-backed.
+## 🏗️ Kiến trúc & Luồng Navigation
 
-## Legacy cũ
+Frontend được phân tách rõ ràng thành 2 vùng chính thông qua `App.jsx`:
 
-Frontend Vanilla cũ đã được chuyển sang:
-- `frontend/web_app/archive/legacy-vanilla/`
+### 1. Public Area
+- **Route:** `/`, `/login`, `/register`
+- **Layout:** `PublicLayout.jsx`
+- **Mục đích:** Landing page và xác thực người dùng.
 
-Tài liệu frontend cũ theo luồng Vanilla được lưu tại:
-- `docs/archive/FRONTEND_GUIDE.vanilla.md`
+### 2. Authenticated Area (App Shell)
+- **Route:** `/dashboard`, `/learning`, `/dictation`, v.v.
+- **Layout:** `AppShell.jsx`
+- **Cấu trúc:**
+    - `Sidebar`: Điều hướng chính (expandable).
+    - `Topbar`: Breadcrumbs, Locale picker, Notifications.
+    - `Main Content`: Render nội dung thông qua `<Outlet />`.
+
+---
+
+## 🎨 Design System (`tailwind.config.js`)
+
+Hệ thống sử dụng hệ màu đồng bộ với Mobile App:
+
+- **Colors:** `brand` (Orange), `sage` (Teal), `ink` (Dark Slate), `sand` (Off-white).
+- **Typography:** `Be Vietnam Pro` (Sans), `JetBrains Mono` (Mono).
+- **Radius:** `shell` (2rem), `panel` (1.5rem).
+- **Shadow:** `panel` shadows được tinh chỉnh hướng mềm mại.
+
+Các giá trị này được map vào class Tailwind giúp phát triển UI cực nhanh và thống nhất.
+
+---
+
+## ⏱️ Trạng thái hiện tại
+
+| Trang | Trạng thái | Dữ liệu |
+|-------|------------|---------|
+| Dashboard | ✅ Hoàn chỉnh | Mock |
+| Thư viện | ✅ Hoàn chỉnh | Mock |
+| Xếp hạng | ✅ Hoàn chỉnh | Mock |
+| Thống kê | ✅ Hoàn chỉnh | Mock |
+| Luyện nghe | [/] Đang hoàn thiện | Mock |
+| Shadowing | 🔲 Chờ tích hợp | — |
+
+---
+
+## 🗺️ Bước tiếp theo
+
+1. **Kết nối API thật:** Chuyển đổi từ `mockContentRepository` sang gọi NestJS API.
+2. **Xử lý Audio/Video:** Hoàn thiện Player cho bài học nghe và Dictation.
+3. **PWA Support:** Cho phép cài đặt web app như một ứng dụng trên desktop.
+4. **Dark Mode:** Mở rộng bảng màu cho chế độ tối.

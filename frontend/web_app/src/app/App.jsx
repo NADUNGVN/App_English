@@ -1,8 +1,10 @@
 import { Navigate, Outlet, Route, Routes } from "react-router-dom";
+import { appNavigationItems } from "./appNavigation.js";
 import { LoadingPanel } from "../components/common/StatePanels.jsx";
 import { useAppContext } from "../hooks/useAppContext.js";
 import { AppShell } from "../layouts/AppShell.jsx";
 import { PublicLayout } from "../layouts/PublicLayout.jsx";
+import { AppPlaceholderPage } from "../pages/app/AppPlaceholderPage.jsx";
 import { DashboardPage } from "../pages/app/DashboardPage.jsx";
 import { DictionaryPage } from "../pages/app/DictionaryPage.jsx";
 import { DictationPage } from "../pages/app/DictationPage.jsx";
@@ -14,6 +16,17 @@ import { VocabularyPage } from "../pages/app/VocabularyPage.jsx";
 import { LoginPage } from "../pages/auth/LoginPage.jsx";
 import { RegisterPage } from "../pages/auth/RegisterPage.jsx";
 import { LandingPage } from "../pages/public/LandingPage.jsx";
+
+const concreteRouteElements = {
+  "/dashboard": DashboardPage,
+  "/learning": LearningPage,
+  "/dictation": DictationPage,
+  "/vocabulary": VocabularyPage,
+  "/dictionary": DictionaryPage,
+  "/leaderboard": LeaderboardPage,
+  "/statistics": StatisticsPage,
+  "/shadowing": ShadowingPage,
+};
 
 function ProtectedRoute() {
   const { isAuthenticated, isBooting } = useAppContext();
@@ -64,14 +77,25 @@ export default function App() {
 
       <Route element={<ProtectedRoute />}>
         <Route element={<AppShell />}>
-          <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/learning" element={<LearningPage />} />
-          <Route path="/dictation" element={<DictationPage />} />
-          <Route path="/vocabulary" element={<VocabularyPage />} />
-          <Route path="/dictionary" element={<DictionaryPage />} />
-          <Route path="/leaderboard" element={<LeaderboardPage />} />
-          <Route path="/statistics" element={<StatisticsPage />} />
-          <Route path="/shadowing" element={<ShadowingPage />} />
+          {appNavigationItems.map((item) => {
+            const ExistingPage = concreteRouteElements[item.to];
+
+            if (ExistingPage) {
+              return <Route key={item.to} path={item.to} element={<ExistingPage />} />;
+            }
+
+            if (item.placeholderCopy) {
+              return (
+                <Route
+                  key={item.to}
+                  path={item.to}
+                  element={<AppPlaceholderPage copy={item.placeholderCopy} />}
+                />
+              );
+            }
+
+            return null;
+          })}
         </Route>
       </Route>
 

@@ -1,29 +1,43 @@
+const { clearSessionCookies, getSessionCookies, setSessionCookies } = require("../lib/cookies");
 const { HttpError } = require("../lib/httpError");
-const { verifyAccessToken } = require("../lib/jwt");
+const { createSupabaseAuthClient } = require("../lib/supabase");
 
-function requireAuth(request, response, next) {
+async function requireAuth(request, response, next) {
   try {
-    const authorization = request.headers.authorization;
+    const { accessToken, refreshToken } = getSessionCookies(request);
 
-    if (!authorization || !authorization.startsWith("Bearer ")) {
+    if (!accessToken || !refreshToken) {
       throw new HttpError(401, "Authentication required");
     }
 
-    const token = authorization.replace("Bearer ", "").trim();
-    const decoded = verifyAccessToken(token);
+    const supabase = createSupabaseAuthClient();
+    const { data: sessionData, error: sessionError } = await supabase.auth.setSession({
+      access_token: accessToken,
+      refresh_token: refreshToken,
+    });
 
+    if (sessionError || !sessionData.session) {
+      throw new HttpError(401, "Invalid or expired session");
+    }
+
+    const { data: userData, error: userError } = await supabase.auth.getUser(
+      sessionData.session.access_token,
+    );
+
+    if (userError || !userData.user) {
+      throw new HttpError(401, "Invalid or expired session");
+    }
+
+    setSessionCookies(response, sessionData.session);
     request.auth = {
-      userId: decoded.sub,
-      role: decoded.role,
+      session: sessionData.session,
+      user: userData.user,
+      userId: userData.user.id,
     };
 
     next();
   } catch (error) {
-    if (error.name === "JsonWebTokenError" || error.name === "TokenExpiredError") {
-      next(new HttpError(401, "Invalid or expired token"));
-      return;
-    }
-
+    clearSessionCookies(response);
     next(error);
   }
 }

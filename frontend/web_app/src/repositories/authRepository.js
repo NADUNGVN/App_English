@@ -1,29 +1,35 @@
-import { request } from "../lib/apiClient";
+import { buildApiUrl, request } from "../lib/apiClient";
 
 export const authRepository = {
+  getMe() {
+    return request("/auth/me", {
+      method: "GET",
+    });
+  },
   login(payload) {
     return request("/auth/login", {
-      method: "POST",
       body: payload,
+      method: "POST",
+    });
+  },
+  loginWithGoogle() {
+    window.location.assign(buildApiUrl("/auth/google/start"));
+  },
+  logout() {
+    return request("/auth/logout", {
+      method: "POST",
     });
   },
   register(payload) {
     return request("/auth/register", {
+      body: payload,
       method: "POST",
-      body: payload,
     });
   },
-  getMe(token) {
-    return request("/auth/me", {
-      method: "GET",
-      token,
-    });
-  },
-  updateProfile(token, payload) {
+  updateProfile(payload) {
     return request("/users/me", {
-      method: "PATCH",
-      token,
       body: payload,
+      method: "PATCH",
     });
   },
 };

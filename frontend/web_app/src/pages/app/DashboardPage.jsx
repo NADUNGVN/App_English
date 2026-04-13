@@ -30,32 +30,32 @@ export function DashboardPage() {
   return (
     <WorkspaceCanvas>
       <WorkspaceSection className="border-b border-sand-200">
-        <div className="grid gap-8 xl:grid-cols-[minmax(0,1fr),320px] xl:items-start">
-          <div className="space-y-4">
+        <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr),300px] xl:items-start">
+          <div className="space-y-3">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-700">
               {locale === "vi" ? "Nhịp hôm nay" : "Today's rhythm"}
             </p>
-            <div className="space-y-3">
-              <h2 className="display-title max-w-[13ch] text-[3rem] sm:text-[3.4rem]">
+            <div className="space-y-2.5">
+              <h2 className="display-title max-w-[13ch] text-[2.55rem] sm:text-[2.9rem]">
                 {data.heading}
               </h2>
-              <p className="max-w-2xl text-base leading-relaxed text-slate-600">{data.summary}</p>
+              <p className="max-w-2xl text-[0.95rem] leading-7 text-slate-600">{data.summary}</p>
             </div>
           </div>
 
-          <div className="rounded-[1.7rem] border border-white/80 bg-[rgb(255,248,240)] px-5 py-5 shadow-[0_22px_40px_-34px_rgba(120,53,15,0.24)]">
+          <div className="rounded-[1.55rem] border border-white/80 bg-[rgb(255,248,240)] px-4 py-4 shadow-[0_22px_40px_-34px_rgba(120,53,15,0.24)]">
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
               {locale === "vi" ? "Mục tiêu ngày" : "Daily target"}
             </p>
-            <div className="mt-4 space-y-3">
-              <p className="text-4xl font-semibold tracking-[-0.05em] text-ink-950">{goalProgress}%</p>
+            <div className="mt-3.5 space-y-2.5">
+              <p className="text-[2.65rem] font-semibold tracking-[-0.05em] text-ink-950">{goalProgress}%</p>
               <div className="h-3 overflow-hidden rounded-full bg-sand-100">
                 <div
                   className="h-full rounded-full bg-gradient-to-r from-brand-500 to-sage-600"
                   style={{ width: `${goalProgress}%` }}
                 />
               </div>
-              <p className="text-sm text-slate-500">
+              <p className="text-[0.9375rem] text-slate-500">
                 {locale === "vi"
                   ? `Bạn đã hoàn thành 24 trên ${user?.dailyGoalMinutes ?? 15} phút.`
                   : `You have completed 24 of ${user?.dailyGoalMinutes ?? 15} minutes.`}
@@ -69,16 +69,16 @@ export function DashboardPage() {
         {data.stats.map((item, index) => (
           <div
             key={item.label}
-            className={`px-5 py-5 sm:px-6 lg:px-8 ${index > 0 ? "border-t border-sand-200 sm:border-t-0" : ""}`}
+            className={`px-4 py-4 sm:px-5 lg:px-6 ${index > 0 ? "border-t border-sand-200 sm:border-t-0" : ""}`}
           >
             <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">{item.label}</p>
-            <p className="mt-4 text-3xl font-semibold tracking-[-0.05em] text-ink-950">{item.value}</p>
-            <p className="mt-2 text-sm text-slate-500">{item.detail}</p>
+            <p className="mt-3 text-[2.15rem] font-semibold tracking-[-0.05em] text-ink-950">{item.value}</p>
+            <p className="mt-2 text-[0.9375rem] text-slate-500">{item.detail}</p>
           </div>
         ))}
       </section>
 
-      <section className="grid lg:grid-cols-[minmax(0,1.08fr),360px]">
+      <section className="grid lg:grid-cols-[minmax(0,1.05fr),320px]">
         <div className="min-w-0 border-b border-sand-200 lg:border-b-0 lg:border-r lg:border-sand-200">
           <WorkspaceSection className="border-b border-sand-200">
             <WorkspaceSectionHeader
@@ -95,22 +95,22 @@ export function DashboardPage() {
 
           <div className="divide-y divide-sand-200">
             {data.focusList.map((lesson) => (
-              <article key={lesson.id} className="px-5 py-5 sm:px-6 sm:py-6 lg:px-8">
+              <article key={lesson.id} className="px-4 py-4 sm:px-5 sm:py-5 lg:px-6">
                 <div className="flex items-start justify-between gap-4">
                   <div className="space-y-2">
                     <p className="text-sm font-semibold text-brand-700">
                       {lesson.source} · {lesson.level}
                     </p>
-                    <h3 className="page-heading max-w-[22ch] text-[2rem]">
+                    <h3 className="page-heading max-w-[22ch] text-[1.75rem]">
                       {lesson.title}
                     </h3>
-                    <p className="max-w-[60ch] text-sm leading-relaxed text-slate-500">{lesson.description}</p>
+                    <p className="max-w-[60ch] text-[0.9375rem] leading-6 text-slate-500">{lesson.description}</p>
                   </div>
-                  <div className="shrink-0 text-right text-sm font-medium text-slate-400">{lesson.minutes}m</div>
+                  <div className="shrink-0 text-right text-[0.9375rem] font-medium text-slate-400">{lesson.minutes}m</div>
                 </div>
 
-                <div className="mt-5 flex items-center justify-between gap-4">
-                  <p className="text-sm text-slate-500">{lesson.tag}</p>
+                <div className="mt-4 flex items-center justify-between gap-4">
+                  <p className="text-[0.9375rem] text-slate-500">{lesson.tag}</p>
                   <div className="flex items-center gap-3">
                     <div className="h-2.5 w-28 overflow-hidden rounded-full bg-sand-100">
                       <div
@@ -118,7 +118,7 @@ export function DashboardPage() {
                         style={{ width: `${lesson.progress}%` }}
                       />
                     </div>
-                    <span className="text-sm font-semibold text-ink-950">{lesson.progress}%</span>
+                    <span className="text-[0.9375rem] font-semibold text-ink-950">{lesson.progress}%</span>
                   </div>
                 </div>
               </article>
@@ -129,19 +129,19 @@ export function DashboardPage() {
         <div className="min-w-0">
           <WorkspaceSection className="border-b border-sand-200">
             <div className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-100 text-brand-700">
-                <ClockCounterClockwise size={22} weight="duotone" />
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-100 text-brand-700">
+                <ClockCounterClockwise size={20} weight="duotone" />
               </div>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
                   {locale === "vi" ? "Hoạt động gần đây" : "Recent activity"}
                 </p>
-                <h3 className="page-heading text-[2rem]">
+                <h3 className="page-heading text-[1.75rem]">
                   {locale === "vi" ? "Những gì vừa được lưu lại" : "What was just saved"}
                 </h3>
               </div>
             </div>
-            <div className="mt-5 space-y-4">
+            <div className="mt-4 space-y-3">
               {data.activity.map((item) => (
                 <div key={item.title} className="border-t border-sand-200 pt-4 first:border-t-0 first:pt-0">
                   <p className="text-sm font-medium text-ink-950">{item.title}</p>
@@ -153,19 +153,19 @@ export function DashboardPage() {
 
           <WorkspaceSection className="border-b border-sand-200">
             <div className="flex items-center gap-3">
-              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-sage-100 text-sage-700">
-                <Ranking size={22} weight="duotone" />
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-sage-100 text-sage-700">
+                <Ranking size={20} weight="duotone" />
               </div>
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
                   {locale === "vi" ? "Nhóm dẫn đầu" : "Top learners"}
                 </p>
-                <h3 className="page-heading text-[2rem]">
+                <h3 className="page-heading text-[1.75rem]">
                   {locale === "vi" ? "Bạn đang đứng gần nhóm đầu" : "You are close to the front group"}
                 </h3>
               </div>
             </div>
-            <div className="mt-5 space-y-4">
+            <div className="mt-4 space-y-3">
               {data.leaderboard.map((row) => (
                 <div key={row.id} className="flex items-center justify-between gap-4">
                   <div>

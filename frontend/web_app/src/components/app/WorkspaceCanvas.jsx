@@ -13,8 +13,10 @@ export function WorkspaceSectionHeader({ action = null, eyebrow, title, descript
         {eyebrow ? (
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-700">{eyebrow}</p>
         ) : null}
-        <h2 className="page-heading text-3xl">{title}</h2>
-        {description ? <p className="max-w-2xl text-sm leading-relaxed text-slate-500">{description}</p> : null}
+        <h2 className="page-heading text-[1.625rem] sm:text-[1.75rem]">{title}</h2>
+        {description ? (
+          <p className="max-w-2xl text-sm leading-6 text-slate-500">{description}</p>
+        ) : null}
       </div>
       {action}
     </div>
