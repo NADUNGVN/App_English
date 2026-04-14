@@ -1,5 +1,5 @@
 import { SidebarSimple, SignOut } from "@phosphor-icons/react";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { appSidebarSections } from "../../app/appNavigation.js";
 import { BrandMark } from "../common/BrandMark.jsx";
@@ -30,21 +30,30 @@ function UserAvatar({
   sizeClass = "h-10 w-10",
   textClass = "text-sm",
 }) {
+  const [hasImageError, setHasImageError] = useState(false);
+
+  useEffect(() => {
+    setHasImageError(false);
+  }, [avatarUrl]);
+
+  const showImage = Boolean(avatarUrl) && !hasImageError;
+
   return (
     <div
       className={`relative flex shrink-0 items-center justify-center overflow-hidden rounded-full border border-brand-100 bg-brand-100/80 text-brand-700 ${sizeClass}`}
     >
-      <span className={`relative z-[1] font-semibold ${textClass}`}>{initials}</span>
-      {avatarUrl ? (
+      {showImage ? (
         <img
           alt=""
           className="absolute inset-0 h-full w-full object-cover"
           onError={(event) => {
-            event.currentTarget.style.display = "none";
+            setHasImageError(true);
           }}
           src={avatarUrl}
         />
-      ) : null}
+      ) : (
+        <span className={`relative z-[1] font-semibold ${textClass}`}>{initials}</span>
+      )}
     </div>
   );
 }

@@ -100,11 +100,9 @@ export function LoginPage() {
       <div className="surface-panel hidden h-full min-h-[520px] overflow-hidden p-8 lg:block">
         <div className="flex h-full flex-col justify-between rounded-[1.8rem] bg-hero-wash p-8">
           <div className="space-y-4">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-700">
-              {copy.eyebrow}
-            </p>
-            <h1 className="display-title max-w-[9ch] text-[3.65rem]">{copy.title}</h1>
-            <p className="max-w-md text-base leading-relaxed text-slate-600">{copy.body}</p>
+            <p className="type-eyebrow-label">{copy.eyebrow}</p>
+            <h1 className="type-display-auth max-w-[9ch]">{copy.title}</h1>
+            <p className="type-body-lg max-w-md">{copy.body}</p>
           </div>
           <img
             alt="QuackUp mascot"
@@ -118,11 +116,9 @@ export function LoginPage() {
         <div className="surface-panel p-6 sm:p-8">
           <form className="space-y-5" onSubmit={handleSubmit}>
             <div className="space-y-2">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-700">
-                {copy.eyebrow}
-              </p>
-              <h2 className="page-heading text-[2rem]">{copy.title}</h2>
-              <p className="text-sm leading-relaxed text-slate-500">{copy.body}</p>
+              <p className="type-eyebrow-label">{copy.eyebrow}</p>
+              <h2 className="type-title-page">{copy.title}</h2>
+              <p className="type-body-sm">{copy.body}</p>
             </div>
 
             <div className="field-shell">

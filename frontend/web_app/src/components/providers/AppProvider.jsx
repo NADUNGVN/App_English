@@ -8,9 +8,14 @@ export function AppProvider({ children }) {
   const [session, setSession] = useState(null);
   const [locale, setLocaleState] = useState(() => loadLocale("vi"));
   const [isBooting, setIsBooting] = useState(true);
+  const [bootError, setBootError] = useState(null);
+  const [bootstrapKey, setBootstrapKey] = useState(0);
 
   useEffect(() => {
     let cancelled = false;
+
+    setIsBooting(true);
+    setBootError(null);
 
     authRepository
       .getMe()
@@ -23,9 +28,16 @@ export function AppProvider({ children }) {
         setLocaleState(payload.user.preferredLanguage);
         saveLocale(payload.user.preferredLanguage);
       })
-      .catch(() => {
+      .catch((error) => {
         if (!cancelled) {
           setSession(null);
+
+          if (error?.status === 401) {
+            setBootError(null);
+            return;
+          }
+
+          setBootError(error);
         }
       })
       .finally(() => {
@@ -37,11 +49,12 @@ export function AppProvider({ children }) {
     return () => {
       cancelled = true;
     };
-  }, []);
+  }, [bootstrapKey]);
 
   const login = async (payload) => {
     const result = await authRepository.login(payload);
     setSession({ user: result.user });
+    setBootError(null);
     setLocaleState(result.user.preferredLanguage);
     saveLocale(result.user.preferredLanguage);
     return result;
@@ -58,6 +71,7 @@ export function AppProvider({ children }) {
   const updateProfile = async (payload) => {
     const response = await authRepository.updateProfile(payload);
     setSession({ user: response.user });
+    setBootError(null);
     setLocaleState(response.user.preferredLanguage);
     saveLocale(response.user.preferredLanguage);
     return response.user;
@@ -80,12 +94,18 @@ export function AppProvider({ children }) {
     try {
       await authRepository.logout();
     } finally {
+      setBootError(null);
       setSession(null);
     }
   };
 
+  const retrySessionBootstrap = () => {
+    setBootstrapKey((current) => current + 1);
+  };
+
   const value = useMemo(
     () => ({
+      bootError,
       isAuthenticated: Boolean(session?.user),
       isBooting,
       locale,
@@ -93,12 +113,13 @@ export function AppProvider({ children }) {
       loginWithGoogle,
       logout,
       register,
+      retrySessionBootstrap,
       session,
       setLocale,
       updateProfile,
       user: session?.user ?? null,
     }),
-    [isBooting, locale, session],
+    [bootError, isBooting, locale, session],
   );
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

@@ -125,10 +125,8 @@ export function LandingPage() {
             </span>
 
             <div className="space-y-4">
-              <h1 className="display-title max-w-[10.5ch] text-[3.5rem] sm:text-[4.35rem] lg:text-[5.15rem]">
-                {copy.title}
-              </h1>
-              <p className="max-w-[35rem] text-lg leading-relaxed text-slate-600">{copy.intro}</p>
+              <h1 className="type-display-hero max-w-[10.5ch]">{copy.title}</h1>
+              <p className="type-body-lg max-w-[35rem]">{copy.intro}</p>
             </div>
 
             <div className="flex flex-wrap items-center gap-4">
@@ -144,7 +142,7 @@ export function LandingPage() {
 
             <div className="space-y-3 pt-1">
               {copy.supportList.map((item) => (
-                <div key={item} className="flex items-start gap-3 text-sm font-medium leading-relaxed text-slate-600">
+                <div key={item} className="type-body-sm flex items-start gap-3 font-medium">
                   <CheckCircle className="mt-0.5 shrink-0 text-sage-700" size={18} weight="fill" />
                   <p className="max-w-[34rem]">{item}</p>
                 </div>
@@ -159,10 +157,10 @@ export function LandingPage() {
               <div className="relative z-10 flex flex-col gap-5">
                 <div className="flex items-center justify-between gap-4 rounded-[1.65rem] border border-white/80 bg-white/85 p-5">
                   <div>
-                    <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+                    <p className="type-eyebrow-muted">
                       {copy.heroCardTitle}
                     </p>
-                    <p className="mt-2 max-w-sm text-sm leading-relaxed text-slate-600">
+                    <p className="type-body-sm mt-2 max-w-sm text-slate-600">
                       {copy.heroCardCopy}
                     </p>
                   </div>
@@ -192,10 +190,10 @@ export function LandingPage() {
                         className="surface-panel-soft flex min-h-[118px] items-center justify-between px-5 py-5"
                       >
                         <div>
-                          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+                          <p className="type-eyebrow-muted">
                             {item.label}
                           </p>
-                          <p className="mt-2 text-[2rem] font-semibold tracking-[-0.05em] text-ink-950">
+                          <p className="type-stat-value mt-2">
                             {item.value}
                           </p>
                         </div>
@@ -229,10 +227,8 @@ export function LandingPage() {
                     <Subtitles size={22} weight="duotone" />
                   </div>
                   <div className="space-y-2">
-                    <p className="text-lg font-semibold tracking-[-0.03em] text-ink-950">
-                      {copy.practiceBlocks[0].title}
-                    </p>
-                    <p className="text-sm leading-relaxed text-slate-500">{copy.practiceBlocks[0].body}</p>
+                    <p className="type-title-card">{copy.practiceBlocks[0].title}</p>
+                    <p className="type-body-sm">{copy.practiceBlocks[0].body}</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-4 rounded-[1.4rem] border border-sand-200 bg-white/60 p-4">
@@ -240,10 +236,8 @@ export function LandingPage() {
                     <SpeakerSimpleHigh size={22} weight="duotone" />
                   </div>
                   <div className="space-y-2">
-                    <p className="text-lg font-semibold tracking-[-0.03em] text-ink-950">
-                      {copy.practiceBlocks[1].title}
-                    </p>
-                    <p className="text-sm leading-relaxed text-slate-500">{copy.practiceBlocks[1].body}</p>
+                    <p className="type-title-card">{copy.practiceBlocks[1].title}</p>
+                    <p className="type-body-sm">{copy.practiceBlocks[1].body}</p>
                   </div>
                 </div>
               </div>
@@ -254,10 +248,8 @@ export function LandingPage() {
                 <BookOpenText size={22} weight="duotone" />
               </div>
               <div className="space-y-3">
-                <p className="text-lg font-semibold tracking-[-0.03em] text-ink-950">
-                  {copy.practiceBlocks[2].title}
-                </p>
-                <p className="text-sm leading-relaxed text-slate-500">{copy.practiceBlocks[2].body}</p>
+                <p className="type-title-card">{copy.practiceBlocks[2].title}</p>
+                <p className="type-body-sm">{copy.practiceBlocks[2].body}</p>
               </div>
             </div>
           </div>
@@ -280,8 +272,8 @@ export function LandingPage() {
           <div className="grid gap-4">
             {copy.metrics.map((item) => (
               <div key={item.label} className="surface-panel-soft flex items-center justify-between p-5">
-                <p className="text-sm font-medium text-slate-500">{item.label}</p>
-                <p className="text-xl font-semibold tracking-[-0.04em] text-ink-950">{item.value}</p>
+                <p className="type-body-sm font-medium">{item.label}</p>
+                <p className="type-title-card text-right">{item.value}</p>
               </div>
             ))}
           </div>
@@ -302,7 +294,7 @@ export function LandingPage() {
           <div className="surface-panel overflow-hidden p-6">
             <div className="grid gap-4 md:grid-cols-[0.9fr,1.1fr]">
               <div className="rounded-[1.5rem] border border-sand-200 bg-white/70 p-5">
-                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                <p className="type-eyebrow-muted tracking-[0.2em]">
                   {locale === "vi" ? "Nhịp tuần này" : "This week's rhythm"}
                 </p>
                 <div className="mt-5 space-y-3">
@@ -322,10 +314,10 @@ export function LandingPage() {
 
               <div className="grid gap-4">
                 <div className="rounded-[1.5rem] border border-sand-200 bg-white/70 p-5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                  <p className="type-eyebrow-muted tracking-[0.2em]">
                     {locale === "vi" ? "Điểm mạnh gần đây" : "Recent strengths"}
                   </p>
-                  <div className="mt-4 space-y-3 text-sm text-slate-500">
+                  <div className="type-body-sm mt-4 space-y-3">
                     <p>
                       {locale === "vi"
                         ? "Bạn giữ được nhịp học đều trong bảy ngày gần nhất."
@@ -339,10 +331,10 @@ export function LandingPage() {
                   </div>
                 </div>
                 <div className="rounded-[1.5rem] border border-sand-200 bg-white/70 p-5">
-                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                  <p className="type-eyebrow-muted tracking-[0.2em]">
                     {locale === "vi" ? "Gợi ý tiếp theo" : "Next move"}
                   </p>
-                  <p className="mt-4 text-sm leading-relaxed text-slate-500">
+                  <p className="type-body-sm mt-4">
                     {locale === "vi"
                       ? "Giữ dictation dưới 8 phút, sau đó dành 3 phút nhắc lại các câu khó bằng shadowing."
                       : "Keep dictation under eight minutes, then spend three minutes repeating the tougher lines aloud."}

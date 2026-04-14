@@ -14,15 +14,21 @@ export function buildApiUrl(path) {
 
 export async function request(path, options = {}) {
   const { body, headers = {}, ...rest } = options;
-  const response = await fetch(buildApiUrl(path), {
-    ...rest,
-    credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-      ...headers,
-    },
-    body: body ? JSON.stringify(body) : undefined,
-  });
+  let response;
+
+  try {
+    response = await fetch(buildApiUrl(path), {
+      ...rest,
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+        ...headers,
+      },
+      body: body ? JSON.stringify(body) : undefined,
+    });
+  } catch (error) {
+    throw new ApiError("Unable to reach the server", 0);
+  }
 
   const contentType = response.headers.get("content-type");
   const payload =

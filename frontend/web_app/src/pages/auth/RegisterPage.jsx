@@ -75,11 +75,9 @@ export function RegisterPage() {
         <div className="surface-panel grid gap-8 p-6 sm:p-8 lg:grid-cols-[0.86fr,1.14fr]">
           <div className="surface-panel-soft flex flex-col justify-between p-6">
             <div className="space-y-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-700">
-                {copy.eyebrow}
-              </p>
-              <h1 className="display-title max-w-[10ch] text-[3.25rem]">{copy.title}</h1>
-              <p className="text-sm leading-relaxed text-slate-500">{copy.body}</p>
+              <p className="type-eyebrow-label">{copy.eyebrow}</p>
+              <h1 className="type-display-auth max-w-[10ch]">{copy.title}</h1>
+              <p className="type-body-sm">{copy.body}</p>
             </div>
             <img
               alt="QuackUp mascot"

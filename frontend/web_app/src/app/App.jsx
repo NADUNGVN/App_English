@@ -1,6 +1,6 @@
 import { Navigate, Outlet, Route, Routes } from "react-router-dom";
 import { appNavigationItems } from "./appNavigation.js";
-import { LoadingPanel } from "../components/common/StatePanels.jsx";
+import { ErrorState, LoadingPanel } from "../components/common/StatePanels.jsx";
 import { useAppContext } from "../hooks/useAppContext.js";
 import { AppShell } from "../layouts/AppShell.jsx";
 import { PublicLayout } from "../layouts/PublicLayout.jsx";
@@ -29,12 +29,41 @@ const concreteRouteElements = {
 };
 
 function ProtectedRoute() {
-  const { isAuthenticated, isBooting } = useAppContext();
+  const { bootError, isAuthenticated, isBooting, locale, retrySessionBootstrap } =
+    useAppContext();
+
+  const copy = {
+    vi: {
+      retry: "Thử lại",
+      title: "Không thể xác thực phiên làm việc lúc này.",
+      description:
+        "Dịch vụ đăng nhập đang tạm thời không phản hồi. Hãy thử lại trong giây lát.",
+    },
+    en: {
+      retry: "Try again",
+      title: "We couldn't verify your session right now.",
+      description:
+        "The authentication service is temporarily unavailable. Please try again in a moment.",
+    },
+  }[locale];
 
   if (isBooting) {
     return (
       <div className="page-shell py-10">
         <LoadingPanel className="min-h-[320px]" lines={6} />
+      </div>
+    );
+  }
+
+  if (bootError) {
+    return (
+      <div className="page-shell py-10">
+        <ErrorState
+          actionLabel={copy.retry}
+          description={copy.description}
+          onAction={retrySessionBootstrap}
+          title={copy.title}
+        />
       </div>
     );
   }

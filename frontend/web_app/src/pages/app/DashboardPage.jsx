@@ -32,30 +32,28 @@ export function DashboardPage() {
       <WorkspaceSection className="border-b border-sand-200">
         <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr),300px] xl:items-start">
           <div className="space-y-3">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-700">
+            <p className="type-eyebrow-label">
               {locale === "vi" ? "Nhịp hôm nay" : "Today's rhythm"}
             </p>
             <div className="space-y-2.5">
-              <h2 className="display-title max-w-[13ch] text-[2.55rem] sm:text-[2.9rem]">
-                {data.heading}
-              </h2>
-              <p className="max-w-2xl text-[0.95rem] leading-7 text-slate-600">{data.summary}</p>
+              <h2 className="type-display-auth max-w-[13ch]">{data.heading}</h2>
+              <p className="type-body-md max-w-2xl">{data.summary}</p>
             </div>
           </div>
 
           <div className="rounded-[1.55rem] border border-white/80 bg-[rgb(255,248,240)] px-4 py-4 shadow-[0_22px_40px_-34px_rgba(120,53,15,0.24)]">
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+            <p className="type-eyebrow-muted">
               {locale === "vi" ? "Mục tiêu ngày" : "Daily target"}
             </p>
             <div className="mt-3.5 space-y-2.5">
-              <p className="text-[2.65rem] font-semibold tracking-[-0.05em] text-ink-950">{goalProgress}%</p>
+              <p className="type-stat-value">{goalProgress}%</p>
               <div className="h-3 overflow-hidden rounded-full bg-sand-100">
                 <div
                   className="h-full rounded-full bg-gradient-to-r from-brand-500 to-sage-600"
                   style={{ width: `${goalProgress}%` }}
                 />
               </div>
-              <p className="text-[0.9375rem] text-slate-500">
+              <p className="type-body-sm">
                 {locale === "vi"
                   ? `Bạn đã hoàn thành 24 trên ${user?.dailyGoalMinutes ?? 15} phút.`
                   : `You have completed 24 of ${user?.dailyGoalMinutes ?? 15} minutes.`}
@@ -71,9 +69,9 @@ export function DashboardPage() {
             key={item.label}
             className={`px-4 py-4 sm:px-5 lg:px-6 ${index > 0 ? "border-t border-sand-200 sm:border-t-0" : ""}`}
           >
-            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">{item.label}</p>
-            <p className="mt-3 text-[2.15rem] font-semibold tracking-[-0.05em] text-ink-950">{item.value}</p>
-            <p className="mt-2 text-[0.9375rem] text-slate-500">{item.detail}</p>
+            <p className="type-eyebrow-muted">{item.label}</p>
+            <p className="type-stat-value mt-3">{item.value}</p>
+            <p className="type-body-sm mt-2">{item.detail}</p>
           </div>
         ))}
       </section>
@@ -98,19 +96,17 @@ export function DashboardPage() {
               <article key={lesson.id} className="px-4 py-4 sm:px-5 sm:py-5 lg:px-6">
                 <div className="flex items-start justify-between gap-4">
                   <div className="space-y-2">
-                    <p className="text-sm font-semibold text-brand-700">
+                    <p className="type-body-sm font-semibold text-brand-700">
                       {lesson.source} · {lesson.level}
                     </p>
-                    <h3 className="page-heading max-w-[22ch] text-[1.75rem]">
-                      {lesson.title}
-                    </h3>
-                    <p className="max-w-[60ch] text-[0.9375rem] leading-6 text-slate-500">{lesson.description}</p>
+                    <h3 className="type-title-section max-w-[22ch]">{lesson.title}</h3>
+                    <p className="type-body-sm max-w-[60ch]">{lesson.description}</p>
                   </div>
-                  <div className="shrink-0 text-right text-[0.9375rem] font-medium text-slate-400">{lesson.minutes}m</div>
+                  <div className="type-body-sm shrink-0 text-right font-medium text-slate-400">{lesson.minutes}m</div>
                 </div>
 
                 <div className="mt-4 flex items-center justify-between gap-4">
-                  <p className="text-[0.9375rem] text-slate-500">{lesson.tag}</p>
+                  <p className="type-body-sm">{lesson.tag}</p>
                   <div className="flex items-center gap-3">
                     <div className="h-2.5 w-28 overflow-hidden rounded-full bg-sand-100">
                       <div
@@ -118,7 +114,7 @@ export function DashboardPage() {
                         style={{ width: `${lesson.progress}%` }}
                       />
                     </div>
-                    <span className="text-[0.9375rem] font-semibold text-ink-950">{lesson.progress}%</span>
+                    <span className="type-control-label text-ink-950">{lesson.progress}%</span>
                   </div>
                 </div>
               </article>
@@ -133,10 +129,10 @@ export function DashboardPage() {
                 <ClockCounterClockwise size={20} weight="duotone" />
               </div>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+                <p className="type-eyebrow-muted">
                   {locale === "vi" ? "Hoạt động gần đây" : "Recent activity"}
                 </p>
-                <h3 className="page-heading text-[1.75rem]">
+                <h3 className="type-title-section">
                   {locale === "vi" ? "Những gì vừa được lưu lại" : "What was just saved"}
                 </h3>
               </div>
@@ -144,8 +140,8 @@ export function DashboardPage() {
             <div className="mt-4 space-y-3">
               {data.activity.map((item) => (
                 <div key={item.title} className="border-t border-sand-200 pt-4 first:border-t-0 first:pt-0">
-                  <p className="text-sm font-medium text-ink-950">{item.title}</p>
-                  <p className="mt-1 text-sm text-slate-500">{item.time}</p>
+                  <p className="type-body-sm font-medium text-ink-950">{item.title}</p>
+                  <p className="type-body-sm mt-1">{item.time}</p>
                 </div>
               ))}
             </div>
@@ -157,10 +153,10 @@ export function DashboardPage() {
                 <Ranking size={20} weight="duotone" />
               </div>
               <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
+                <p className="type-eyebrow-muted">
                   {locale === "vi" ? "Nhóm dẫn đầu" : "Top learners"}
                 </p>
-                <h3 className="page-heading text-[1.75rem]">
+                <h3 className="type-title-section">
                   {locale === "vi" ? "Bạn đang đứng gần nhóm đầu" : "You are close to the front group"}
                 </h3>
               </div>
@@ -169,12 +165,12 @@ export function DashboardPage() {
               {data.leaderboard.map((row) => (
                 <div key={row.id} className="flex items-center justify-between gap-4">
                   <div>
-                    <p className="text-sm font-semibold text-ink-950">{row.name}</p>
-                    <p className="text-sm text-slate-500">
+                    <p className="type-body-sm font-semibold text-ink-950">{row.name}</p>
+                    <p className="type-body-sm">
                       {row.minutes} min · {row.streak} {locale === "vi" ? "ngày" : "days"}
                     </p>
                   </div>
-                  <span className="rounded-full bg-brand-50 px-3 py-1 text-sm font-semibold text-brand-700">
+                  <span className="type-control-label rounded-full bg-brand-50 px-3 py-1 text-brand-700">
                     #{row.rank}
                   </span>
                 </div>
@@ -185,7 +181,7 @@ export function DashboardPage() {
           <WorkspaceSection className="bg-[rgb(255,248,240)]/62">
             <div className="flex items-start gap-3">
               <Sparkle className="mt-1 shrink-0 text-brand-700" size={20} weight="duotone" />
-              <p className="text-sm leading-relaxed text-slate-500">
+              <p className="type-body-sm">
                 {locale === "vi"
                   ? "Giữ một buổi dictation ngắn trước, rồi chuyển sang shadowing ngay khi tai còn nhớ rõ câu nói."
                   : "Keep dictation short first, then move straight into shadowing while the line is still fresh in your ear."}

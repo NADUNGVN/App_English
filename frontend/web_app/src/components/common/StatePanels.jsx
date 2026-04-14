@@ -28,3 +28,25 @@ export function EmptyState({ title, description }) {
     </div>
   );
 }
+
+export function ErrorState({
+  actionLabel,
+  description,
+  onAction,
+  title,
+}) {
+  return (
+    <div className="surface-panel flex min-h-56 flex-col items-center justify-center gap-3 p-6 text-center sm:p-7">
+      <div className="flex h-11 w-11 items-center justify-center rounded-full bg-rose-50 text-rose-700">
+        <WarningCircle size={22} weight="duotone" />
+      </div>
+      <h3 className="text-lg font-semibold tracking-[-0.03em] text-ink-950">{title}</h3>
+      <p className="max-w-md text-sm leading-relaxed text-slate-500">{description}</p>
+      {onAction ? (
+        <button className="button-secondary mt-1" onClick={onAction} type="button">
+          {actionLabel}
+        </button>
+      ) : null}
+    </div>
+  );
+}
