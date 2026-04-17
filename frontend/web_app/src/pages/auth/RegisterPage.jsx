@@ -1,6 +1,7 @@
 import { ArrowRight, SignIn, SpinnerGap } from "@phosphor-icons/react";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { AuthSplitShell } from "../../components/auth/AuthSplitShell.jsx";
 import { useAppContext } from "../../hooks/useAppContext.js";
 
 export function RegisterPage() {
@@ -18,7 +19,7 @@ export function RegisterPage() {
 
   const copy = {
     vi: {
-      body: "Tạo tài khoản để lưu mục tiêu, ngôn ngữ hiển thị, và tiến độ học trên mọi lần đăng nhập.",
+      body: "Tạo tài khoản để lưu ngôn ngữ, mục tiêu mỗi ngày, và tiến độ học trên từng lần quay lại.",
       eyebrow: "Tạo tài khoản",
       email: "Email",
       goal: "Mục tiêu mỗi ngày",
@@ -26,14 +27,30 @@ export function RegisterPage() {
       google: "Tiếp tục với Google",
       language: "Ngôn ngữ ưu tiên",
       name: "Tên hiển thị",
+      orEmail: "Hoặc tạo bằng email",
       password: "Mật khẩu",
+      showcaseBody:
+        "Tạo một tài khoản gọn để giữ lại mục tiêu học, ngôn ngữ hiển thị, và tiến độ giữa các phiên nghe, nói, đọc, viết và từ vựng.",
+      showcaseEyebrow: "QuackUp English",
+      showcaseFacts: [
+        "Nghe, nói, đọc, viết trong cùng một hệ",
+        "Từ vựng luôn giữ theo ngữ cảnh",
+        "Tiến độ được lưu theo từng phiên học",
+      ],
+      showcaseMetricCaption:
+        "Thiết lập một lần, sau đó quay lại với đúng mục tiêu và phần cần học tiếp.",
+      showcaseMetricPrimary: "5-10",
+      showcaseMetricPrimaryLabel: "phút",
+      showcaseMetricSecondary: "mỗi ngày",
+      showcaseMetricSecondaryLabel: "đủ để giữ nhịp",
+      showcaseTitle: "Khóa nhịp học đầu tiên của bạn bằng một tài khoản rõ ràng và nhẹ.",
       submit: "Tạo tài khoản",
       switch: "Đã có tài khoản?",
       switchCta: "Đăng nhập",
-      title: "Bắt đầu nhịp học đầu tiên của bạn.",
+      title: "Bắt đầu với QuackUp English theo nhịp học của riêng bạn.",
     },
     en: {
-      body: "Create an account to save your goals, interface language, and learning progress every time you sign in.",
+      body: "Create an account to save your interface language, daily target, and learning progress each time you return.",
       eyebrow: "Create account",
       email: "Email",
       goal: "Daily goal",
@@ -41,11 +58,27 @@ export function RegisterPage() {
       google: "Continue with Google",
       language: "Preferred language",
       name: "Display name",
+      orEmail: "Or create with email",
       password: "Password",
+      showcaseBody:
+        "Create one clear account to keep your study target, interface language, and progress across listening, speaking, reading, writing, and vocabulary.",
+      showcaseEyebrow: "QuackUp English",
+      showcaseFacts: [
+        "One system across five study spaces",
+        "Vocabulary kept inside real context",
+        "Progress saved session by session",
+      ],
+      showcaseMetricCaption:
+        "Set it up once, then come back to the exact target and material that matters next.",
+      showcaseMetricPrimary: "5-10",
+      showcaseMetricPrimaryLabel: "minutes",
+      showcaseMetricSecondary: "daily",
+      showcaseMetricSecondaryLabel: "is enough to hold rhythm",
+      showcaseTitle: "Lock your first study rhythm with an account that stays clear and light.",
       submit: "Create account",
       switch: "Already have an account?",
       switchCta: "Log in",
-      title: "Start your first steady study rhythm.",
+      title: "Start with QuackUp English on your own steady rhythm.",
     },
   }[locale];
 
@@ -70,147 +103,160 @@ export function RegisterPage() {
   };
 
   return (
-    <section className="page-shell py-10">
-      <div className="mx-auto max-w-4xl">
-        <div className="surface-panel grid gap-8 p-6 sm:p-8 lg:grid-cols-[0.86fr,1.14fr]">
-          <div className="surface-panel-soft flex flex-col justify-between p-6">
-            <div className="space-y-4">
-              <p className="type-eyebrow-label">{copy.eyebrow}</p>
-              <h1 className="type-display-auth max-w-[10ch]">{copy.title}</h1>
-              <p className="type-body-sm">{copy.body}</p>
-            </div>
-            <img
-              alt="QuackUp mascot"
-              className="mx-auto h-64 w-64 object-contain"
-              src="/quackup-mascot-cream.png"
+    <AuthSplitShell
+      formDescription={copy.body}
+      formEyebrow={copy.eyebrow}
+      formTitle={copy.title}
+      showcase={{
+        description: copy.showcaseBody,
+        eyebrow: copy.showcaseEyebrow,
+        facts: copy.showcaseFacts,
+        metricCaption: copy.showcaseMetricCaption,
+        metricPrimary: copy.showcaseMetricPrimary,
+        metricPrimaryLabel: copy.showcaseMetricPrimaryLabel,
+        metricSecondary: copy.showcaseMetricSecondary,
+        metricSecondaryLabel: copy.showcaseMetricSecondaryLabel,
+        title: copy.showcaseTitle,
+      }}
+    >
+      <div className="space-y-5">
+        <button
+          className="button-secondary w-full justify-center"
+          onClick={handleGoogleRegister}
+          type="button"
+        >
+          <SignIn size={18} weight="duotone" />
+          {copy.google}
+        </button>
+
+        <div className="flex items-center gap-3">
+          <span className="h-px flex-1 bg-[rgb(226,214,197)]" />
+          <span className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-400">
+            {copy.orEmail}
+          </span>
+          <span className="h-px flex-1 bg-[rgb(226,214,197)]" />
+        </div>
+
+        <form className="grid gap-5" onSubmit={handleSubmit}>
+          <div className="field-shell">
+            <label className="field-label" htmlFor="register-name">
+              {copy.name}
+            </label>
+            <input
+              autoComplete="name"
+              className="field-input"
+              id="register-name"
+              onChange={(event) =>
+                setForm((current) => ({ ...current, displayName: event.target.value }))
+              }
+              placeholder={locale === "vi" ? "Tên của bạn" : "Your name"}
+              required
+              type="text"
+              value={form.displayName}
             />
           </div>
 
-          <form className="grid gap-5" onSubmit={handleSubmit}>
+          <div className="field-shell">
+            <label className="field-label" htmlFor="register-email">
+              {copy.email}
+            </label>
+            <input
+              autoComplete="email"
+              className="field-input"
+              id="register-email"
+              onChange={(event) =>
+                setForm((current) => ({ ...current, email: event.target.value }))
+              }
+              placeholder="name@example.com"
+              required
+              type="email"
+              value={form.email}
+            />
+          </div>
+
+          <div className="field-shell">
+            <label className="field-label" htmlFor="register-password">
+              {copy.password}
+            </label>
+            <input
+              autoComplete="new-password"
+              className="field-input"
+              id="register-password"
+              minLength={8}
+              onChange={(event) =>
+                setForm((current) => ({ ...current, password: event.target.value }))
+              }
+              required
+              type="password"
+              value={form.password}
+            />
+          </div>
+
+          <div className="grid gap-5 sm:grid-cols-2">
             <div className="field-shell">
-              <label className="field-label" htmlFor="register-name">
-                {copy.name}
+              <label className="field-label" htmlFor="register-language">
+                {copy.language}
               </label>
-              <input
+              <select
                 className="field-input"
-                id="register-name"
+                id="register-language"
                 onChange={(event) =>
-                  setForm((current) => ({ ...current, displayName: event.target.value }))
+                  setForm((current) => ({ ...current, preferredLanguage: event.target.value }))
                 }
-                required
-                type="text"
-                value={form.displayName}
-              />
+                value={form.preferredLanguage}
+              >
+                <option value="vi">Tiếng Việt</option>
+                <option value="en">English</option>
+              </select>
             </div>
 
             <div className="field-shell">
-              <label className="field-label" htmlFor="register-email">
-                {copy.email}
+              <label className="field-label" htmlFor="register-goal">
+                {copy.goal}
               </label>
-              <input
+              <select
                 className="field-input"
-                id="register-email"
+                id="register-goal"
                 onChange={(event) =>
-                  setForm((current) => ({ ...current, email: event.target.value }))
+                  setForm((current) => ({
+                    ...current,
+                    dailyGoalMinutes: Number(event.target.value),
+                  }))
                 }
-                required
-                type="email"
-                value={form.email}
-              />
+                value={form.dailyGoalMinutes}
+              >
+                {[10, 15, 20, 30].map((value) => (
+                  <option key={value} value={value}>
+                    {value} {copy.goalSuffix}
+                  </option>
+                ))}
+              </select>
             </div>
+          </div>
 
-            <div className="field-shell">
-              <label className="field-label" htmlFor="register-password">
-                {copy.password}
-              </label>
-              <input
-                className="field-input"
-                id="register-password"
-                minLength={8}
-                onChange={(event) =>
-                  setForm((current) => ({ ...current, password: event.target.value }))
-                }
-                required
-                type="password"
-                value={form.password}
-              />
-            </div>
-
-            <div className="grid gap-5 sm:grid-cols-2">
-              <div className="field-shell">
-                <label className="field-label" htmlFor="register-language">
-                  {copy.language}
-                </label>
-                <select
-                  className="field-input"
-                  id="register-language"
-                  onChange={(event) =>
-                    setForm((current) => ({ ...current, preferredLanguage: event.target.value }))
-                  }
-                  value={form.preferredLanguage}
-                >
-                  <option value="vi">Tiếng Việt</option>
-                  <option value="en">English</option>
-                </select>
-              </div>
-
-              <div className="field-shell">
-                <label className="field-label" htmlFor="register-goal">
-                  {copy.goal}
-                </label>
-                <select
-                  className="field-input"
-                  id="register-goal"
-                  onChange={(event) =>
-                    setForm((current) => ({
-                      ...current,
-                      dailyGoalMinutes: Number(event.target.value),
-                    }))
-                  }
-                  value={form.dailyGoalMinutes}
-                >
-                  {[10, 15, 20, 30].map((value) => (
-                    <option key={value} value={value}>
-                      {value} {copy.goalSuffix}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            </div>
-
-            {error ? (
-              <p className="rounded-2xl bg-rose-50 px-4 py-3 text-sm text-rose-700">
-                {error}
-              </p>
-            ) : null}
-
-            <button className="button-primary w-full" disabled={submitting} type="submit">
-              {submitting ? (
-                <SpinnerGap className="animate-spin" size={18} />
-              ) : (
-                <ArrowRight size={18} weight="bold" />
-              )}
-              {copy.submit}
-            </button>
-
-            <button
-              className="button-secondary w-full"
-              onClick={handleGoogleRegister}
-              type="button"
-            >
-              <SignIn size={18} weight="duotone" />
-              {copy.google}
-            </button>
-
-            <p className="text-sm text-slate-500">
-              {copy.switch}{" "}
-              <Link className="font-semibold text-brand-700" to="/login">
-                {copy.switchCta}
-              </Link>
+          {error ? (
+            <p className="rounded-[1.2rem] bg-rose-50 px-4 py-3 text-sm leading-relaxed text-rose-700">
+              {error}
             </p>
-          </form>
-        </div>
+          ) : null}
+
+          <button className="button-primary w-full justify-center" disabled={submitting} type="submit">
+            {submitting ? (
+              <SpinnerGap className="animate-spin" size={18} />
+            ) : (
+              <ArrowRight size={18} weight="bold" />
+            )}
+            {copy.submit}
+          </button>
+        </form>
+
+        <p className="text-sm leading-relaxed text-slate-500">
+          {copy.switch}{" "}
+          <Link className="font-semibold text-brand-700" to="/login">
+            {copy.switchCta}
+          </Link>
+        </p>
       </div>
-    </section>
+    </AuthSplitShell>
   );
 }

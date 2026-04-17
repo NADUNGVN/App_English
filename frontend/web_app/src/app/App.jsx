@@ -1,9 +1,11 @@
-import { Navigate, Outlet, Route, Routes } from "react-router-dom";
+import { useEffect } from "react";
+import { Navigate, Outlet, Route, Routes, useLocation } from "react-router-dom";
 import { appNavigationItems } from "./appNavigation.js";
 import { ErrorState, LoadingPanel } from "../components/common/StatePanels.jsx";
 import { useAppContext } from "../hooks/useAppContext.js";
 import { AppShell } from "../layouts/AppShell.jsx";
-import { PublicLayout } from "../layouts/PublicLayout.jsx";
+import { AuthLayout } from "../layouts/AuthLayout.jsx";
+import { MarketingLayout } from "../layouts/MarketingLayout.jsx";
 import { AppPlaceholderPage } from "../pages/app/AppPlaceholderPage.jsx";
 import { DashboardPage } from "../pages/app/DashboardPage.jsx";
 import { DictionaryPage } from "../pages/app/DictionaryPage.jsx";
@@ -16,6 +18,8 @@ import { VocabularyPage } from "../pages/app/VocabularyPage.jsx";
 import { LoginPage } from "../pages/auth/LoginPage.jsx";
 import { RegisterPage } from "../pages/auth/RegisterPage.jsx";
 import { LandingPage } from "../pages/public/LandingPage.jsx";
+import { MarketingFeaturePage } from "../pages/public/MarketingFeaturePage.jsx";
+import { PricingPage } from "../pages/public/PricingPage.jsx";
 
 const concreteRouteElements = {
   "/dashboard": DashboardPage,
@@ -27,6 +31,16 @@ const concreteRouteElements = {
   "/statistics": StatisticsPage,
   "/shadowing": ShadowingPage,
 };
+
+function RouteScrollManager() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [pathname]);
+
+  return null;
+}
 
 function ProtectedRoute() {
   const { bootError, isAuthenticated, isBooting, locale, retrySessionBootstrap } =
@@ -95,40 +109,64 @@ function PublicOnlyRoute() {
 
 export default function App() {
   return (
-    <Routes>
-      <Route element={<PublicLayout />}>
-        <Route index element={<LandingPage />} />
+    <>
+      <RouteScrollManager />
+
+      <Routes>
+        <Route element={<MarketingLayout />}>
+          <Route index element={<LandingPage />} />
+          <Route
+            path="/english/speaking"
+            element={<MarketingFeaturePage pageKey="speaking" />}
+          />
+          <Route
+            path="/english/writing"
+            element={<MarketingFeaturePage pageKey="writing" />}
+          />
+          <Route
+            path="/english/listening"
+            element={<MarketingFeaturePage pageKey="listening" />}
+          />
+          <Route
+            path="/english/reading"
+            element={<MarketingFeaturePage pageKey="reading" />}
+          />
+          <Route path="/english/pricing" element={<PricingPage />} />
+        </Route>
+
         <Route element={<PublicOnlyRoute />}>
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
+          <Route element={<AuthLayout />}>
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+          </Route>
         </Route>
-      </Route>
 
-      <Route element={<ProtectedRoute />}>
-        <Route element={<AppShell />}>
-          {appNavigationItems.map((item) => {
-            const ExistingPage = concreteRouteElements[item.to];
+        <Route element={<ProtectedRoute />}>
+          <Route element={<AppShell />}>
+            {appNavigationItems.map((item) => {
+              const ExistingPage = concreteRouteElements[item.to];
 
-            if (ExistingPage) {
-              return <Route key={item.to} path={item.to} element={<ExistingPage />} />;
-            }
+              if (ExistingPage) {
+                return <Route key={item.to} path={item.to} element={<ExistingPage />} />;
+              }
 
-            if (item.placeholderCopy) {
-              return (
-                <Route
-                  key={item.to}
-                  path={item.to}
-                  element={<AppPlaceholderPage copy={item.placeholderCopy} />}
-                />
-              );
-            }
+              if (item.placeholderCopy) {
+                return (
+                  <Route
+                    key={item.to}
+                    path={item.to}
+                    element={<AppPlaceholderPage copy={item.placeholderCopy} />}
+                  />
+                );
+              }
 
-            return null;
-          })}
+              return null;
+            })}
+          </Route>
         </Route>
-      </Route>
 
-      <Route path="*" element={<Navigate replace to="/" />} />
-    </Routes>
+        <Route path="*" element={<Navigate replace to="/" />} />
+      </Routes>
+    </>
   );
 }
