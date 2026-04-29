@@ -1,11 +1,10 @@
 import { ArrowRight, CheckCircle, Coins, Sparkle } from "@phosphor-icons/react";
-import { Link } from "react-router-dom";
+import { AuthEntryLink } from "../../components/common/AuthEntryLink.jsx";
 import { pricingContent } from "../../data/marketingContent.js";
 import { useAppContext } from "../../hooks/useAppContext.js";
 
 export function PricingPage() {
   const { isAuthenticated, locale } = useAppContext();
-  const ctaTarget = isAuthenticated ? "/dashboard" : "/register";
   const primaryLabel = locale === "vi" ? "Bắt đầu với QuackUp" : "Start with QuackUp";
 
   const [starterPlan, practicePlan, intensivePlan] = pricingContent.plans;
@@ -30,14 +29,15 @@ export function PricingPage() {
             </p>
 
             <div className="flex flex-wrap items-center gap-4">
-              <Link className="button-primary" to={ctaTarget}>
+              <AuthEntryLink className="button-primary" toIfAuthenticated="/dashboard">
                 {primaryLabel}
                 <ArrowRight size={18} weight="bold" />
-              </Link>
+              </AuthEntryLink>
+
               {!isAuthenticated ? (
-                <Link className="button-secondary" to="/login">
+                <AuthEntryLink className="button-secondary">
                   {locale === "vi" ? "Đăng nhập" : "Log in"}
-                </Link>
+                </AuthEntryLink>
               ) : null}
             </div>
           </div>
@@ -45,8 +45,10 @@ export function PricingPage() {
           <div className="grid gap-4 lg:grid-cols-[1.1fr,0.9fr]">
             <div className="surface-panel relative overflow-hidden p-6">
               <div className="absolute -right-10 top-0 h-48 w-48 rounded-full bg-brand-100/70 blur-3xl" />
+
               <div className="relative z-10">
                 <span className="eyebrow">{practicePlan.name[locale]}</span>
+
                 <div className="mt-5 space-y-4">
                   <div>
                     <p className="type-display-auth max-w-[8ch]">{practicePlan.price[locale]}</p>
@@ -59,7 +61,10 @@ export function PricingPage() {
 
                 <div className="mt-6 space-y-3">
                   {practicePlan.features[locale].map((feature) => (
-                    <div key={feature} className="flex items-start gap-3 rounded-[1.25rem] bg-white/80 px-4 py-3">
+                    <div
+                      key={feature}
+                      className="flex items-start gap-3 rounded-[1.25rem] bg-white/80 px-4 py-3"
+                    >
                       <CheckCircle
                         className="mt-0.5 shrink-0 text-sage-700"
                         size={18}
@@ -87,12 +92,14 @@ export function PricingPage() {
                         {plan.cadence[locale]}
                       </p>
                     </div>
+
                     {plan.highlight ? (
                       <span className="rounded-full bg-brand-50 px-3 py-1 text-xs font-semibold uppercase tracking-[0.14em] text-brand-700">
                         {locale === "vi" ? "Gợi ý" : "Suggested"}
                       </span>
                     ) : null}
                   </div>
+
                   <p className="type-body-sm mt-4">{plan.summary[locale]}</p>
                 </div>
               ))}

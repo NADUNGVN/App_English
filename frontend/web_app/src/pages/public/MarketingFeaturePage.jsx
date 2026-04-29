@@ -6,6 +6,7 @@ import {
   SpeakerSimpleHigh,
 } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
+import { AuthEntryLink } from "../../components/common/AuthEntryLink.jsx";
 import { PublicTestimonialsSection } from "../../components/public/PublicTestimonialsSection.jsx";
 import {
   marketingFeaturePages,
@@ -61,22 +62,18 @@ export function MarketingFeaturePage({ pageKey }) {
             ) : null}
 
             <div className="pt-2">
-              <Link
+              <AuthEntryLink
                 className="inline-flex min-h-14 items-center justify-center gap-2 rounded-full bg-brand-500 px-7 py-3 text-[1rem] font-semibold tracking-[-0.02em] text-white transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[1px] hover:bg-brand-600 active:translate-y-[1px] active:scale-[0.98]"
-                to="/register"
               >
                 {page.ctaLabel[locale]}
                 <ArrowRight size={18} weight="bold" />
-              </Link>
+              </AuthEntryLink>
             </div>
           </div>
         </div>
       </section>
 
-      <PublicTestimonialsSection
-        description={pageTestimonials?.description?.[locale]}
-        title={pageTestimonials?.title?.[locale]}
-      />
+      <PublicTestimonialsSection locale={locale} section={pageTestimonials} />
     </div>
   );
 }

@@ -8,8 +8,12 @@ import {
   SpeakerSimpleHigh,
 } from "@phosphor-icons/react";
 import { Link } from "react-router-dom";
+import { AuthEntryLink } from "../../components/common/AuthEntryLink.jsx";
 import { PublicTestimonialsSection } from "../../components/public/PublicTestimonialsSection.jsx";
-import { homePageContent } from "../../data/marketingContent.js";
+import {
+  homePageContent,
+  marketingTestimonialsByPage,
+} from "../../data/marketingContent.js";
 import { useAppContext } from "../../hooks/useAppContext.js";
 
 const skillIconMap = {
@@ -135,7 +139,7 @@ function SkillPathCard({ card, comingSoonLabel, locale }) {
 
 export function LandingPage() {
   const { locale } = useAppContext();
-  const { hero, skillShowcase, testimonials } = homePageContent;
+  const { hero, skillShowcase } = homePageContent;
   const heroTitleClass =
     locale === "vi"
       ? "type-display-public-vi max-w-[11.5ch]"
@@ -157,12 +161,11 @@ export function LandingPage() {
             </div>
 
             <div>
-              <Link
+              <AuthEntryLink
                 className="inline-flex min-h-14 items-center justify-center rounded-full bg-brand-500 px-7 py-3 text-[1rem] font-semibold tracking-[-0.02em] text-white transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[1px] hover:bg-brand-600 active:translate-y-[1px] active:scale-[0.98]"
-                to="/login"
               >
                 {hero.ctaLabel[locale]}
-              </Link>
+              </AuthEntryLink>
             </div>
 
             <div className="max-w-[31rem] rounded-[1.85rem] border border-white/10 bg-[rgba(33,28,24,0.88)] p-6 shadow-[0_30px_60px_-42px_rgba(8,15,35,0.52)] backdrop-blur-sm">
@@ -220,10 +223,7 @@ export function LandingPage() {
         </div>
       </section>
 
-      <PublicTestimonialsSection
-        description={testimonials.description[locale]}
-        title={testimonials.title[locale]}
-      />
+      <PublicTestimonialsSection locale={locale} section={marketingTestimonialsByPage.home} />
     </div>
   );
 }

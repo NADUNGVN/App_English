@@ -83,7 +83,7 @@ function ProtectedRoute() {
   }
 
   if (!isAuthenticated) {
-    return <Navigate replace to="/login" />;
+    return <Navigate replace to="/register" />;
   }
 
   return <Outlet />;

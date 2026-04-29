@@ -1,6 +1,7 @@
 import { List, SignIn, SquaresFour } from "@phosphor-icons/react";
 import { useState } from "react";
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import { AuthEntryLink } from "../components/common/AuthEntryLink.jsx";
 import { BrandMark } from "../components/common/BrandMark.jsx";
 import { LanguageToggle } from "../components/common/LanguageToggle.jsx";
 import { useAppContext } from "../hooks/useAppContext.js";
@@ -48,7 +49,11 @@ export function PublicLayout() {
 
           <div className="hidden items-center gap-3 lg:flex">
             <LanguageToggle locale={locale} onChange={setLocale} quiet />
-            <Link className={isAuthenticated ? "button-secondary" : "button-primary"} to={isAuthenticated ? "/dashboard" : "/login"}>
+
+            <AuthEntryLink
+              className={isAuthenticated ? "button-secondary" : "button-primary"}
+              toIfAuthenticated="/dashboard"
+            >
               {isAuthenticated ? (
                 <>
                   <SquaresFour size={18} weight="duotone" />
@@ -60,11 +65,10 @@ export function PublicLayout() {
                   {copy.login}
                 </>
               )}
-            </Link>
+            </AuthEntryLink>
+
             {!isAuthenticated ? (
-              <Link className="button-primary" to="/register">
-                {copy.signup}
-              </Link>
+              <AuthEntryLink className="button-primary">{copy.signup}</AuthEntryLink>
             ) : null}
           </div>
 
@@ -85,16 +89,20 @@ export function PublicLayout() {
                 <a href="/#library">{copy.library}</a>
                 <a href="/#results">{copy.results}</a>
               </div>
+
               <div className="flex items-center justify-between gap-4">
                 <LanguageToggle locale={locale} onChange={setLocale} />
+
                 <div className="flex gap-3">
-                  <Link className={isAuthenticated ? "button-secondary" : "button-primary"} to={isAuthenticated ? "/dashboard" : "/login"}>
+                  <AuthEntryLink
+                    className={isAuthenticated ? "button-secondary" : "button-primary"}
+                    toIfAuthenticated="/dashboard"
+                  >
                     {isAuthenticated ? copy.dashboard : copy.login}
-                  </Link>
+                  </AuthEntryLink>
+
                   {!isAuthenticated ? (
-                    <Link className="button-primary" to="/register">
-                      {copy.signup}
-                    </Link>
+                    <AuthEntryLink className="button-primary">{copy.signup}</AuthEntryLink>
                   ) : null}
                 </div>
               </div>
@@ -111,7 +119,7 @@ export function PublicLayout() {
             <BrandMark />
             <p className="max-w-lg text-sm leading-relaxed text-slate-500">
               {locale === "vi"
-                ? "QuackUp giúp bạn nghe kỹ hơn, nói chắc hơn, và giữ nhịp học hàng ngày bằng các buổi luyện ngắn."
+                ? "QuackUp giúp bạn nghe kỹ hơn, nói chắc hơn, và giữ nhịp học hằng ngày bằng các buổi luyện ngắn."
                 : "QuackUp helps you listen more precisely, speak more steadily, and keep a daily learning rhythm through short practice blocks."}
             </p>
           </div>
@@ -120,16 +128,17 @@ export function PublicLayout() {
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
               {locale === "vi" ? "Ứng dụng" : "Product"}
             </p>
+
             <div className="space-y-3 text-sm text-slate-500">
               <a href="/#practice" className="block transition hover:text-ink-950">
-                {locale === "vi" ? "Dictation và Shadowing" : "Dictation and shadowing"}
+                {locale === "vi" ? "Dictation và shadowing" : "Dictation and shadowing"}
               </a>
               <a href="/#library" className="block transition hover:text-ink-950">
                 {locale === "vi" ? "Thư viện bài học" : "Lesson library"}
               </a>
-              <Link className="block transition hover:text-ink-950" to="/login">
+              <AuthEntryLink className="block transition hover:text-ink-950">
                 {locale === "vi" ? "Tài khoản người học" : "Learner account"}
-              </Link>
+              </AuthEntryLink>
             </div>
           </div>
 
@@ -137,11 +146,16 @@ export function PublicLayout() {
             <p className="text-sm font-semibold uppercase tracking-[0.2em] text-slate-400">
               {locale === "vi" ? "Liên hệ" : "Contact"}
             </p>
+
             <div className="space-y-3 text-sm text-slate-500">
               <a className="block transition hover:text-ink-950" href="mailto:support@quackup.app">
                 support@quackup.app
               </a>
-              <p>{locale === "vi" ? "Nhịp học ngắn, tiến bộ rõ." : "Short practice, visible progress."}</p>
+              <p>
+                {locale === "vi"
+                  ? "Nhịp học ngắn, tiến bộ rõ."
+                  : "Short practice, visible progress."}
+              </p>
             </div>
           </div>
         </div>

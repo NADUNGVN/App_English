@@ -1,6 +1,7 @@
 import { List, X } from "@phosphor-icons/react";
 import { useState } from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
+import { AuthEntryLink } from "../components/common/AuthEntryLink.jsx";
 import { BrandMark } from "../components/common/BrandMark.jsx";
 import { LanguageToggle } from "../components/common/LanguageToggle.jsx";
 import { marketingNavItems } from "../data/marketingContent.js";
@@ -69,9 +70,9 @@ export function MarketingLayout() {
 
           <div className="hidden items-center gap-4 lg:flex">
             <LanguageToggle locale={locale} onChange={setLocale} quiet />
-            <Link className="button-primary whitespace-nowrap px-6" to="/register">
+            <AuthEntryLink className="button-primary whitespace-nowrap px-6">
               {headerCtaLabel}
-            </Link>
+            </AuthEntryLink>
           </div>
 
           <button
@@ -93,13 +94,12 @@ export function MarketingLayout() {
 
               <div className="flex items-center justify-between gap-4">
                 <LanguageToggle locale={locale} onChange={setLocale} />
-                <Link
+                <AuthEntryLink
                   className="button-primary"
                   onClick={() => setMenuOpen(false)}
-                  to="/register"
                 >
                   {headerCtaLabel}
-                </Link>
+                </AuthEntryLink>
               </div>
             </div>
           </div>
@@ -142,12 +142,12 @@ export function MarketingLayout() {
                 support@quackup.app
               </a>
               <p>{copy.slogan}</p>
-              <Link
+              <AuthEntryLink
                 className="block transition hover:text-ink-950"
-                to={isAuthenticated ? "/dashboard" : "/register"}
+                toIfAuthenticated="/dashboard"
               >
                 {isAuthenticated ? "Dashboard" : copy.ctaLink}
-              </Link>
+              </AuthEntryLink>
             </div>
           </div>
         </div>

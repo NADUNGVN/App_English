@@ -113,6 +113,11 @@
     @apply inline-flex min-h-12 items-center justify-center gap-2 rounded-full border border-[rgb(231,220,204)] bg-white/85 px-5 py-3 text-sm font-semibold leading-[1.2] text-stone-700 shadow-[0_18px_32px_-28px_rgba(120,53,15,0.24)] transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[1px] hover:border-brand-200 hover:bg-white hover:text-ink-950 active:translate-y-[1px] active:scale-[0.98];
   }
 
+  .button-google-auth {
+    @apply inline-flex min-h-11 w-full items-center justify-center gap-3 rounded-xl border border-[rgb(226,214,197)] bg-white px-5 py-3 text-[0.93rem] font-medium leading-[1.2] text-slate-700 transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:border-[rgb(209,213,219)] hover:bg-[rgb(252,252,252)] hover:text-ink-950 active:translate-y-[1px] active:scale-[0.98];
+    box-shadow: 0 1px 2px rgba(15, 23, 42, 0.04);
+  }
+
   .field-shell {
     @apply flex flex-col gap-2;
   }

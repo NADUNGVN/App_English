@@ -33,7 +33,7 @@ const envSchema = z.object({
   SUPABASE_EMAIL_REDIRECT_URL: z
     .string()
     .url()
-    .default("http://localhost:5173/login?confirmed=1"),
+    .default("http://localhost:5173/register?confirmed=1"),
   SUPABASE_GOOGLE_REDIRECT_URL: z
     .string()
     .url()

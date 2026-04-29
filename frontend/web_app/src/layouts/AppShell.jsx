@@ -27,7 +27,7 @@ export function AppShell() {
 
   const handleLogout = async () => {
     await logout();
-    navigate("/login", { replace: true });
+    navigate("/register", { replace: true });
   };
 
   const handleSidebarToggle = () => {

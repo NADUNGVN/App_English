@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 
-function BrandMarkContent({ compact, iconOnly }) {
+function BrandMarkContent({ compact, iconOnly, light }) {
+  const headingTone = light ? "text-white" : "text-ink-950";
+  const subTone = light ? "text-white/60" : "text-slate-400";
+
   return (
     <>
       <span
@@ -28,15 +31,16 @@ function BrandMarkContent({ compact, iconOnly }) {
       {!iconOnly ? (
         <span className="min-w-0 flex flex-col leading-[1.02]">
           <span
-            className={`font-semibold tracking-[-0.04em] text-ink-950 ${
+            className={`font-semibold tracking-[-0.04em] ${headingTone} ${
               compact ? "text-[1.2rem]" : "text-[1.7rem]"
             }`}
           >
             <span>Quack</span>
             <span className="text-brand-500">Up</span>
           </span>
+
           {!compact ? (
-            <span className="mt-1 text-[11px] font-medium uppercase tracking-[0.16em] text-slate-400">
+            <span className={`mt-1 text-[11px] font-medium uppercase tracking-[0.16em] ${subTone}`}>
               App English
             </span>
           ) : null}
@@ -51,6 +55,8 @@ export function BrandMark({
   className = "",
   compact = false,
   iconOnly = false,
+  interactive = true,
+  light = false,
   onActivate,
   title,
   to = "/",
@@ -66,14 +72,22 @@ export function BrandMark({
         title={title}
         type="button"
       >
-        <BrandMarkContent compact={compact} iconOnly={iconOnly} />
+        <BrandMarkContent compact={compact} iconOnly={iconOnly} light={light} />
       </button>
+    );
+  }
+
+  if (!interactive) {
+    return (
+      <div className={sharedClassName} title={title}>
+        <BrandMarkContent compact={compact} iconOnly={iconOnly} light={light} />
+      </div>
     );
   }
 
   return (
     <Link aria-label={ariaLabel} className={sharedClassName} title={title} to={to}>
-      <BrandMarkContent compact={compact} iconOnly={iconOnly} />
+      <BrandMarkContent compact={compact} iconOnly={iconOnly} light={light} />
     </Link>
   );
 }

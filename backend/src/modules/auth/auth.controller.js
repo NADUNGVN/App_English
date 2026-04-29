@@ -103,7 +103,7 @@ async function googleCallback(request, response) {
     });
     pkce.clearAll();
     clearSessionCookies(response);
-    response.redirect(buildClientRedirect("/login", { oauthError: "google" }));
+    response.redirect(buildClientRedirect("/register", { oauthError: "google" }));
   }
 }
 

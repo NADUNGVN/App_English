@@ -4,8 +4,8 @@ import {
   leaderboardRows,
   lessons,
   statisticsBars,
-  vocabularyItems,
 } from "../data/mockContent";
+import { vocabularyLibraryData } from "../data/mockVocabularyLibrary";
 
 const wait = (duration = 180) =>
   new Promise((resolve) => {
@@ -119,27 +119,7 @@ export const mockContentRepository = {
   async getVocabulary(locale) {
     await wait();
 
-    return {
-      summary: [
-        {
-          label: locale === "vi" ? "Tổng số từ" : "Saved words",
-          value: "128",
-        },
-        {
-          label: locale === "vi" ? "Đã vững" : "Solid recall",
-          value: "73",
-        },
-        {
-          label: locale === "vi" ? "Cần ôn" : "Needs review",
-          value: "18",
-        },
-        {
-          label: locale === "vi" ? "Chuỗi ôn tập" : "Review streak",
-          value: "11",
-        },
-      ],
-      words: translateList(vocabularyItems, locale),
-    };
+    return resolveLocaleValue(vocabularyLibraryData, locale);
   },
 
   async getDictionary(locale) {
