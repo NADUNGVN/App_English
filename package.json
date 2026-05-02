@@ -2,9 +2,10 @@
   "name": "app-english",
   "private": true,
   "scripts": {
+    "dev": "npm run web:dev",
     "web:dev": "npm --prefix frontend/web_app run dev",
     "web:build": "npm --prefix frontend/web_app run build",
-    "api:dev": "npm --prefix backend run dev",
-    "api:start": "npm --prefix backend run start"
+    "web:start": "npm --prefix frontend/web_app run start",
+    "web:typecheck": "npm --prefix frontend/web_app run typecheck"
   }
 }

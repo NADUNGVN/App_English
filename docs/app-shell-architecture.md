@@ -36,10 +36,10 @@ Tài liệu này chốt cách tổ chức frontend **sau khi đăng nhập** the
 |---|---|---|---|
 | 01 | Sidebar | điều hướng route, account dock, logout | `src/components/app/AppSidebar.jsx` |
 | 02 | Topbar | page identity, locale toggle, role pill | `src/components/app/AppTopbar.jsx` |
-| 03 | Overview | tóm tắt nhịp hôm nay + daily target | `src/pages/app/DashboardPage.jsx` |
-| 04 | KPI Strip | các chỉ số nhanh trong ngày | `src/pages/app/DashboardPage.jsx` |
-| 05 | Primary Rail | danh sách bài nên học tiếp | `src/pages/app/DashboardPage.jsx` |
-| 06 | Secondary Rail | activity, leaderboard, note | `src/pages/app/DashboardPage.jsx` |
+| 03 | Overview | tóm tắt nhịp hôm nay + daily target | `src/views/app/DashboardPage.tsx` |
+| 04 | KPI Strip | các chỉ số nhanh trong ngày | `src/views/app/DashboardPage.tsx` |
+| 05 | Primary Rail | danh sách bài nên học tiếp | `src/views/app/DashboardPage.tsx` |
+| 06 | Secondary Rail | activity, leaderboard, note | `src/views/app/DashboardPage.tsx` |
 
 ### Scroll map
 
@@ -73,10 +73,10 @@ Tài liệu này chốt cách tổ chức frontend **sau khi đăng nhập** the
 
 ## File chính
 
-- `frontend/web_app/src/layouts/AppShell.jsx`
-- `frontend/web_app/src/components/app/AppSidebar.jsx`
-- `frontend/web_app/src/components/app/AppTopbar.jsx`
-- `frontend/web_app/src/components/app/WorkspaceCanvas.jsx`
+- `frontend/web_app/src/layouts/AppShell.tsx`
+- `frontend/web_app/src/components/app/AppSidebar.tsx`
+- `frontend/web_app/src/components/app/AppTopbar.tsx`
+- `frontend/web_app/src/components/app/WorkspaceCanvas.tsx`
 
 ## Quy tắc cho các đợt tiếp theo
 

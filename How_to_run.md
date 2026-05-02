@@ -1,32 +1,25 @@
 # How to run
 
-## Tổng quan
+## Tổng quan hiện tại
 
-Repo hiện tại chạy theo kiến trúc:
+Repo hiện chạy theo mô hình **Next.js full-stack**:
 
-- Frontend web: `Vite + React`
-- Backend API: `Express`
-- Auth + Database: `Supabase`
+- Web frontend: `React + Next.js App Router + TypeScript + Tailwind`
+- Backend API: Next.js Route Handlers dưới `/api/*`
+- Auth + Database: Supabase remote
 
-Nguồn dữ liệu thật là **Supabase remote**.
-Không dùng PostgreSQL local hay Prisma local để chạy app nữa.
+Nguồn dữ liệu thật vẫn là **Supabase remote**. Không dùng PostgreSQL local hay Prisma local để chạy app hiện tại.
 
-## Cách chạy chuẩn hiện tại
+## 1. Chuẩn bị env
 
-Chạy bằng `npm` ở 2 terminal riêng.
-
-### 1. Chuẩn bị file môi trường
-
-Chạy từ thư mục gốc:
+Từ thư mục gốc:
 
 ```powershell
 cd D:\work\web_app\App_English
 Copy-Item .env.example .env
 ```
 
-Sau đó mở file `.env` và thay toàn bộ giá trị placeholder bằng giá trị Supabase thật.
-
-Các biến bắt buộc:
+Điền giá trị Supabase thật:
 
 ```env
 SUPABASE_URL=...
@@ -34,181 +27,76 @@ SUPABASE_PUBLISHABLE_KEY=...
 SUPABASE_SERVICE_ROLE_KEY=...
 ```
 
-Các biến local thường dùng:
+Các URL local chuẩn:
 
 ```env
-CLIENT_URL=http://localhost:5173
-SUPABASE_EMAIL_REDIRECT_URL=http://localhost:5173/login?confirmed=1
-SUPABASE_GOOGLE_REDIRECT_URL=http://localhost:3001/api/auth/google/callback
+CLIENT_URL=http://localhost:3000
+SUPABASE_EMAIL_REDIRECT_URL=http://localhost:3000/login?confirmed=1
+SUPABASE_GOOGLE_REDIRECT_URL=http://localhost:3000/api/auth/google/callback
 COOKIE_SAME_SITE=lax
 COOKIE_SECURE=false
-VITE_API_URL=http://localhost:3001/api
 ```
 
-Lưu ý:
+Không dùng `VITE_API_URL` nữa vì frontend và API cùng origin `/api`.
 
-- Backend sẽ báo lỗi ngay nếu `.env` vẫn còn placeholder từ `.env.example`
-- Không cần tạo `backend/.env` hay `frontend/web_app/.env` nếu bạn đã dùng file `.env` ở thư mục gốc
-
-### 2. Cài dependencies
-
-Terminal 1:
-
-```powershell
-cd D:\work\web_app\App_English\backend
-npm install
-```
-
-Terminal 2:
+## 2. Cài dependencies
 
 ```powershell
 cd D:\work\web_app\App_English\frontend\web_app
 npm install
 ```
 
-### 3. Chạy backend
+## 3. Chạy app
 
-```powershell
-cd D:\work\web_app\App_English
-npm run api:dev
-```
-
-Backend chạy tại:
-
-- `http://localhost:3001`
-- Health check: `http://localhost:3001/api/health`
-
-### 4. Chạy frontend
+Từ thư mục gốc:
 
 ```powershell
 cd D:\work\web_app\App_English
 npm run web:dev
 ```
 
-Frontend chạy tại:
+App chạy tại:
 
-- `http://localhost:5173`
+- Web: `http://localhost:3000`
+- Health check: `http://localhost:3000/api/health`
 
-## Kiểm tra sau khi chạy
+## 4. Kiểm tra nhanh
 
-Mở lần lượt:
-
-- `http://localhost:3001/api/health`
-- `http://localhost:5173`
+```powershell
+start http://localhost:3000
+start http://localhost:3000/api/health
+```
 
 Kỳ vọng:
 
-- `/api/health` trả JSON
-- frontend mở được trang web
-- bấm Google sẽ mở `http://localhost:3001/api/auth/google/start` rồi redirect tiếp sang flow đăng nhập
+- `/` mở landing page.
+- `/api/health` trả JSON health của Supabase.
+- Khi chưa đăng nhập, `/dashboard` sẽ chuyển về `/register`.
+- Google login mở `/api/auth/google/start`, callback về `/api/auth/google/callback`, backend set HttpOnly cookie rồi redirect `/dashboard`.
 
-## Cách vận hành đăng nhập
+## Cấu hình Supabase local
 
-### Đăng ký email/password
+Trong Supabase Dashboard, cấu hình:
 
-- Người dùng tạo tài khoản ở `/register`
-- Hệ thống gửi email xác thực qua Supabase
-- Người dùng phải xác thực email trước
-- Sau đó quay về `/login` để đăng nhập
+- Site URL: `http://localhost:3000`
+- Email confirm redirect: `http://localhost:3000/login?confirmed=1`
+- Google callback redirect: `http://localhost:3000/api/auth/google/callback`
 
-### Đăng nhập email/password
+Google provider chỉ hoạt động khi Supabase project đã bật provider và Google Cloud Console có redirect URL đúng.
 
-- Đăng nhập qua backend
-- Backend set `HttpOnly cookie`
-- Frontend dùng `/api/auth/me` để khôi phục phiên
+## Lệnh kiểm tra
 
-### Đăng nhập Google
+```powershell
+npm run web:typecheck
+npm run web:build
+```
 
-- Nút Google gọi `http://localhost:3001/api/auth/google/start`
-- Backend mở flow OAuth của Supabase
-- Callback quay về:
-  - `http://localhost:3001/api/auth/google/callback`
-- Thành công thì backend set cookie và redirect về `/dashboard`
+## Docker Compose
 
-## Cấu hình bắt buộc trên Supabase
-
-Để email login và Google login hoạt động local, bạn cần cấu hình trong Supabase Dashboard:
-
-### Auth URLs
-
-Thêm đúng các URL sau:
-
-- Site URL: `http://localhost:5173`
-- Redirect URL cho email confirm: `http://localhost:5173/login?confirmed=1`
-- Redirect URL cho Google callback: `http://localhost:3001/api/auth/google/callback`
-
-### Google Provider
-
-Google login chỉ hoạt động nếu:
-
-- Google provider đã được bật trong Supabase
-- Supabase project đã được điền `Client ID` và `Client Secret` của Google
-- Redirect URL của Supabase/Google đã được cấu hình đúng trong Google Cloud Console
-
-## Dừng app
-
-Tắt từng terminal đang chạy:
-
-- terminal backend: `Ctrl + C`
-- terminal frontend: `Ctrl + C`
-
-## Không dùng cách này
-
-Hiện tại **không dùng** lệnh sau để debug auth:
+Docker Compose hiện chỉ chạy một service Next.js:
 
 ```powershell
 docker compose -f .\infra\docker-compose.yml up --build
 ```
 
-Lý do:
-
-- file `infra/docker-compose.yml` vẫn là stack Prisma/Postgres cũ
-- không còn khớp với backend Supabase hiện tại
-- có thể làm backend crash và dẫn tới lỗi như `localhost:3001 refused to connect`
-
-## Khi gặp lỗi
-
-### Trường hợp 1: `localhost:3001 refused to connect`
-
-Nguyên nhân thường là backend chưa chạy hoặc backend crash khi start.
-
-Kiểm tra:
-
-```powershell
-cd D:\work\web_app\App_English
-npm run api:dev
-```
-
-Nếu crash ngay, đọc log terminal backend trước.
-
-### Trường hợp 2: backend báo lỗi placeholder env
-
-Bạn chưa thay giá trị thật trong `.env`.
-
-### Trường hợp 3: bấm Google nhưng quay lại login
-
-Kiểm tra:
-
-- terminal backend có log lỗi gì không
-- `SUPABASE_GOOGLE_REDIRECT_URL` trong `.env`
-- Redirect URLs trong Supabase Dashboard
-- Google provider đã bật chưa
-
-### Trường hợp 4: đăng ký được nhưng không login được
-
-Kiểm tra:
-
-- đã xác thực email chưa
-- email confirm có quay đúng về `/login?confirmed=1` không
-
-## Lệnh nhanh
-
-```powershell
-cd D:\work\web_app\App_English
-npm run api:dev
-```
-
-```powershell
-cd D:\work\web_app\App_English
-npm run web:dev
-```
+Service mở tại `http://localhost:3000` và vẫn dùng Supabase remote từ `.env`.
