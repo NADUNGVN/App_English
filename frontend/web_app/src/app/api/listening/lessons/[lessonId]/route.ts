@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { errorResponse } from "../../../../../server/lib/api";
-import { getListeningLesson } from "../../../../../server/modules/listening/listening.service";
+import { getListeningLessonWithApprovedTiming } from "../../../../../server/modules/listening/listening.service";
 import { listeningLessonIdSchema } from "../../../../../server/modules/listening/listening.schemas";
 
 export const runtime = "nodejs";
@@ -14,7 +14,7 @@ export async function GET(
     const lessonId = listeningLessonIdSchema.parse(params.lessonId);
 
     return NextResponse.json({
-      lesson: getListeningLesson(lessonId),
+      lesson: await getListeningLessonWithApprovedTiming(lessonId),
     });
   } catch (error) {
     return errorResponse(error);

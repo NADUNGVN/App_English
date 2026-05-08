@@ -2,6 +2,7 @@
 
 import {
   forwardRef,
+  useCallback,
   useEffect,
   useImperativeHandle,
   useId,
@@ -10,7 +11,12 @@ import {
 } from "react";
 
 type YouTubePlayerState = {
+  BUFFERING: number;
+  CUED: number;
+  ENDED: number;
+  PAUSED: number;
   PLAYING: number;
+  UNSTARTED: number;
 };
 
 type YouTubePlayer = {
@@ -41,6 +47,7 @@ type YouTubeConstructor = new (
     playerVars: Record<string, number | string>;
     events: {
       onReady: () => void;
+      onStateChange?: (event: { data: number }) => void;
     };
   },
 ) => YouTubePlayer;
@@ -56,6 +63,16 @@ declare global {
 }
 
 let youtubeApiPromise: Promise<void> | null = null;
+const SEGMENT_END_GUARD_SECONDS = 0.32;
+
+type PlayerBoundaryMode = "segment" | "continuous";
+
+export type YouTubePlaybackState =
+  | "idle"
+  | "buffering"
+  | "ended"
+  | "paused"
+  | "playing";
 
 function canControlPlayer(
   player: YouTubePlayer | null,
@@ -114,13 +131,22 @@ function loadYouTubeIframeApi() {
 }
 
 export type YouTubeSegmentPlayerHandle = {
+  getCurrentTime(): number;
+  isPlaying(): boolean;
+  playFrom(seconds: number, rate?: number): void;
   pause(): void;
   playSegment(rate?: number): void;
   setRate(rate: number): void;
+  toggleSegment(rate?: number): void;
 };
 
 type YouTubeSegmentPlayerProps = {
+  boundaryMode?: PlayerBoundaryMode;
   endSeconds: number;
+  errorLabel?: string;
+  loadingLabel?: string;
+  onCurrentTimeChange?: (seconds: number) => void;
+  onPlaybackStateChange?: (state: YouTubePlaybackState) => void;
   onReadyChange?: (ready: boolean) => void;
   onStatusChange?: (status: "loading" | "ready" | "error") => void;
   startSeconds: number;
@@ -132,17 +158,44 @@ export const YouTubeSegmentPlayer = forwardRef<
   YouTubeSegmentPlayerHandle,
   YouTubeSegmentPlayerProps
 >(function YouTubeSegmentPlayer(
-  { endSeconds, onReadyChange, onStatusChange, startSeconds, title, videoId },
+  {
+    boundaryMode = "segment",
+    endSeconds,
+    errorLabel,
+    loadingLabel,
+    onCurrentTimeChange,
+    onPlaybackStateChange,
+    onReadyChange,
+    onStatusChange,
+    startSeconds,
+    title,
+    videoId,
+  },
   ref,
 ) {
   const reactId = useId();
   const elementId = `youtube-player-${reactId.replace(/:/g, "")}`;
   const playerRef = useRef<YouTubePlayer | null>(null);
+  const boundaryModeRef = useRef<PlayerBoundaryMode>(boundaryMode);
   const endSecondsRef = useRef(endSeconds);
+  const playbackStateRef = useRef<YouTubePlaybackState>("idle");
   const readyRef = useRef(false);
   const startSecondsRef = useRef(startSeconds);
+  const lastCurrentTimeRef = useRef(-1);
   const [ready, setReady] = useState(false);
   const [error, setError] = useState("");
+
+  const emitPlaybackState = useCallback(
+    (nextState: YouTubePlaybackState) => {
+      if (playbackStateRef.current === nextState) {
+        return;
+      }
+
+      playbackStateRef.current = nextState;
+      onPlaybackStateChange?.(nextState);
+    },
+    [onPlaybackStateChange],
+  );
 
   const updateReady = (nextReady: boolean) => {
     readyRef.current = nextReady;
@@ -152,6 +205,9 @@ export const YouTubeSegmentPlayer = forwardRef<
     setReady(nextReady);
     onReadyChange?.(nextReady);
     onStatusChange?.(nextReady ? "ready" : "loading");
+    if (!nextReady) {
+      emitPlaybackState("idle");
+    }
   };
 
   const markError = (message: string) => {
@@ -160,14 +216,38 @@ export const YouTubeSegmentPlayer = forwardRef<
     setReady(false);
     onReadyChange?.(false);
     onStatusChange?.("error");
+    emitPlaybackState("idle");
   };
 
   useImperativeHandle(
     ref,
     () => ({
+      getCurrentTime() {
+        if (canControlPlayer(playerRef.current)) {
+          return playerRef.current.getCurrentTime();
+        }
+
+        return startSecondsRef.current;
+      },
+      isPlaying() {
+        return playbackStateRef.current === "playing";
+      },
+      playFrom(seconds: number, rate = 1) {
+        const player = playerRef.current;
+
+        if (!canControlPlayer(player)) {
+          return;
+        }
+
+        player.setPlaybackRate?.(rate);
+        player.seekTo?.(seconds, true);
+        player.playVideo?.();
+        emitPlaybackState("playing");
+      },
       pause() {
         if (canControlPlayer(playerRef.current)) {
           playerRef.current.pauseVideo?.();
+          emitPlaybackState("paused");
         }
       },
       playSegment(rate = 1) {
@@ -180,24 +260,53 @@ export const YouTubeSegmentPlayer = forwardRef<
         player.setPlaybackRate?.(rate);
         player.seekTo?.(startSecondsRef.current, true);
         player.playVideo?.();
+        emitPlaybackState("playing");
       },
       setRate(rate: number) {
         if (canControlPlayer(playerRef.current)) {
           playerRef.current.setPlaybackRate?.(rate);
         }
       },
+      toggleSegment(rate = 1) {
+        const player = playerRef.current;
+
+        if (!canControlPlayer(player) || !window.YT?.PlayerState) {
+          return;
+        }
+
+        if (player.getPlayerState() === window.YT.PlayerState.PLAYING) {
+          player.pauseVideo?.();
+          emitPlaybackState("paused");
+          return;
+        }
+
+        const currentTime = player.getCurrentTime();
+        const shouldSeekToStart =
+          boundaryModeRef.current === "segment" ||
+          currentTime < startSecondsRef.current - 0.35 ||
+          currentTime >= endSecondsRef.current - SEGMENT_END_GUARD_SECONDS;
+
+        player.setPlaybackRate?.(rate);
+        if (shouldSeekToStart) {
+          player.seekTo?.(startSecondsRef.current, true);
+        }
+        player.playVideo?.();
+        emitPlaybackState("playing");
+      },
     }),
-    [],
+    [emitPlaybackState],
   );
 
   useEffect(() => {
+    boundaryModeRef.current = boundaryMode;
     endSecondsRef.current = endSeconds;
     startSecondsRef.current = startSeconds;
-    if (canControlPlayer(playerRef.current)) {
+    if (boundaryMode === "segment" && canControlPlayer(playerRef.current)) {
       playerRef.current.pauseVideo?.();
       playerRef.current.seekTo?.(startSeconds, true);
+      emitPlaybackState("paused");
     }
-  }, [endSeconds, startSeconds]);
+  }, [boundaryMode, emitPlaybackState, endSeconds, startSeconds]);
 
   useEffect(() => {
     let cancelled = false;
@@ -224,8 +333,11 @@ export const YouTubeSegmentPlayer = forwardRef<
           width: "100%",
           playerVars: {
             autoplay: 0,
-            controls: 1,
+            controls: 0,
+            disablekb: 1,
             enablejsapi: 1,
+            fs: 0,
+            iv_load_policy: 3,
             modestbranding: 1,
             playsinline: 1,
             rel: 0,
@@ -250,6 +362,37 @@ export const YouTubeSegmentPlayer = forwardRef<
 
               player.seekTo?.(startSecondsRef.current, true);
               updateReady(true);
+              emitPlaybackState("paused");
+            },
+            onStateChange: (event) => {
+              const playerState = window.YT?.PlayerState;
+
+              if (!playerState) {
+                return;
+              }
+
+              if (event.data === playerState.PLAYING) {
+                emitPlaybackState("playing");
+                return;
+              }
+
+              if (event.data === playerState.BUFFERING) {
+                emitPlaybackState("buffering");
+                return;
+              }
+
+              if (event.data === playerState.ENDED) {
+                emitPlaybackState("ended");
+                return;
+              }
+
+              if (
+                event.data === playerState.PAUSED ||
+                event.data === playerState.CUED ||
+                event.data === playerState.UNSTARTED
+              ) {
+                emitPlaybackState("paused");
+              }
             },
           },
         });
@@ -274,8 +417,9 @@ export const YouTubeSegmentPlayer = forwardRef<
       }
       playerRef.current = null;
       onReadyChange?.(false);
+      emitPlaybackState("idle");
     };
-  }, [elementId, videoId]);
+  }, [elementId, emitPlaybackState, videoId]);
 
   useEffect(() => {
     const interval = window.setInterval(() => {
@@ -285,18 +429,38 @@ export const YouTubeSegmentPlayer = forwardRef<
         return;
       }
 
+      const stopAt = Math.max(
+        startSecondsRef.current + 0.45,
+        endSecondsRef.current - SEGMENT_END_GUARD_SECONDS,
+      );
+      const currentTime = player.getCurrentTime?.() ?? startSecondsRef.current;
+
       if (
+        onCurrentTimeChange &&
+        Math.abs(currentTime - lastCurrentTimeRef.current) >= 0.045
+      ) {
+        lastCurrentTimeRef.current = currentTime;
+        onCurrentTimeChange(currentTime);
+      }
+
+      const shouldStopAtBoundary =
+        boundaryModeRef.current === "segment" ||
+        currentTime >= endSecondsRef.current - SEGMENT_END_GUARD_SECONDS;
+
+      if (
+        shouldStopAtBoundary &&
         player.getPlayerState?.() === window.YT.PlayerState.PLAYING &&
-        (player.getCurrentTime?.() ?? 0) >= endSecondsRef.current
+        currentTime >= stopAt
       ) {
         player.pauseVideo?.();
+        emitPlaybackState("paused");
       }
-    }, 250);
+    }, 90);
 
     return () => {
       window.clearInterval(interval);
     };
-  }, [ready]);
+  }, [emitPlaybackState, onCurrentTimeChange, ready]);
 
   return (
     <div className="overflow-hidden rounded-[1.4rem] border border-sand-200 bg-slate-950">
@@ -304,12 +468,12 @@ export const YouTubeSegmentPlayer = forwardRef<
         <div id={elementId} className="absolute inset-0 h-full w-full" title={title} />
         {!ready && !error ? (
           <div className="absolute inset-0 flex items-center justify-center bg-slate-950 text-sm font-medium text-white/70">
-            Loading video player
+            {loadingLabel ?? "Loading video player"}
           </div>
         ) : null}
         {error ? (
           <div className="absolute inset-0 flex items-center justify-center bg-slate-950 px-6 text-center text-sm font-medium leading-relaxed text-white/78">
-            {error}
+            {errorLabel ?? error}
           </div>
         ) : null}
       </div>

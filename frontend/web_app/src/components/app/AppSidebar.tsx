@@ -71,7 +71,7 @@ function UserAvatar({
 }
 
 function AccountMenuItem({ href, icon: Icon, label, onClick, tone = "default" }) {
-  const className = `group flex w-full items-center gap-3 rounded-[1rem] px-3 py-2.5 text-left text-[0.9375rem] font-medium transition duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 ${
+  const className = `group flex w-full items-center gap-2.5 rounded-[0.9rem] px-2.5 py-2 text-left text-[0.84rem] font-medium transition duration-200 ease-[cubic-bezier(0.16,1,0.3,1)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 ${
     tone === "danger"
       ? "text-brand-700 hover:bg-brand-50 hover:text-brand-800"
       : "text-ink-950 hover:bg-sand-100/80 hover:text-brand-700"
@@ -82,7 +82,7 @@ function AccountMenuItem({ href, icon: Icon, label, onClick, tone = "default" })
       : "text-slate-600 transition group-hover:text-brand-700";
   const content = (
     <>
-      <Icon className={iconClassName} size={20} weight="regular" />
+      <Icon className={iconClassName} size={18} weight="regular" />
       <span className="min-w-0 flex-1 truncate">{label}</span>
     </>
   );
@@ -232,7 +232,7 @@ export function AppSidebar({
   };
 
   const renderItems = (section) => (
-    <div className={`flex flex-col ${collapsed ? "items-center gap-1.5" : "gap-1"}`}>
+    <div className={`flex flex-col ${collapsed ? "items-center gap-1" : "gap-0.5"}`}>
       {section.items.map((item) => {
         const Icon = item.icon;
         const label = item.label[locale];
@@ -243,12 +243,12 @@ export function AppSidebar({
             aria-label={label}
             className={`group flex items-center rounded-[1.2rem] font-medium transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                 collapsed
-                  ? `h-10 w-10 justify-center px-0 ${
+                  ? `h-9 w-9 justify-center px-0 ${
                       pathname === item.to || pathname.startsWith(`${item.to}/`)
                         ? "bg-brand-500 text-white shadow-[0_16px_34px_-24px_rgba(217,119,6,0.55)]"
                         : "text-slate-500 hover:bg-brand-50 hover:text-ink-950"
                     }`
-                  : `gap-3 px-3.5 py-2.5 text-[0.9375rem] ${
+                  : `gap-2.5 px-3 py-2 text-[0.86rem] ${
                       pathname === item.to || pathname.startsWith(`${item.to}/`)
                         ? "bg-brand-500 text-white shadow-[0_16px_34px_-24px_rgba(217,119,6,0.55)]"
                         : "text-slate-500 hover:bg-brand-50 hover:text-ink-950"
@@ -258,12 +258,12 @@ export function AppSidebar({
             onClick={onNavigate}
             title={collapsed ? label : undefined}
           >
-            <Icon size={18} weight="duotone" />
+            <Icon size={17} weight="duotone" />
             <span
               className={`overflow-hidden whitespace-nowrap transition-[max-width,opacity,transform] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] ${
                 collapsed
                   ? "max-w-0 -translate-x-1 opacity-0"
-                  : "max-w-[14rem] translate-x-0 opacity-100"
+                  : "max-w-[11.75rem] translate-x-0 opacity-100"
               }`}
             >
               {label}
@@ -279,29 +279,29 @@ export function AppSidebar({
 
     const sectionSpacing = footer
       ? index > 0
-        ? "border-t border-sand-200/90 pt-4"
+        ? "border-t border-sand-200/90 pt-3"
         : ""
       : index > 0
-        ? "mt-5 border-t border-sand-200/90 pt-4"
+        ? "mt-4 border-t border-sand-200/90 pt-3"
         : "";
 
     return (
       <div key={section.key} className={sectionSpacing}>
         {!collapsed && section.label ? (
-          <p className="px-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-400">
+          <p className="px-1 text-[9px] font-semibold uppercase tracking-[0.18em] text-slate-400">
             {section.label[locale]}
           </p>
         ) : null}
 
-        <div className={!collapsed && section.label ? "mt-2.5" : ""}>{itemsContent}</div>
+        <div className={!collapsed && section.label ? "mt-2" : ""}>{itemsContent}</div>
       </div>
     );
   };
 
   const accountMenu = (
     <div
-      className={`absolute z-30 w-[17rem] overflow-hidden rounded-[1.35rem] border border-sand-200 bg-white p-2 shadow-[0_24px_70px_-36px_rgba(71,46,14,0.42)] ring-1 ring-white/80 ${
-        collapsed ? "bottom-0 left-[calc(100%+0.75rem)]" : "bottom-[calc(100%+0.75rem)] left-0"
+      className={`absolute z-30 w-[14.5rem] overflow-hidden rounded-[1.1rem] border border-sand-200 bg-white p-1.5 shadow-[0_24px_70px_-36px_rgba(71,46,14,0.42)] ring-1 ring-white/80 ${
+        collapsed ? "bottom-0 left-[calc(100%+0.6rem)]" : "bottom-[calc(100%+0.6rem)] left-0"
       }`}
       role="menu"
     >
@@ -324,7 +324,7 @@ export function AppSidebar({
         onClick={closeAccountMenu}
       />
 
-      <div className="my-2 border-t border-sand-200" />
+      <div className="my-1.5 border-t border-sand-200" />
 
       <AccountMenuItem
         href="/help"
@@ -343,21 +343,22 @@ export function AppSidebar({
 
   return (
     <aside
-      className={`flex min-h-0 flex-col rounded-shell border border-white/80 bg-white/[0.82] p-4 shadow-panel backdrop-blur-xl transition-[padding,background-color,border-color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] lg:h-[100dvh] lg:rounded-none lg:border-y-0 lg:border-l-0 lg:border-r lg:border-[rgb(226,214,197)] lg:bg-white/92 lg:pt-0 lg:shadow-none lg:backdrop-blur-none ${
-        collapsed ? "lg:px-2.5 lg:pb-4" : "lg:px-4 lg:pb-4"
+      className={`flex min-h-0 flex-col rounded-shell border border-white/80 bg-white/[0.82] p-3 shadow-panel backdrop-blur-xl transition-[padding,background-color,border-color] duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] lg:h-[100dvh] lg:rounded-none lg:border-y-0 lg:border-l-0 lg:border-r lg:border-[rgb(226,214,197)] lg:bg-white/92 lg:pt-0 lg:shadow-none lg:backdrop-blur-none ${
+        collapsed ? "lg:px-2 lg:pb-3" : "lg:px-3 lg:pb-3"
       } ${className}`}
     >
       <div
-        className={`shrink-0 border-b border-sand-200 pb-3 lg:min-h-[var(--app-shell-header-h)] lg:pb-0 ${
+        className={`shrink-0 border-b border-sand-200 pb-2.5 lg:min-h-[var(--app-shell-header-h)] lg:pb-0 ${
           collapsed
             ? "flex items-center justify-center"
-            : "flex items-center justify-between gap-3"
+            : "flex items-center justify-between gap-2.5"
         }`}
       >
         <BrandMark
           ariaLabel={collapsed ? sidebarToggleLabel : "QuackUp"}
           className={collapsed ? "justify-center" : "min-w-0 flex-1"}
           compact
+          dense
           iconOnly={collapsed}
           onActivate={handleBrandActivate}
           title={collapsed ? sidebarToggleLabel : undefined}
@@ -367,25 +368,25 @@ export function AppSidebar({
         {!collapsed && onToggleCollapse ? (
           <button
             aria-label={sidebarToggleLabel}
-            className="hidden h-10 w-10 shrink-0 items-center justify-center rounded-[0.95rem] border border-slate-200 bg-slate-100/88 text-slate-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.78)] transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[1px] hover:border-brand-200 hover:bg-white hover:text-ink-950 lg:inline-flex"
+            className="hidden h-8 w-8 shrink-0 items-center justify-center rounded-[0.82rem] border border-slate-200 bg-slate-100/88 text-slate-700 shadow-[inset_0_1px_0_rgba(255,255,255,0.78)] transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[1px] hover:border-brand-200 hover:bg-white hover:text-ink-950 lg:inline-flex"
             onClick={onToggleCollapse}
             title={sidebarToggleLabel}
             type="button"
           >
-            <SidebarSimple size={20} weight="duotone" />
+            <SidebarSimple size={18} weight="duotone" />
           </button>
         ) : null}
       </div>
 
-      <div className="mt-4 flex min-h-0 flex-1 flex-col">
+      <div className="mt-3 flex min-h-0 flex-1 flex-col">
         <nav className="scrollbar-hidden -mr-1 flex min-h-0 flex-1 flex-col overflow-y-auto pr-1">
           {navSections.map((section, index) => renderSection(section, { index }))}
         </nav>
       </div>
 
-      <div className="mt-4 shrink-0 border-t border-sand-200 pt-4">
+      <div className="mt-3 shrink-0 border-t border-sand-200 pt-3">
         {footerSections.length > 0 ? (
-          <div className="space-y-4">
+          <div className="space-y-3">
             {footerSections.map((section, index) =>
               renderSection(section, { index, footer: true }),
             )}
@@ -393,7 +394,7 @@ export function AppSidebar({
         ) : null}
 
         <div
-          className={`${footerSections.length > 0 ? "mt-4 border-t border-sand-200 pt-4" : ""}`}
+          className={`${footerSections.length > 0 ? "mt-3 border-t border-sand-200 pt-3" : ""}`}
           ref={accountMenuRef}
         >
           <div className="relative">
@@ -404,7 +405,7 @@ export function AppSidebar({
                 aria-expanded={accountMenuOpen}
                 aria-haspopup="menu"
                 aria-label={accountMenuLabels.open}
-                className="mx-auto flex h-11 w-11 items-center justify-center rounded-full transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[1px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400"
+                className="mx-auto flex h-9 w-9 items-center justify-center rounded-full transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[1px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400"
                 onClick={() => setAccountMenuOpen((current) => !current)}
                 title={accountMenuLabels.open}
                 type="button"
@@ -412,8 +413,8 @@ export function AppSidebar({
                 <UserAvatar
                   avatarUrl={avatarUrl}
                   initials={initials}
-                  sizeClass="h-10 w-10"
-                  textClass="text-sm"
+                  sizeClass="h-8 w-8"
+                  textClass="text-xs"
                 />
               </button>
             ) : (
@@ -421,7 +422,7 @@ export function AppSidebar({
                 aria-expanded={accountMenuOpen}
                 aria-haspopup="menu"
                 aria-label={accountMenuLabels.open}
-                className={`group flex w-full items-center gap-3 rounded-[1.35rem] border px-3 py-2.5 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.55)] transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[1px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 ${
+                className={`group flex w-full items-center gap-2.5 rounded-[1.1rem] border px-2.5 py-2 text-left shadow-[inset_0_1px_0_rgba(255,255,255,0.55)] transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[1px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-400 ${
                   accountMenuOpen
                     ? "border-brand-200 bg-white"
                     : "border-brand-100 bg-brand-50/70 hover:border-brand-200 hover:bg-white"
@@ -432,15 +433,15 @@ export function AppSidebar({
                 <UserAvatar
                   avatarUrl={avatarUrl}
                   initials={initials}
-                  sizeClass="h-10 w-10"
-                  textClass="text-sm"
+                  sizeClass="h-8 w-8"
+                  textClass="text-xs"
                 />
 
                 <span className="min-w-0 flex-1">
-                  <span className="block truncate text-[0.95rem] font-semibold text-ink-950">
+                  <span className="block truncate text-[0.84rem] font-semibold text-ink-950">
                     {displayName}
                   </span>
-                  <span className="block truncate text-[0.8125rem] text-slate-500">
+                  <span className="block truncate text-[0.75rem] text-slate-500">
                     {profileLabel}
                   </span>
                 </span>
@@ -449,7 +450,7 @@ export function AppSidebar({
                   className={`shrink-0 text-brand-700 transition duration-300 ${
                     accountMenuOpen ? "rotate-90" : ""
                   }`}
-                  size={19}
+                  size={17}
                   weight="bold"
                 />
               </button>

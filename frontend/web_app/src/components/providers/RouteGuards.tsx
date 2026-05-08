@@ -33,10 +33,10 @@ export function ProtectedRoute({ children }: RouteGuardProps) {
 
   const copy = {
     vi: {
-      retry: "Thá»­ láº¡i",
-      title: "KhÃ´ng thá»ƒ xÃ¡c thá»±c phiÃªn lÃ m viá»‡c lÃºc nÃ y.",
+      retry: "Thử lại",
+      title: "Không thể xác thực phiên làm việc lúc này.",
       description:
-        "Dá»‹ch vá»¥ Ä‘Äƒng nháº­p Ä‘ang táº¡m thá»i khÃ´ng pháº£n há»“i. HÃ£y thá»­ láº¡i trong giÃ¢y lÃ¡t.",
+        "Dịch vụ đăng nhập đang tạm thời không phản hồi. Hãy thử lại trong giây lát.",
     },
     en: {
       retry: "Try again",

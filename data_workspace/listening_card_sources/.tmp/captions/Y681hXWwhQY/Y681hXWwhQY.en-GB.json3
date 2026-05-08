@@ -1,0 +1,601 @@
+{
+  "wireMagic": "pb3",
+  "pens": [ {
+  
+  } ],
+  "wsWinStyles": [ {
+  
+  } ],
+  "wpWinPositions": [ {
+  
+  } ],
+  "events": [ {
+    "tStartMs": 9180,
+    "dDurationMs": 2760,
+    "segs": [ {
+      "utf8": "Hello. This is 6 Minute English from"
+    } ]
+  }, {
+    "tStartMs": 11940,
+    "dDurationMs": 1980,
+    "segs": [ {
+      "utf8": "BBC Learning English. I’m Beth.\n "
+    } ]
+  }, {
+    "tStartMs": 13920,
+    "dDurationMs": 3480,
+    "segs": [ {
+      "utf8": "And I’m Neil. Phew! I've \nspent all day in meetings,"
+    } ]
+  }, {
+    "tStartMs": 17400,
+    "dDurationMs": 3720,
+    "segs": [ {
+      "utf8": "then shopping, then collecting \nthe kids from school - I'm"
+    } ]
+  }, {
+    "tStartMs": 21120,
+    "dDurationMs": 2460,
+    "segs": [ {
+      "utf8": "exhausted, Beth! What have \nyou been doing today?"
+    } ]
+  }, {
+    "tStartMs": 23580,
+    "dDurationMs": 3240,
+    "segs": [ {
+      "utf8": "Oh, not much, just sitting around doing"
+    } ]
+  }, {
+    "tStartMs": 26820,
+    "dDurationMs": 4740,
+    "segs": [ {
+      "utf8": "nothing… relaxing and kicking back!\nLucky you! Don’t you have work to do?"
+    } ]
+  }, {
+    "tStartMs": 31560,
+    "dDurationMs": 3000,
+    "segs": [ {
+      "utf8": "It may not look it, Neil, but I’m actually as"
+    } ]
+  }, {
+    "tStartMs": 34560,
+    "dDurationMs": 3180,
+    "segs": [ {
+      "utf8": "busy as a bee! If you’ve seen nature documentaries"
+    } ]
+  }, {
+    "tStartMs": 37740,
+    "dDurationMs": 2820,
+    "segs": [ {
+      "utf8": "about worker bees flying from flower to flower,"
+    } ]
+  }, {
+    "tStartMs": 40560,
+    "dDurationMs": 3720,
+    "segs": [ {
+      "utf8": "you probably think animals are always on the move."
+    } ]
+  }, {
+    "tStartMs": 44280,
+    "dDurationMs": 3540,
+    "segs": [ {
+      "utf8": "But the surprising truth \nis, away from the cameras,"
+    } ]
+  }, {
+    "tStartMs": 47820,
+    "dDurationMs": 4740,
+    "segs": [ {
+      "utf8": "most animals spend most of the time \ndoing absolutely nothing at all."
+    } ]
+  }, {
+    "tStartMs": 52560,
+    "dDurationMs": 3120,
+    "segs": [ {
+      "utf8": "In the natural world where \nfinding food and shelter"
+    } ]
+  }, {
+    "tStartMs": 55680,
+    "dDurationMs": 4200,
+    "segs": [ {
+      "utf8": "is hard work, why have some \nanimals evolved to do nothing?"
+    } ]
+  }, {
+    "tStartMs": 59880,
+    "dDurationMs": 4080,
+    "segs": [ {
+      "utf8": "And if it’s good enough for \nanimals, would being lazy work"
+    } ]
+  }, {
+    "tStartMs": 63960,
+    "dDurationMs": 3300,
+    "segs": [ {
+      "utf8": "for humans too? That’s what \nwe will be discussing in this"
+    } ]
+  }, {
+    "tStartMs": 67260,
+    "dDurationMs": 2940,
+    "segs": [ {
+      "utf8": "programme, and as usual, we’ll be learning some"
+    } ]
+  }, {
+    "tStartMs": 70200,
+    "dDurationMs": 6000,
+    "segs": [ {
+      "utf8": "useful new vocabulary as well.\nBut first, let me work up the energy to ask you"
+    } ]
+  }, {
+    "tStartMs": 76200,
+    "dDurationMs": 3120,
+    "segs": [ {
+      "utf8": "a question, Neil. Of course, some animals have"
+    } ]
+  }, {
+    "tStartMs": 79320,
+    "dDurationMs": 3780,
+    "segs": [ {
+      "utf8": "a reputation for lounging \nabout – lions, for example,"
+    } ]
+  }, {
+    "tStartMs": 83100,
+    "dDurationMs": 4380,
+    "segs": [ {
+      "utf8": "can sleep up to twenty \nhours a day! But what is the"
+    } ]
+  }, {
+    "tStartMs": 87480,
+    "dDurationMs": 5460,
+    "segs": [ {
+      "utf8": "slowest moving animal on Earth? Is it:\na) the giant tortoise\n "
+    } ]
+  }, {
+    "tStartMs": 93540,
+    "dDurationMs": 4920,
+    "segs": [ {
+      "utf8": "b) the three-toed sloth or\nc) the koala?"
+    } ]
+  }, {
+    "tStartMs": 98460,
+    "dDurationMs": 3480,
+    "segs": [ {
+      "utf8": "Well, I think it’s the three-toed sloth."
+    } ]
+  }, {
+    "tStartMs": 101940,
+    "dDurationMs": 3480,
+    "segs": [ {
+      "utf8": "OK, Neil. I’ll reveal the \ncorrect answer at the end"
+    } ]
+  }, {
+    "tStartMs": 105420,
+    "dDurationMs": 4620,
+    "segs": [ {
+      "utf8": "of the programme. Now it’s \nno surprise that lazy lions"
+    } ]
+  }, {
+    "tStartMs": 110040,
+    "dDurationMs": 3960,
+    "segs": [ {
+      "utf8": "love relaxing, but even \nanimals with reputations for"
+    } ]
+  }, {
+    "tStartMs": 114000,
+    "dDurationMs": 4440,
+    "segs": [ {
+      "utf8": "being busy spend time doing \nnothing. Look carefully"
+    } ]
+  }, {
+    "tStartMs": 118440,
+    "dDurationMs": 2940,
+    "segs": [ {
+      "utf8": "into an ant's nest and you’ll see around half"
+    } ]
+  }, {
+    "tStartMs": 121380,
+    "dDurationMs": 2040,
+    "segs": [ {
+      "utf8": "of them just sitting there motionless."
+    } ]
+  }, {
+    "tStartMs": 124080,
+    "dDurationMs": 3840,
+    "segs": [ {
+      "utf8": "Here’s Professor Dan \nCharbonneau, an expert in insect"
+    } ]
+  }, {
+    "tStartMs": 127920,
+    "dDurationMs": 3900,
+    "segs": [ {
+      "utf8": "behaviour, discussing the lazy \nrock ant with Emily Knight,"
+    } ]
+  }, {
+    "tStartMs": 131820,
+    "dDurationMs": 3900,
+    "segs": [ {
+      "utf8": "presenter of BBC Radio 4 programme, Naturebang."
+    } ]
+  }, {
+    "tStartMs": 138840,
+    "dDurationMs": 3240,
+    "segs": [ {
+      "utf8": "Dan’s research has focused \non ant colonies, a species"
+    } ]
+  }, {
+    "tStartMs": 142080,
+    "dDurationMs": 2400,
+    "segs": [ {
+      "utf8": "called temnothorax rugatulus or the rock ant."
+    } ]
+  }, {
+    "tStartMs": 144480,
+    "dDurationMs": 3000,
+    "segs": [ {
+      "utf8": "I think ants are a symbol of \nindustriousness, you know,"
+    } ]
+  }, {
+    "tStartMs": 147480,
+    "dDurationMs": 2940,
+    "segs": [ {
+      "utf8": "they have this whole tiny \nlittle society going on that's"
+    } ]
+  }, {
+    "tStartMs": 150420,
+    "dDurationMs": 2640,
+    "segs": [ {
+      "utf8": "kind of similar to ours… \nsome idealised version what"
+    } ]
+  }, {
+    "tStartMs": 153060,
+    "dDurationMs": 2880,
+    "segs": [ {
+      "utf8": "humans might be if we could \nonly pull it together and"
+    } ]
+  }, {
+    "tStartMs": 155940,
+    "dDurationMs": 1920,
+    "segs": [ {
+      "utf8": "all work together we could be as industrious as"
+    } ]
+  }, {
+    "tStartMs": 157860,
+    "dDurationMs": 2820,
+    "segs": [ {
+      "utf8": "the ants, but then when you \nlook at it, roughly about"
+    } ]
+  }, {
+    "tStartMs": 160680,
+    "dDurationMs": 1980,
+    "segs": [ {
+      "utf8": "half the colony is inactive at any given time.\n "
+    } ]
+  }, {
+    "tStartMs": 166020,
+    "dDurationMs": 3360,
+    "segs": [ {
+      "utf8": "We think ants are industrious, or hard-working."
+    } ]
+  }, {
+    "tStartMs": 169380,
+    "dDurationMs": 3360,
+    "segs": [ {
+      "utf8": "Groups of ants, called colonies, seem tiny,"
+    } ]
+  }, {
+    "tStartMs": 172740,
+    "dDurationMs": 2460,
+    "segs": [ {
+      "utf8": "perfect societies where everyone works"
+    } ]
+  }, {
+    "tStartMs": 175200,
+    "dDurationMs": 4440,
+    "segs": [ {
+      "utf8": "hard for the good of the group.\nThen why are so many of them inactive?"
+    } ]
+  }, {
+    "tStartMs": 179640,
+    "dDurationMs": 3900,
+    "segs": [ {
+      "utf8": "One possible answer is that they’re reserve ants,"
+    } ]
+  }, {
+    "tStartMs": 183540,
+    "dDurationMs": 3900,
+    "segs": [ {
+      "utf8": "ready to step in if disease or disaster strike."
+    } ]
+  }, {
+    "tStartMs": 187440,
+    "dDurationMs": 3120,
+    "segs": [ {
+      "utf8": "But could it simply be that they don’t work"
+    } ]
+  }, {
+    "tStartMs": 190560,
+    "dDurationMs": 3120,
+    "segs": [ {
+      "utf8": "because they don’t need to. Would you get out"
+    } ]
+  }, {
+    "tStartMs": 193680,
+    "dDurationMs": 4980,
+    "segs": [ {
+      "utf8": "of bed on Monday morning if you didn’t have to?\nMaybe the ants can teach us a thing or"
+    } ]
+  }, {
+    "tStartMs": 198660,
+    "dDurationMs": 2340,
+    "segs": [ {
+      "utf8": "two about relaxing. But wouldn't it get"
+    } ]
+  }, {
+    "tStartMs": 201000,
+    "dDurationMs": 5820,
+    "segs": [ {
+      "utf8": "boring just sitting around all day?\nNot according to psychologist, Dr Sandi Mann."
+    } ]
+  }, {
+    "tStartMs": 206820,
+    "dDurationMs": 3480,
+    "segs": [ {
+      "utf8": "She thinks being productive – working to produce"
+    } ]
+  }, {
+    "tStartMs": 210300,
+    "dDurationMs": 2280,
+    "segs": [ {
+      "utf8": "a lot for the amount of resources we use,"
+    } ]
+  }, {
+    "tStartMs": 212580,
+    "dDurationMs": 3900,
+    "segs": [ {
+      "utf8": "is overrated. Boredom has its benefits too,"
+    } ]
+  }, {
+    "tStartMs": 216480,
+    "dDurationMs": 4020,
+    "segs": [ {
+      "utf8": "as she explains to BBC Radio \n4 programme, Naturebang.\n "
+    } ]
+  }, {
+    "tStartMs": 222060,
+    "dDurationMs": 4740,
+    "segs": [ {
+      "utf8": "Would humans have invented bread or beer or fire,"
+    } ]
+  }, {
+    "tStartMs": 226800,
+    "dDurationMs": 3060,
+    "segs": [ {
+      "utf8": "you know, if we hadn't been \nbored and were wondering,"
+    } ]
+  }, {
+    "tStartMs": 229860,
+    "dDurationMs": 1980,
+    "segs": [ {
+      "utf8": "‘what on earth would happen \nif we mix this with this?’,"
+    } ]
+  }, {
+    "tStartMs": 231840,
+    "dDurationMs": 1740,
+    "segs": [ {
+      "utf8": "you know. Are all these sorts of"
+    } ]
+  }, {
+    "tStartMs": 233580,
+    "dDurationMs": 5220,
+    "segs": [ {
+      "utf8": "inventions the mother of boredom?\nBut in this world of constant stimulation"
+    } ]
+  }, {
+    "tStartMs": 238800,
+    "dDurationMs": 5220,
+    "segs": [ {
+      "utf8": "switching off is harder than it's ever been.\nThat's why we're constantly swiping and scrolling"
+    } ]
+  }, {
+    "tStartMs": 244020,
+    "dDurationMs": 1500,
+    "segs": [ {
+      "utf8": "and looking for the next big thing, and the"
+    } ]
+  }, {
+    "tStartMs": 245520,
+    "dDurationMs": 2760,
+    "segs": [ {
+      "utf8": "new thing and we bored of things very quickly… so"
+    } ]
+  }, {
+    "tStartMs": 248280,
+    "dDurationMs": 2940,
+    "segs": [ {
+      "utf8": "it's a kind of paradox to \nget rid of this unpleasant"
+    } ]
+  }, {
+    "tStartMs": 251220,
+    "dDurationMs": 1200,
+    "segs": [ {
+      "utf8": "state of boredom is actually to"
+    } ]
+  }, {
+    "tStartMs": 252420,
+    "dDurationMs": 6060,
+    "segs": [ {
+      "utf8": "allow more boredom into your life.\nDr Mann doubts humans would have invented"
+    } ]
+  }, {
+    "tStartMs": 258480,
+    "dDurationMs": 3120,
+    "segs": [ {
+      "utf8": "things without the curiosity that comes from being"
+    } ]
+  }, {
+    "tStartMs": 261600,
+    "dDurationMs": 2820,
+    "segs": [ {
+      "utf8": "bored. Boredom is the mother of invention,"
+    } ]
+  }, {
+    "tStartMs": 264420,
+    "dDurationMs": 4260,
+    "segs": [ {
+      "utf8": "an idea based on the famous proverb, necessity is"
+    } ]
+  }, {
+    "tStartMs": 268680,
+    "dDurationMs": 3360,
+    "segs": [ {
+      "utf8": "the mother of invention, an idiom meaning that if"
+    } ]
+  }, {
+    "tStartMs": 272040,
+    "dDurationMs": 1620,
+    "segs": [ {
+      "utf8": "you really need to do something,"
+    } ]
+  }, {
+    "tStartMs": 273660,
+    "dDurationMs": 5520,
+    "segs": [ {
+      "utf8": "you will think of a way of doing it.\nInstead of fearing boredom we can open up to its"
+    } ]
+  }, {
+    "tStartMs": 279180,
+    "dDurationMs": 4200,
+    "segs": [ {
+      "utf8": "benefits by switching off - stopping worrying or"
+    } ]
+  }, {
+    "tStartMs": 283380,
+    "dDurationMs": 3240,
+    "segs": [ {
+      "utf8": "thinking about something \nand relaxing. Slowing down"
+    } ]
+  }, {
+    "tStartMs": 286620,
+    "dDurationMs": 2640,
+    "segs": [ {
+      "utf8": "helps too - something we can definitely"
+    } ]
+  }, {
+    "tStartMs": 289260,
+    "dDurationMs": 4920,
+    "segs": [ {
+      "utf8": "learn from our animal cousins.\nI think now’s a good time to reveal the answer to"
+    } ]
+  }, {
+    "tStartMs": 294180,
+    "dDurationMs": 2220,
+    "segs": [ {
+      "utf8": "my question, since we have nothing else to do."
+    } ]
+  }, {
+    "tStartMs": 296400,
+    "dDurationMs": 3180,
+    "segs": [ {
+      "utf8": "You asked me to name the \nworld’s slowest animal and"
+    } ]
+  }, {
+    "tStartMs": 299580,
+    "dDurationMs": 3360,
+    "segs": [ {
+      "utf8": "I guessed it was the three-toed \nsloth. Was I right?"
+    } ]
+  }, {
+    "tStartMs": 302940,
+    "dDurationMs": 3900,
+    "segs": [ {
+      "utf8": "That was the correct answer! With a top speed"
+    } ]
+  }, {
+    "tStartMs": 306840,
+    "dDurationMs": 5340,
+    "segs": [ {
+      "utf8": "of 30 centimetres per minute, \nthree-toed sloths move"
+    } ]
+  }, {
+    "tStartMs": 312180,
+    "dDurationMs": 3420,
+    "segs": [ {
+      "utf8": "so slowly that algae grow on their coats!"
+    } ]
+  }, {
+    "tStartMs": 316140,
+    "dDurationMs": 3180,
+    "segs": [ {
+      "utf8": "OK, let's recap the vocabulary that we've learned"
+    } ]
+  }, {
+    "tStartMs": 319320,
+    "dDurationMs": 1680,
+    "segs": [ {
+      "utf8": "from this programme starting with the"
+    } ]
+  }, {
+    "tStartMs": 321000,
+    "dDurationMs": 2940,
+    "segs": [ {
+      "utf8": "phrase kicking back – stop doing things"
+    } ]
+  }, {
+    "tStartMs": 323940,
+    "dDurationMs": 1380,
+    "segs": [ {
+      "utf8": "and relax completely."
+    } ]
+  }, {
+    "tStartMs": 326040,
+    "dDurationMs": 7020,
+    "segs": [ {
+      "utf8": "The adjective industrious means hard-working.\nA colony is the name given to a group of certain"
+    } ]
+  }, {
+    "tStartMs": 333060,
+    "dDurationMs": 6360,
+    "segs": [ {
+      "utf8": "animals including ants and some seabirds.\nSomeone who is productive is able to produce"
+    } ]
+  }, {
+    "tStartMs": 339420,
+    "dDurationMs": 6600,
+    "segs": [ {
+      "utf8": "a lot for the amount of resources they use.\nThe proverb necessity is the mother of invention,"
+    } ]
+  }, {
+    "tStartMs": 346020,
+    "dDurationMs": 2520,
+    "segs": [ {
+      "utf8": "means that if you really need to do something,"
+    } ]
+  }, {
+    "tStartMs": 348540,
+    "dDurationMs": 5280,
+    "segs": [ {
+      "utf8": "you will think of a way of doing it.\nAnd finally, to switch off means to stop worrying"
+    } ]
+  }, {
+    "tStartMs": 353820,
+    "dDurationMs": 4560,
+    "segs": [ {
+      "utf8": "or thinking about something and relax. Once again,"
+    } ]
+  }, {
+    "tStartMs": 358380,
+    "dDurationMs": 2760,
+    "segs": [ {
+      "utf8": "our six minutes are up – it \nmust be time to sit down,"
+    } ]
+  }, {
+    "tStartMs": 361140,
+    "dDurationMs": 3780,
+    "segs": [ {
+      "utf8": "close your eyes, and just do \nnothing! Goodbye for now!\n "
+    } ]
+  }, {
+    "tStartMs": 364920,
+    "dDurationMs": 1080,
+    "segs": [ {
+      "utf8": "Bye!"
+    } ]
+  } ]
+}

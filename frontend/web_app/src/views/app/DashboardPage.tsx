@@ -33,7 +33,7 @@ export function DashboardPage() {
   return (
     <WorkspaceCanvas>
       <WorkspaceSection className="border-b border-sand-200">
-        <div className="grid gap-6 xl:grid-cols-[minmax(0,1fr),300px] xl:items-start">
+        <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr),280px] xl:items-start">
           <div className="space-y-3">
             <p className="type-eyebrow-label">
               {locale === "vi" ? "Nhịp hôm nay" : "Today's rhythm"}
@@ -44,13 +44,13 @@ export function DashboardPage() {
             </div>
           </div>
 
-          <div className="rounded-[1.55rem] border border-white/80 bg-[rgb(255,248,240)] px-4 py-4 shadow-[0_22px_40px_-34px_rgba(120,53,15,0.24)]">
+          <div className="rounded-[1.15rem] border border-white/80 bg-[rgb(255,248,240)] px-3.5 py-3.5 shadow-[0_16px_34px_-28px_rgba(120,53,15,0.2)]">
             <p className="type-eyebrow-muted">
               {locale === "vi" ? "Mục tiêu ngày" : "Daily target"}
             </p>
-            <div className="mt-3.5 space-y-2.5">
+            <div className="mt-3 space-y-2.5">
               <p className="type-stat-value">{goalProgress}%</p>
-              <div className="h-3 overflow-hidden rounded-full bg-sand-100">
+              <div className="h-2.5 overflow-hidden rounded-full bg-sand-100">
                 <div
                   className="h-full rounded-full bg-gradient-to-r from-brand-500 to-sage-600"
                   style={{ width: `${goalProgress}%` }}
@@ -70,7 +70,7 @@ export function DashboardPage() {
         {data.stats.map((item, index) => (
           <div
             key={item.label}
-            className={`px-4 py-4 sm:px-5 lg:px-6 ${index > 0 ? "border-t border-sand-200 sm:border-t-0" : ""}`}
+            className={`px-3.5 py-3.5 sm:px-4 lg:px-5 ${index > 0 ? "border-t border-sand-200 sm:border-t-0" : ""}`}
           >
             <p className="type-eyebrow-muted">{item.label}</p>
             <p className="type-stat-value mt-3">{item.value}</p>
@@ -96,8 +96,8 @@ export function DashboardPage() {
 
           <div className="divide-y divide-sand-200">
             {data.focusList.map((lesson) => (
-              <article key={lesson.id} className="px-4 py-4 sm:px-5 sm:py-5 lg:px-6">
-                <div className="flex items-start justify-between gap-4">
+              <article key={lesson.id} className="px-3.5 py-3.5 sm:px-4 sm:py-4 lg:px-5">
+                <div className="flex items-start justify-between gap-3">
                   <div className="space-y-2">
                     <p className="type-body-sm font-semibold text-brand-700">
                       {lesson.source} · {lesson.level}
@@ -108,10 +108,10 @@ export function DashboardPage() {
                   <div className="type-body-sm shrink-0 text-right font-medium text-slate-400">{lesson.minutes}m</div>
                 </div>
 
-                <div className="mt-4 flex items-center justify-between gap-4">
+                <div className="mt-3 flex items-center justify-between gap-3">
                   <p className="type-body-sm">{lesson.tag}</p>
                   <div className="flex items-center gap-3">
-                    <div className="h-2.5 w-28 overflow-hidden rounded-full bg-sand-100">
+                    <div className="h-2 w-24 overflow-hidden rounded-full bg-sand-100">
                       <div
                         className="h-full rounded-full bg-gradient-to-r from-brand-500 to-sage-600"
                         style={{ width: `${lesson.progress}%` }}
@@ -128,8 +128,8 @@ export function DashboardPage() {
         <div className="min-w-0">
           <WorkspaceSection className="border-b border-sand-200">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-brand-100 text-brand-700">
-                <ClockCounterClockwise size={20} weight="duotone" />
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-100 text-brand-700">
+                <ClockCounterClockwise size={18} weight="duotone" />
               </div>
               <div>
                 <p className="type-eyebrow-muted">
@@ -152,8 +152,8 @@ export function DashboardPage() {
 
           <WorkspaceSection className="border-b border-sand-200">
             <div className="flex items-center gap-3">
-              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-sage-100 text-sage-700">
-                <Ranking size={20} weight="duotone" />
+              <div className="flex h-9 w-9 items-center justify-center rounded-full bg-sage-100 text-sage-700">
+                <Ranking size={18} weight="duotone" />
               </div>
               <div>
                 <p className="type-eyebrow-muted">
@@ -173,7 +173,7 @@ export function DashboardPage() {
                       {row.minutes} min · {row.streak} {locale === "vi" ? "ngày" : "days"}
                     </p>
                   </div>
-                  <span className="type-control-label rounded-full bg-brand-50 px-3 py-1 text-brand-700">
+                  <span className="type-control-label rounded-full bg-brand-50 px-2.5 py-0.5 text-brand-700">
                     #{row.rank}
                   </span>
                 </div>

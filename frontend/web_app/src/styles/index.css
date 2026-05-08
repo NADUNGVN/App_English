@@ -55,28 +55,28 @@
 
 @layer components {
   .app-shell {
-    --app-shell-header-h: 4.5rem;
-    --app-workspace-section-x: 1rem;
-    --app-workspace-section-y: 1rem;
+    --app-shell-header-h: 3.5rem;
+    --app-workspace-section-x: 0.875rem;
+    --app-workspace-section-y: 0.8125rem;
   }
 
   @media (min-width: 640px) {
     .app-shell {
-      --app-workspace-section-x: 1.25rem;
-      --app-workspace-section-y: 1.125rem;
+      --app-workspace-section-x: 1rem;
+      --app-workspace-section-y: 0.875rem;
     }
   }
 
   @media (min-width: 1024px) {
     .app-shell {
-      --app-workspace-section-x: 1.5rem;
-      --app-workspace-section-y: 1.25rem;
+      --app-workspace-section-x: 1.125rem;
+      --app-workspace-section-y: 1rem;
     }
   }
 
   @media (min-width: 1280px) {
     .app-shell {
-      --app-workspace-section-x: 1.75rem;
+      --app-workspace-section-x: 1.25rem;
     }
   }
 
@@ -251,13 +251,93 @@
     @apply text-sm font-semibold leading-[1.2] tracking-[-0.01em];
   }
 
+  .app-shell .button-primary,
+  .app-shell .button-secondary {
+    @apply min-h-10 px-4 py-2 text-[0.8125rem];
+  }
+
+  .app-shell .field-label {
+    @apply text-[0.8125rem];
+  }
+
+  .app-shell .field-input {
+    @apply min-h-10 rounded-[1.15rem] px-3 py-2 text-[0.8125rem];
+  }
+
+  .app-shell .type-title-page {
+    @apply text-[clamp(1.38rem,2.2vw,1.65rem)];
+  }
+
+  .app-shell .type-display-auth {
+    @apply text-[clamp(1.75rem,3.2vw,2.35rem)];
+  }
+
+  .app-shell .type-title-section {
+    @apply text-[clamp(1.18rem,2vw,1.48rem)];
+  }
+
+  .app-shell .type-title-card {
+    @apply text-[clamp(0.95rem,1.5vw,1.1rem)];
+  }
+
+  .app-shell .type-stat-value {
+    @apply text-[clamp(1.45rem,2.6vw,2rem)];
+  }
+
+  .app-shell .type-body-lg {
+    @apply text-[0.9375rem] sm:text-[0.98rem];
+  }
+
+  .app-shell .type-body-md {
+    @apply text-[0.875rem];
+  }
+
+  .app-shell .type-body-sm,
+  .app-shell .type-control-label {
+    @apply text-[0.8125rem];
+  }
+
+  .app-shell .type-eyebrow-label,
+  .app-shell .type-eyebrow-muted {
+    @apply text-[0.68rem];
+  }
+
   .workspace-viewport {
-    @apply min-h-[100dvh] overflow-y-auto bg-transparent lg:h-[100dvh];
+    @apply flex min-h-[100dvh] flex-col bg-transparent lg:h-[100dvh] lg:overflow-hidden;
     overscroll-behavior: contain;
   }
 
   .workspace-canvas {
-    @apply overflow-hidden rounded-shell border border-[rgb(226,214,197)] bg-[rgb(255,252,247)] shadow-panel;
+    @apply min-w-0 bg-transparent;
+  }
+
+  .workspace-canvas:has(.internal-waveform-host) {
+    overflow: hidden;
+  }
+
+  .internal-waveform-host,
+  .internal-waveform-timeline {
+    contain: layout paint;
+  }
+
+  .internal-waveform-host > *,
+  .internal-waveform-timeline > * {
+    display: block;
+    max-width: 100%;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .internal-waveform-host > div::part(scroll),
+  .internal-waveform-timeline > div::part(scroll) {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+  }
+
+  .internal-waveform-host > div::part(wrapper),
+  .internal-waveform-timeline > div::part(wrapper) {
+    max-width: none;
   }
 
   .workspace-section {

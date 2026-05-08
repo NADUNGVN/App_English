@@ -10,7 +10,7 @@ export async function POST(request: Request) {
     const input = dictationCheckSchema.parse(await readJson(request));
 
     return NextResponse.json({
-      result: checkDictation(input),
+      result: await checkDictation(input),
     });
   } catch (error) {
     return errorResponse(error);

@@ -1,0 +1,6 @@
+slug,category,level,title_vi,title_en,description_vi,description_en,cover_image_url,is_premium,sort_order,status
+destination-b2,ACADEMIC,B2,Destination B2,Destination B2,"Vocabulary and phrasal verbs from Destination B2, organized by topic.","Vocabulary and phrasal verbs from Destination B2, organized by topic.",,false,10,PUBLISHED
+destination-b1,ACADEMIC,B1,Destination B1,Destination B1,"Vocabulary and phrasal verbs from Destination B1, organized by topic.","Vocabulary and phrasal verbs from Destination B1, organized by topic.",,false,20,PUBLISHED
+oxford-5000,OXFORD,B2,Oxford 5000,Oxford 5000,"An expanded core word list for advanced learners of English.","An expanded core word list for advanced learners of English.",,false,30,PUBLISHED
+toeic-essential-600,TOEIC,B1,600 Essential Words for the TOEIC,600 Essential Words for the TOEIC,"Workplace and test vocabulary for TOEIC practice.","Workplace and test vocabulary for TOEIC practice.",,false,40,PUBLISHED
+cambridge-ielts-20,IELTS,B2,Cambridge IELTS 20,Cambridge IELTS 20,"Academic vocabulary grouped for IELTS reading and writing contexts.","Academic vocabulary grouped for IELTS reading and writing contexts.",,true,50,PUBLISHED

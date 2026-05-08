@@ -35,12 +35,12 @@ export function DictionaryPage() {
       <div className="grid lg:grid-cols-[minmax(0,1.05fr),320px]">
         <div className="min-w-0 border-b border-sand-200 lg:border-b-0 lg:border-r lg:border-sand-200">
           <WorkspaceSection className="border-b border-sand-200">
-            <div className="space-y-4">
+            <div className="space-y-3.5">
               <div className="space-y-2">
                 <p className="text-xs font-semibold uppercase tracking-[0.16em] text-brand-700">
                   {locale === "vi" ? "Từ điển" : "Dictionary"}
                 </p>
-                <h2 className="text-[1.75rem] font-semibold tracking-[-0.05em] text-ink-950 sm:text-[1.95rem]">
+                <h2 className="text-[1.38rem] font-semibold tracking-[-0.04em] text-ink-950 sm:text-[1.6rem]">
                   {locale === "vi"
                     ? "Tra nghĩa nhanh và giữ ngữ cảnh gần bên."
                     : "Look up meaning fast and keep the context nearby."}
@@ -69,31 +69,31 @@ export function DictionaryPage() {
 
           <WorkspaceSection>
             {match ? (
-              <div className="rounded-[1.55rem] border border-white/80 bg-[rgb(255,248,240)] p-5">
-                <div className="flex items-start justify-between gap-4">
+              <div className="rounded-[1.2rem] border border-white/80 bg-[rgb(255,248,240)] p-4">
+                <div className="flex items-start justify-between gap-3">
                   <div>
-                    <h3 className="text-[1.75rem] font-semibold tracking-[-0.05em] text-ink-950">
+                    <h3 className="text-[1.35rem] font-semibold tracking-[-0.04em] text-ink-950">
                       {match.term}
                     </h3>
-                    <p className="mt-1 font-mono text-sm text-slate-500">
+                    <p className="mt-1 font-mono text-[0.8125rem] text-slate-500">
                       {match.phonetic}
                     </p>
                   </div>
-                  <span className="rounded-full bg-brand-50 px-3 py-1 text-sm font-semibold text-brand-700">
+                  <span className="rounded-full bg-brand-50 px-2.5 py-0.5 text-[0.8125rem] font-semibold text-brand-700">
                     {locale === "vi" ? "Đang tra" : "Active"}
                   </span>
                 </div>
-                <p className="mt-4 text-sm leading-relaxed text-slate-600">
+                <p className="mt-3.5 text-[0.8125rem] leading-relaxed text-slate-600">
                   {match.meaning}
                 </p>
-                <p className="mt-3 text-sm leading-relaxed text-slate-500">
+                <p className="mt-2.5 text-[0.8125rem] leading-relaxed text-slate-500">
                   {match.example}
                 </p>
-                <div className="mt-4 flex flex-wrap gap-2">
+                <div className="mt-3.5 flex flex-wrap gap-2">
                   {match.synonyms.map((synonym) => (
                     <span
                       key={synonym}
-                      className="rounded-full border border-sand-200 bg-white px-3 py-1 text-[0.9375rem] text-slate-500"
+                      className="rounded-full border border-sand-200 bg-white px-2.5 py-0.5 text-[0.8125rem] text-slate-500"
                     >
                       {synonym}
                     </span>
@@ -117,11 +117,11 @@ export function DictionaryPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-400">
             {locale === "vi" ? "Tra gần đây" : "Recent lookups"}
           </p>
-          <div className="mt-4 flex flex-wrap gap-2.5">
+          <div className="mt-3.5 flex flex-wrap gap-2">
             {data.recent.map((term) => (
               <button
                 key={term}
-                className="rounded-full border border-sand-200 bg-white/70 px-3.5 py-1.5 text-[0.9375rem] font-medium text-slate-600 transition hover:border-brand-200 hover:text-ink-950"
+                className="rounded-full border border-sand-200 bg-white/70 px-3 py-1 text-[0.8125rem] font-medium text-slate-600 transition hover:border-brand-200 hover:text-ink-950"
                 onClick={() => setQuery(term)}
                 type="button"
               >

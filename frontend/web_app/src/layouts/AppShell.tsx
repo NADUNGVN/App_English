@@ -35,14 +35,14 @@ export function AppShell({ children }: AppShellProps) {
   const { logout, setLocale, user } = appContext;
   const router = useRouter();
   const pathname = usePathname();
-  const viewportRef = useRef<HTMLDivElement | null>(null);
+  const mainRef = useRef<HTMLElement | null>(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(() =>
     loadSidebarCollapsed(false),
   );
 
   useEffect(() => {
-    viewportRef.current?.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    mainRef.current?.scrollTo({ top: 0, left: 0, behavior: "auto" });
   }, [pathname]);
 
   useEffect(() => {
@@ -61,7 +61,9 @@ export function AppShell({ children }: AppShellProps) {
   const handleHomeNavigate = () => {
     router.push("/dashboard");
   };
-  const isDictationLibrary = pathname === "/dictation";
+  const isDictationWorkspace = pathname === "/dictation" || pathname.startsWith("/dictation/");
+  const isDictationDetailWorkspace =
+    pathname.startsWith("/dictation/") && !pathname.startsWith("/dictation/categories/");
   const shellUser =
     user ??
     (pathname === "/dictation" || pathname.startsWith("/dictation/")
@@ -72,7 +74,7 @@ export function AppShell({ children }: AppShellProps) {
         }
       : null);
   const shellStyle = {
-    "--app-sidebar-width": isSidebarCollapsed ? "4.75rem" : "18.25rem",
+    "--app-sidebar-width": isSidebarCollapsed ? "4rem" : "15.25rem",
   } as CSSProperties;
 
   return (
@@ -94,18 +96,19 @@ export function AppShell({ children }: AppShellProps) {
         />
 
         <div className="min-h-0 min-w-0">
-          <div ref={viewportRef} className="workspace-viewport">
-            <AppTopbar
-              locale={locale}
-              onLocaleChange={setLocale}
-              onMenuOpen={() => setMenuOpen(true)}
-            />
+          <div className="workspace-viewport">
+            {isDictationDetailWorkspace ? null : (
+              <AppTopbar
+                locale={locale}
+                onLocaleChange={setLocale}
+                onMenuOpen={() => setMenuOpen(true)}
+              />
+            )}
 
             <main
-              className={`px-4 pb-5 pt-3 sm:px-5 lg:px-6 lg:pb-6 lg:pt-4 xl:px-8 ${
-                isDictationLibrary
-                  ? "lg:h-[calc(100dvh-var(--app-shell-header-h))] lg:overflow-hidden"
-                  : ""
+              ref={mainRef}
+              className={`min-h-0 flex-1 overflow-y-auto px-3 pb-4 sm:px-4 lg:px-5 lg:pb-5 xl:px-6 ${
+                isDictationWorkspace ? "pt-0 lg:pt-0" : "pt-3 lg:pt-4"
               }`}
             >
               {children}

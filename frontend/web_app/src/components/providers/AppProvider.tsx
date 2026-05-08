@@ -2,12 +2,14 @@
 "use client";
 
 import { createContext, useEffect, useMemo, useState } from "react";
+import { usePathname } from "next/navigation";
 import { loadLocale, saveLocale } from "../../lib/storage";
 import { authRepository } from "../../repositories/authRepository";
 
 export const AppContext = createContext(null);
 
 export function AppProvider({ children }) {
+  const pathname = usePathname();
   const [session, setSession] = useState(null);
   const [locale, setLocaleState] = useState(() => loadLocale("vi"));
   const [isBooting, setIsBooting] = useState(true);
@@ -15,6 +17,13 @@ export function AppProvider({ children }) {
   const [bootstrapKey, setBootstrapKey] = useState(0);
 
   useEffect(() => {
+    if (pathname?.startsWith("/internal")) {
+      setSession(null);
+      setBootError(null);
+      setIsBooting(false);
+      return;
+    }
+
     let cancelled = false;
 
     setIsBooting(true);
@@ -52,7 +61,7 @@ export function AppProvider({ children }) {
     return () => {
       cancelled = true;
     };
-  }, [bootstrapKey]);
+  }, [bootstrapKey, pathname]);
 
   const login = async (payload) => {
     const result = await authRepository.login(payload);

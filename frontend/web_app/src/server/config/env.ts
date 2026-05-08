@@ -47,6 +47,12 @@ const envSchema = z.object({
     .enum(["true", "false"])
     .default("false")
     .transform((value) => value === "true"),
+  INTERNAL_ADMIN_EMAIL: optionalString,
+  INTERNAL_ADMIN_PASSWORD_HASH: optionalString,
+  INTERNAL_ADMIN_SESSION_SECRET: optionalString,
+  LISTENING_TIMING_PYTHON: optionalString,
+  LISTENING_TIMING_MODEL: optionalString,
+  LISTENING_TIMING_DEVICE: optionalString,
 });
 
 const parsed = envSchema.safeParse(process.env);

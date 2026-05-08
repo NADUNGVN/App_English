@@ -1,5 +1,10 @@
 import { HttpError } from "../../lib/httpError";
-import { listeningCategories, listeningLessons } from "./listening.fixtures";
+import { generatedListeningLessons } from "./listening.generated";
+import { listeningCategories } from "./listening.fixtures";
+import {
+  mergeApprovedTimingIntoLesson,
+  tryGetApprovedTimingDocument,
+} from "./listening.review";
 import type {
   DictationCheckInput,
   DictationCheckResult,
@@ -12,6 +17,8 @@ import type {
   ListeningSegment,
 } from "./listening.types";
 
+const ACTIVE_LISTENING_CATEGORY_IDS = new Set(["bbc-learning-english"]);
+
 type AlignmentStep =
   | { type: "correct"; expected: string; actual: string }
   | { type: "wrong"; expected: string; actual: string }
@@ -19,11 +26,24 @@ type AlignmentStep =
   | { type: "extra"; actual: string };
 
 const LEVEL_ORDER: ListeningLevel[] = ["A1", "A2", "B1", "B2", "C1"];
+const activeListeningCategories = listeningCategories.filter((category) =>
+  ACTIVE_LISTENING_CATEGORY_IDS.has(category.id),
+);
+const generatedActiveListeningLessons: ListeningLessonDetail[] = generatedListeningLessons.filter(
+  (lesson) => ACTIVE_LISTENING_CATEGORY_IDS.has(lesson.categoryId),
+);
+const allListeningLessons: ListeningLessonDetail[] = generatedActiveListeningLessons.filter(
+  (lesson) => lesson.contentStatus === "READY",
+);
 
 type CatalogFilters = {
   categoryId?: string;
   level?: ListeningLevelFilter;
 };
+
+export function isActiveListeningCategoryId(categoryId: string) {
+  return ACTIVE_LISTENING_CATEGORY_IDS.has(categoryId);
+}
 
 function toSummary(lesson: ListeningLessonDetail): ListeningLessonSummary {
   const {
@@ -38,7 +58,7 @@ function toSummary(lesson: ListeningLessonDetail): ListeningLessonSummary {
 }
 
 export function listListeningLessons() {
-  return listeningLessons.map(toSummary);
+  return allListeningLessons.map(toSummary);
 }
 
 function countBy<T extends string>(
@@ -59,7 +79,12 @@ function applyCatalogFilters(
   lessons: ListeningLessonDetail[],
   filters: CatalogFilters = {},
 ) {
-  const categoryId = filters.categoryId === "all" ? undefined : filters.categoryId;
+  const requestedCategoryId =
+    filters.categoryId && filters.categoryId !== "all" ? filters.categoryId : undefined;
+  const categoryId =
+    requestedCategoryId && isActiveListeningCategoryId(requestedCategoryId)
+      ? requestedCategoryId
+      : undefined;
   const level = filters.level === "ALL" ? undefined : filters.level;
 
   return lessons.filter((lesson) => {
@@ -71,20 +96,21 @@ function applyCatalogFilters(
 }
 
 export function getListeningCatalog(filters: CatalogFilters = {}): ListeningCatalog {
-  const categoryCounts = countBy(listeningLessons, (lesson) => lesson.categoryId);
-  const levelCounts = countBy(listeningLessons, (lesson) => lesson.level);
-  const filteredLessons = applyCatalogFilters(listeningLessons, filters);
-  const selectedCategoryId =
+  const categoryCounts = countBy(allListeningLessons, (lesson) => lesson.categoryId);
+  const levelCounts = countBy(allListeningLessons, (lesson) => lesson.level);
+  const filteredLessons = applyCatalogFilters(allListeningLessons, filters);
+  const requestedCategoryId =
     filters.categoryId && filters.categoryId !== "all" ? filters.categoryId : null;
-  const hasActiveFilters = Boolean(selectedCategoryId) || filters.level !== "ALL";
+  const selectedCategoryId =
+    requestedCategoryId && isActiveListeningCategoryId(requestedCategoryId)
+      ? requestedCategoryId
+      : null;
   const selectedCategory = selectedCategoryId
-    ? listeningCategories.find((category) => category.id === selectedCategoryId)
+    ? activeListeningCategories.find((category) => category.id === selectedCategoryId)
     : null;
   const filteredSummaries = filteredLessons.map(toSummary);
-  const newLessons = hasActiveFilters
-    ? []
-    : filteredSummaries.filter((lesson) => lesson.isNew).slice(0, 8);
-  const categorySections = listeningCategories
+  const newLessons: ListeningLessonSummary[] = [];
+  const categorySections = activeListeningCategories
     .filter((category) => !selectedCategory || category.id === selectedCategory.id)
     .map((category) => {
       const lessons = filteredSummaries.filter(
@@ -102,7 +128,7 @@ export function getListeningCatalog(filters: CatalogFilters = {}): ListeningCata
     .filter((section) => section.lessons.length > 0);
 
   return {
-    categories: listeningCategories.map((category) => ({
+    categories: activeListeningCategories.map((category) => ({
       ...category,
       count: categoryCounts[category.id] ?? 0,
     })),
@@ -110,7 +136,7 @@ export function getListeningCatalog(filters: CatalogFilters = {}): ListeningCata
       {
         id: "ALL",
         label: "All levels",
-        count: listeningLessons.length,
+        count: allListeningLessons.length,
       },
       ...LEVEL_ORDER.map((level) => ({
         id: level,
@@ -140,7 +166,7 @@ export function getListeningCatalog(filters: CatalogFilters = {}): ListeningCata
 }
 
 export function getListeningLesson(lessonId: string) {
-  const lesson = listeningLessons.find((item) => item.id === lessonId);
+  const lesson = allListeningLessons.find((item) => item.id === lessonId);
 
   if (!lesson) {
     throw new HttpError(404, "Listening lesson not found");
@@ -149,8 +175,29 @@ export function getListeningLesson(lessonId: string) {
   return lesson;
 }
 
+export async function getListeningLessonWithApprovedTiming(lessonId: string) {
+  const lesson = getListeningLesson(lessonId);
+  const approvedTiming = await tryGetApprovedTimingDocument(lessonId);
+
+  return mergeApprovedTimingIntoLesson(lesson, approvedTiming);
+}
+
 function getListeningSegment(lessonId: string, segmentId: string) {
   const lesson = getListeningLesson(lessonId);
+  const segment = lesson.segments.find((item) => item.id === segmentId);
+
+  if (!segment) {
+    throw new HttpError(404, "Listening segment not found");
+  }
+
+  return segment;
+}
+
+async function getListeningSegmentWithApprovedTiming(
+  lessonId: string,
+  segmentId: string,
+) {
+  const lesson = await getListeningLessonWithApprovedTiming(lessonId);
   const segment = lesson.segments.find((item) => item.id === segmentId);
 
   if (!segment) {
@@ -313,8 +360,13 @@ function collectRecommendedPhrases(segment: ListeningSegment, answerTokens: stri
   return missedPhrases.length > 0 ? missedPhrases : segment.targetPhrases.slice(0, 2);
 }
 
-export function checkDictation(input: DictationCheckInput): DictationCheckResult {
-  const segment = getListeningSegment(input.lessonId, input.segmentId);
+export async function checkDictation(
+  input: DictationCheckInput,
+): Promise<DictationCheckResult> {
+  const segment = await getListeningSegmentWithApprovedTiming(
+    input.lessonId,
+    input.segmentId,
+  );
   const expectedTokens = normalizeTokens(segment.transcript);
   const answerTokens = normalizeTokens(input.answer);
   const steps = alignTokens(expectedTokens, answerTokens);

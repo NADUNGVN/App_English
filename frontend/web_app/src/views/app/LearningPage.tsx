@@ -48,7 +48,7 @@ export function LearningPage() {
   return (
     <WorkspaceCanvas>
       <WorkspaceSection className="border-b border-sand-200">
-        <div className="grid gap-5 xl:grid-cols-[minmax(0,1fr),320px] xl:items-end">
+        <div className="grid gap-4 xl:grid-cols-[minmax(0,1fr),300px] xl:items-end">
           <WorkspaceSectionHeader
             eyebrow={locale === "vi" ? "Thư viện" : "Library"}
             title={
@@ -85,7 +85,7 @@ export function LearningPage() {
           {data.categories.map((item) => (
             <span
               key={item}
-              className="rounded-full border border-sand-200 bg-white/70 px-3.5 py-1.5 text-[0.9375rem] font-medium text-slate-600"
+              className="rounded-full border border-sand-200 bg-white/70 px-3 py-1 text-[0.8125rem] font-medium text-slate-600"
             >
               {item}
             </span>
@@ -108,40 +108,40 @@ export function LearningPage() {
             {filteredLessons.map((lesson) => (
               <Link
                 key={lesson.id}
-                className="surface-panel-soft block overflow-hidden p-5 transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[1px] hover:border-brand-200 active:translate-y-[1px] active:scale-[0.99]"
+                className="surface-panel-soft block overflow-hidden p-4 transition duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] hover:-translate-y-[1px] hover:border-brand-200 active:translate-y-[1px] active:scale-[0.99]"
                 href={`/dictation/${lesson.id}`}
               >
-                <div className="flex items-start justify-between gap-4">
-                  <div className="space-y-2.5">
-                    <div className="flex flex-wrap items-center gap-2 text-[0.9375rem] font-medium text-slate-500">
-                      <span className="rounded-full bg-brand-50 px-3 py-1 text-brand-700">
+                <div className="flex items-start justify-between gap-3">
+                  <div className="space-y-2">
+                    <div className="flex flex-wrap items-center gap-2 text-[0.8125rem] font-medium text-slate-500">
+                      <span className="rounded-full bg-brand-50 px-2.5 py-0.5 text-brand-700">
                         {lesson.source}
                       </span>
-                      <span className="rounded-full bg-sand-100 px-3 py-1">
+                      <span className="rounded-full bg-sand-100 px-2.5 py-0.5">
                         {lesson.level}
                       </span>
                       <span>{lesson.minutes}m</span>
                     </div>
-                    <h3 className="text-[1.55rem] font-semibold tracking-[-0.04em] text-ink-950">
+                    <h3 className="text-[1.18rem] font-semibold tracking-[-0.03em] text-ink-950">
                       {lesson.title}
                     </h3>
-                    <p className="text-sm leading-relaxed text-slate-500">
+                    <p className="text-[0.8125rem] leading-relaxed text-slate-500">
                       {lesson.description}
                     </p>
                   </div>
-                  <span className="rounded-full bg-sage-100 px-3 py-1 text-sm font-semibold text-sage-700">
+                  <span className="rounded-full bg-sage-100 px-2.5 py-0.5 text-[0.8125rem] font-semibold text-sage-700">
                     {lesson.tag}
                   </span>
                 </div>
 
-                <div className="mt-5 flex items-center justify-between gap-4">
-                  <div className="h-2.5 w-full overflow-hidden rounded-full bg-sand-100">
+                <div className="mt-4 flex items-center justify-between gap-3">
+                  <div className="h-2 w-full overflow-hidden rounded-full bg-sand-100">
                     <div
                       className="h-full rounded-full bg-gradient-to-r from-brand-500 to-sage-600"
                       style={{ width: `${lesson.progress}%` }}
                     />
                   </div>
-                  <span className="shrink-0 text-sm font-semibold text-ink-950">
+                  <span className="shrink-0 text-[0.8125rem] font-semibold text-ink-950">
                     {lesson.progress}%
                   </span>
                 </div>

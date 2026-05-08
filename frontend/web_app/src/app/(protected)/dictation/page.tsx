@@ -4,7 +4,10 @@ import {
   listeningLessonIdSchema,
   listeningLevelFilterSchema,
 } from "../../../server/modules/listening/listening.schemas";
-import { getListeningCatalog } from "../../../server/modules/listening/listening.service";
+import {
+  getListeningCatalog,
+  isActiveListeningCategoryId,
+} from "../../../server/modules/listening/listening.service";
 import type { ListeningLevelFilter } from "../../../server/modules/listening/listening.types";
 import { ListeningLibraryPage } from "../../../views/app/ListeningLibraryPage";
 
@@ -19,7 +22,11 @@ function getSearchValue(value: string | string[] | undefined) {
 function parseCategoryId(value: string | undefined) {
   const result = listeningCategoryIdSchema.safeParse(value ?? "all");
 
-  return result.success ? result.data : "all";
+  if (!result.success || result.data === "all") {
+    return "all";
+  }
+
+  return isActiveListeningCategoryId(result.data) ? result.data : "all";
 }
 
 function parseLevel(value: string | undefined): ListeningLevelFilter {

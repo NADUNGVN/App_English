@@ -1,0 +1,1129 @@
+{
+  "wireMagic": "pb3",
+  "pens": [ {
+  
+  } ],
+  "wsWinStyles": [ {
+  
+  } ],
+  "wpWinPositions": [ {
+  
+  } ],
+  "events": [ {
+    "tStartMs": 6780,
+    "dDurationMs": 1440,
+    "segs": [ {
+      "utf8": "Neil: Hello and welcome to 6 Minute"
+    } ]
+  }, {
+    "tStartMs": 8220,
+    "dDurationMs": 1620,
+    "segs": [ {
+      "utf8": "English, I'm Neil. This is"
+    } ]
+  }, {
+    "tStartMs": 9840,
+    "dDurationMs": 1380,
+    "segs": [ {
+      "utf8": "the programme where in just"
+    } ]
+  }, {
+    "tStartMs": 11220,
+    "dDurationMs": 1960,
+    "segs": [ {
+      "utf8": "six minutes we discuss an interesting"
+    } ]
+  }, {
+    "tStartMs": 13180,
+    "dDurationMs": 1360,
+    "segs": [ {
+      "utf8": "topic and teach some"
+    } ]
+  }, {
+    "tStartMs": 14540,
+    "dDurationMs": 1800,
+    "segs": [ {
+      "utf8": "related English vocabulary."
+    } ]
+  }, {
+    "tStartMs": 16340,
+    "dDurationMs": 1560,
+    "segs": [ {
+      "utf8": "And joining me to do this is Rob."
+    } ]
+  }, {
+    "tStartMs": 17900,
+    "dDurationMs": 3080,
+    "segs": [ {
+      "utf8": "Rob: Hello... err sorry Neil, how long did"
+    } ]
+  }, {
+    "tStartMs": 20980,
+    "dDurationMs": 1280,
+    "segs": [ {
+      "utf8": "you say this programme is?"
+    } ]
+  }, {
+    "tStartMs": 22260,
+    "dDurationMs": 2749,
+    "segs": [ {
+      "utf8": "Neil: Six minutes ... it's 6 Minute English, Rob."
+    } ]
+  }, {
+    "tStartMs": 25009,
+    "dDurationMs": 1696,
+    "segs": [ {
+      "utf8": "Rob: Right. OK. Sorry, what's"
+    } ]
+  }, {
+    "tStartMs": 26705,
+    "dDurationMs": 935,
+    "segs": [ {
+      "utf8": "your name again?"
+    } ]
+  }, {
+    "tStartMs": 27640,
+    "dDurationMs": 2319,
+    "segs": [ {
+      "utf8": "Neil: Neil! My name is Neil, Rob. What's"
+    } ]
+  }, {
+    "tStartMs": 29959,
+    "dDurationMs": 1380,
+    "segs": [ {
+      "utf8": "happened to your memory?!"
+    } ]
+  }, {
+    "tStartMs": 31340,
+    "dDurationMs": 2040,
+    "segs": [ {
+      "utf8": "Rob: Sorry, Neil - too many things on my"
+    } ]
+  }, {
+    "tStartMs": 33380,
+    "dDurationMs": 2220,
+    "segs": [ {
+      "utf8": "mind, it's affecting my short-term"
+    } ]
+  }, {
+    "tStartMs": 35600,
+    "dDurationMs": 939,
+    "segs": [ {
+      "utf8": "memory, but what"
+    } ]
+  }, {
+    "tStartMs": 36539,
+    "dDurationMs": 2193,
+    "segs": [ {
+      "utf8": "I can remember is that in this programme"
+    } ]
+  }, {
+    "tStartMs": 38732,
+    "dDurationMs": 1630,
+    "segs": [ {
+      "utf8": "we're talking about improving"
+    } ]
+  }, {
+    "tStartMs": 40362,
+    "dDurationMs": 618,
+    "segs": [ {
+      "utf8": "our memory."
+    } ]
+  }, {
+    "tStartMs": 40980,
+    "dDurationMs": 1960,
+    "segs": [ {
+      "utf8": "Neil: We are and I think you might find it"
+    } ]
+  }, {
+    "tStartMs": 42940,
+    "dDurationMs": 1960,
+    "segs": [ {
+      "utf8": "quite useful! Storing information"
+    } ]
+  }, {
+    "tStartMs": 44900,
+    "dDurationMs": 790,
+    "segs": [ {
+      "utf8": "is an important"
+    } ]
+  }, {
+    "tStartMs": 45690,
+    "dDurationMs": 2031,
+    "segs": [ {
+      "utf8": "function of our brains and scientists"
+    } ]
+  }, {
+    "tStartMs": 47721,
+    "dDurationMs": 1619,
+    "segs": [ {
+      "utf8": "are always looking at ways to"
+    } ]
+  }, {
+    "tStartMs": 49340,
+    "dDurationMs": 1700,
+    "segs": [ {
+      "utf8": "improve it but also to stop it"
+    } ]
+  }, {
+    "tStartMs": 51040,
+    "dDurationMs": 2120,
+    "segs": [ {
+      "utf8": "deteriorating - or becoming worse."
+    } ]
+  }, {
+    "tStartMs": 53160,
+    "dDurationMs": 1744,
+    "segs": [ {
+      "utf8": "Rob: Yes, and we all know that memories -"
+    } ]
+  }, {
+    "tStartMs": 54904,
+    "dDurationMs": 1723,
+    "segs": [ {
+      "utf8": "that's the noun for things"
+    } ]
+  }, {
+    "tStartMs": 56627,
+    "dDurationMs": 1112,
+    "segs": [ {
+      "utf8": "we remember from the"
+    } ]
+  }, {
+    "tStartMs": 57739,
+    "dDurationMs": 2500,
+    "segs": [ {
+      "utf8": "past - are nice to have but also important"
+    } ]
+  }, {
+    "tStartMs": 60240,
+    "dDurationMs": 1880,
+    "segs": [ {
+      "utf8": "for remembering who people are,"
+    } ]
+  }, {
+    "tStartMs": 62120,
+    "dDurationMs": 1200,
+    "segs": [ {
+      "utf8": "where things are kept"
+    } ]
+  }, {
+    "tStartMs": 63320,
+    "dDurationMs": 1220,
+    "segs": [ {
+      "utf8": "and how things look."
+    } ]
+  }, {
+    "tStartMs": 64540,
+    "dDurationMs": 2080,
+    "segs": [ {
+      "utf8": "Neil: Soon we'll be discussing a new idea"
+    } ]
+  }, {
+    "tStartMs": 66620,
+    "dDurationMs": 2020,
+    "segs": [ {
+      "utf8": "for improving your memory but not before"
+    } ]
+  }, {
+    "tStartMs": 68660,
+    "dDurationMs": 2022,
+    "segs": [ {
+      "utf8": "I've set today's quiz question."
+    } ]
+  }, {
+    "tStartMs": 70682,
+    "dDurationMs": 2258,
+    "segs": [ {
+      "utf8": "There are many ways we can improve"
+    } ]
+  }, {
+    "tStartMs": 72940,
+    "dDurationMs": 1660,
+    "segs": [ {
+      "utf8": "our memory but one way"
+    } ]
+  }, {
+    "tStartMs": 74620,
+    "dDurationMs": 2120,
+    "segs": [ {
+      "utf8": "is through the type of food we eat."
+    } ]
+  }, {
+    "tStartMs": 76740,
+    "dDurationMs": 1940,
+    "segs": [ {
+      "utf8": "According to the BBC Food website,"
+    } ]
+  }, {
+    "tStartMs": 78680,
+    "dDurationMs": 1120,
+    "segs": [ {
+      "utf8": "which type of food"
+    } ]
+  }, {
+    "tStartMs": 79800,
+    "dDurationMs": 2520,
+    "segs": [ {
+      "utf8": "supports good memory function? Is it..."
+    } ]
+  }, {
+    "tStartMs": 82320,
+    "dDurationMs": 3360,
+    "segs": [ {
+      "utf8": "a) eggs, b) spinach, or c) bananas?"
+    } ]
+  }, {
+    "tStartMs": 85680,
+    "dDurationMs": 2640,
+    "segs": [ {
+      "utf8": "Rob: Well, as a kid I was always told that"
+    } ]
+  }, {
+    "tStartMs": 88330,
+    "dDurationMs": 2640,
+    "segs": [ {
+      "utf8": "spinach was good for me - Popeye ate it"
+    } ]
+  }, {
+    "tStartMs": 90970,
+    "dDurationMs": 2689,
+    "segs": [ {
+      "utf8": "to make him strong - so I'll say b) spinach."
+    } ]
+  }, {
+    "tStartMs": 93660,
+    "dDurationMs": 2860,
+    "segs": [ {
+      "utf8": "Neil: Well, I'll have the answer later on."
+    } ]
+  }, {
+    "tStartMs": 96520,
+    "dDurationMs": 1780,
+    "segs": [ {
+      "utf8": "Now, let's talk more about"
+    } ]
+  }, {
+    "tStartMs": 98300,
+    "dDurationMs": 1660,
+    "segs": [ {
+      "utf8": "improving our memory."
+    } ]
+  }, {
+    "tStartMs": 99960,
+    "dDurationMs": 2560,
+    "segs": [ {
+      "utf8": "Memory is the ability to encode, store and"
+    } ]
+  }, {
+    "tStartMs": 102529,
+    "dDurationMs": 2331,
+    "segs": [ {
+      "utf8": "recall information but a number of factors"
+    } ]
+  }, {
+    "tStartMs": 104869,
+    "dDurationMs": 2196,
+    "segs": [ {
+      "utf8": "can affect people's memory processes"
+    } ]
+  }, {
+    "tStartMs": 107065,
+    "dDurationMs": 1989,
+    "segs": [ {
+      "utf8": "including health, anxiety, mood,"
+    } ]
+  }, {
+    "tStartMs": 109054,
+    "dDurationMs": 1306,
+    "segs": [ {
+      "utf8": "stress and tiredness."
+    } ]
+  }, {
+    "tStartMs": 110360,
+    "dDurationMs": 2162,
+    "segs": [ {
+      "utf8": "Rob: That's why, for example, if you're"
+    } ]
+  }, {
+    "tStartMs": 112522,
+    "dDurationMs": 1638,
+    "segs": [ {
+      "utf8": "taking an exam it's important"
+    } ]
+  }, {
+    "tStartMs": 114160,
+    "dDurationMs": 1560,
+    "segs": [ {
+      "utf8": "to get a good night's sleep"
+    } ]
+  }, {
+    "tStartMs": 115720,
+    "dDurationMs": 2140,
+    "segs": [ {
+      "utf8": "and to keep healthy. But Neil, when"
+    } ]
+  }, {
+    "tStartMs": 117860,
+    "dDurationMs": 2020,
+    "segs": [ {
+      "utf8": "you're revising for an exam, what helps"
+    } ]
+  }, {
+    "tStartMs": 119880,
+    "dDurationMs": 1029,
+    "segs": [ {
+      "utf8": "you to remember facts?"
+    } ]
+  }, {
+    "tStartMs": 120909,
+    "dDurationMs": 1982,
+    "segs": [ {
+      "utf8": "Neil: I tend to write things down again and"
+    } ]
+  }, {
+    "tStartMs": 122891,
+    "dDurationMs": 1199,
+    "segs": [ {
+      "utf8": "again and again and again."
+    } ]
+  }, {
+    "tStartMs": 124090,
+    "dDurationMs": 2150,
+    "segs": [ {
+      "utf8": "Rob: Well, that's one way. But people have"
+    } ]
+  }, {
+    "tStartMs": 126260,
+    "dDurationMs": 1800,
+    "segs": [ {
+      "utf8": "different styles to help them remember."
+    } ]
+  }, {
+    "tStartMs": 128060,
+    "dDurationMs": 2240,
+    "segs": [ {
+      "utf8": "According to the BBC's iWonder guide,"
+    } ]
+  }, {
+    "tStartMs": 130300,
+    "dDurationMs": 2580,
+    "segs": [ {
+      "utf8": "there are three different styles - visual,"
+    } ]
+  }, {
+    "tStartMs": 132900,
+    "dDurationMs": 2380,
+    "segs": [ {
+      "utf8": "auditory and kinaesthetic,"
+    } ]
+  }, {
+    "tStartMs": 135280,
+    "dDurationMs": 2280,
+    "segs": [ {
+      "utf8": "that's learning by 'doing' and practicing"
+    } ]
+  }, {
+    "tStartMs": 137560,
+    "dDurationMs": 1600,
+    "segs": [ {
+      "utf8": "something over and over again."
+    } ]
+  }, {
+    "tStartMs": 139160,
+    "dDurationMs": 1300,
+    "segs": [ {
+      "utf8": "That sounds like me."
+    } ]
+  }, {
+    "tStartMs": 140460,
+    "dDurationMs": 1920,
+    "segs": [ {
+      "utf8": "Neil: But recently, a new study has"
+    } ]
+  }, {
+    "tStartMs": 142380,
+    "dDurationMs": 1620,
+    "segs": [ {
+      "utf8": "come up with a method that could"
+    } ]
+  }, {
+    "tStartMs": 144000,
+    "dDurationMs": 1620,
+    "segs": [ {
+      "utf8": "possibly be the best way to improve your"
+    } ]
+  }, {
+    "tStartMs": 145620,
+    "dDurationMs": 2220,
+    "segs": [ {
+      "utf8": "memory and that's by drawing."
+    } ]
+  }, {
+    "tStartMs": 147840,
+    "dDurationMs": 1820,
+    "segs": [ {
+      "utf8": "Daryl O'Connor, who's Professor"
+    } ]
+  }, {
+    "tStartMs": 149660,
+    "dDurationMs": 1500,
+    "segs": [ {
+      "utf8": "of Psychology at the University of Leeds,"
+    } ]
+  }, {
+    "tStartMs": 151160,
+    "dDurationMs": 1750,
+    "segs": [ {
+      "utf8": "has been speaking about it on"
+    } ]
+  }, {
+    "tStartMs": 152910,
+    "dDurationMs": 1810,
+    "segs": [ {
+      "utf8": "the BBC Radio 4 programme, All"
+    } ]
+  }, {
+    "tStartMs": 154720,
+    "dDurationMs": 1140,
+    "segs": [ {
+      "utf8": "In The Mind. See if you"
+    } ]
+  }, {
+    "tStartMs": 155860,
+    "dDurationMs": 1640,
+    "segs": [ {
+      "utf8": "can work out why..."
+    } ]
+  }, {
+    "tStartMs": 158780,
+    "dDurationMs": 1080,
+    "segs": [ {
+      "utf8": "Daryl O'Connor: The authors certainly"
+    } ]
+  }, {
+    "tStartMs": 159860,
+    "dDurationMs": 1700,
+    "segs": [ {
+      "utf8": "argue that one of the things that"
+    } ]
+  }, {
+    "tStartMs": 161560,
+    "dDurationMs": 1560,
+    "segs": [ {
+      "utf8": "happens by drawing"
+    } ]
+  }, {
+    "tStartMs": 163120,
+    "dDurationMs": 2680,
+    "segs": [ {
+      "utf8": "these particular objects, that it leads to"
+    } ]
+  }, {
+    "tStartMs": 165800,
+    "dDurationMs": 4060,
+    "segs": [ {
+      "utf8": "this increased contextual representation"
+    } ]
+  }, {
+    "tStartMs": 169860,
+    "dDurationMs": 2040,
+    "segs": [ {
+      "utf8": "of the object in one's mind..."
+    } ]
+  }, {
+    "tStartMs": 171920,
+    "dDurationMs": 1951,
+    "segs": [ {
+      "utf8": "It makes a lot of intuitive sense..."
+    } ]
+  }, {
+    "tStartMs": 173880,
+    "dDurationMs": 2200,
+    "segs": [ {
+      "utf8": "the idea that if you have encoded"
+    } ]
+  }, {
+    "tStartMs": 176080,
+    "dDurationMs": 2600,
+    "segs": [ {
+      "utf8": "something in a greater level of detail,"
+    } ]
+  }, {
+    "tStartMs": 178680,
+    "dDurationMs": 1880,
+    "segs": [ {
+      "utf8": "you're more likely to remember it..."
+    } ]
+  }, {
+    "tStartMs": 180569,
+    "dDurationMs": 3162,
+    "segs": [ {
+      "utf8": "It's much stronger than just remembering"
+    } ]
+  }, {
+    "tStartMs": 183740,
+    "dDurationMs": 2460,
+    "segs": [ {
+      "utf8": "writing down the words."
+    } ]
+  }, {
+    "tStartMs": 187260,
+    "dDurationMs": 2020,
+    "segs": [ {
+      "utf8": "Neil: OK, so let's try to explain that."
+    } ]
+  }, {
+    "tStartMs": 189360,
+    "dDurationMs": 2500,
+    "segs": [ {
+      "utf8": "Drawing something leads to increased"
+    } ]
+  }, {
+    "tStartMs": 191860,
+    "dDurationMs": 2300,
+    "segs": [ {
+      "utf8": "contextual representation of the object."
+    } ]
+  }, {
+    "tStartMs": 194160,
+    "dDurationMs": 1900,
+    "segs": [ {
+      "utf8": "When something is contextual,"
+    } ]
+  }, {
+    "tStartMs": 196071,
+    "dDurationMs": 2269,
+    "segs": [ {
+      "utf8": "it is in the situation where"
+    } ]
+  }, {
+    "tStartMs": 198340,
+    "dDurationMs": 1459,
+    "segs": [ {
+      "utf8": "it usually exists."
+    } ]
+  }, {
+    "tStartMs": 199799,
+    "dDurationMs": 1961,
+    "segs": [ {
+      "utf8": "Rob: So as you draw something you are"
+    } ]
+  }, {
+    "tStartMs": 201760,
+    "dDurationMs": 1680,
+    "segs": [ {
+      "utf8": "creating a picture in your mind"
+    } ]
+  }, {
+    "tStartMs": 203440,
+    "dDurationMs": 1900,
+    "segs": [ {
+      "utf8": "about what it is, how you use it and"
+    } ]
+  }, {
+    "tStartMs": 205340,
+    "dDurationMs": 2040,
+    "segs": [ {
+      "utf8": "where it is used. I wonder if"
+    } ]
+  }, {
+    "tStartMs": 207380,
+    "dDurationMs": 2120,
+    "segs": [ {
+      "utf8": "this means artists have good memories..."
+    } ]
+  }, {
+    "tStartMs": 209500,
+    "dDurationMs": 2030,
+    "segs": [ {
+      "utf8": "Neil: Maybe. Daryl O'Connor says that"
+    } ]
+  }, {
+    "tStartMs": 211530,
+    "dDurationMs": 1678,
+    "segs": [ {
+      "utf8": "when you draw you are encoding"
+    } ]
+  }, {
+    "tStartMs": 213208,
+    "dDurationMs": 1231,
+    "segs": [ {
+      "utf8": "something in a greater"
+    } ]
+  }, {
+    "tStartMs": 214440,
+    "dDurationMs": 2440,
+    "segs": [ {
+      "utf8": "level of detail, more than you would by"
+    } ]
+  }, {
+    "tStartMs": 216880,
+    "dDurationMs": 1920,
+    "segs": [ {
+      "utf8": "just writing things down."
+    } ]
+  }, {
+    "tStartMs": 218800,
+    "dDurationMs": 1380,
+    "segs": [ {
+      "utf8": "Encoding is changing"
+    } ]
+  }, {
+    "tStartMs": 220180,
+    "dDurationMs": 1726,
+    "segs": [ {
+      "utf8": "information into a form that can"
+    } ]
+  }, {
+    "tStartMs": 221906,
+    "dDurationMs": 1564,
+    "segs": [ {
+      "utf8": "be stored and later recalled."
+    } ]
+  }, {
+    "tStartMs": 223470,
+    "dDurationMs": 1934,
+    "segs": [ {
+      "utf8": "Rob: That's because as you draw,"
+    } ]
+  }, {
+    "tStartMs": 225404,
+    "dDurationMs": 2436,
+    "segs": [ {
+      "utf8": "you're thinking about different aspects of"
+    } ]
+  }, {
+    "tStartMs": 227840,
+    "dDurationMs": 1840,
+    "segs": [ {
+      "utf8": "the object. He says it makes"
+    } ]
+  }, {
+    "tStartMs": 229680,
+    "dDurationMs": 2540,
+    "segs": [ {
+      "utf8": "intuitive sense - intuitive means it is"
+    } ]
+  }, {
+    "tStartMs": 232220,
+    "dDurationMs": 2079,
+    "segs": [ {
+      "utf8": "'based on feelings rather than"
+    } ]
+  }, {
+    "tStartMs": 234299,
+    "dDurationMs": 1934,
+    "segs": [ {
+      "utf8": "facts or proof' - so, you just feel"
+    } ]
+  }, {
+    "tStartMs": 236233,
+    "dDurationMs": 1536,
+    "segs": [ {
+      "utf8": "it is the best thing to do."
+    } ]
+  }, {
+    "tStartMs": 237769,
+    "dDurationMs": 2371,
+    "segs": [ {
+      "utf8": "Neil: Of course this is just one more way"
+    } ]
+  }, {
+    "tStartMs": 240140,
+    "dDurationMs": 1780,
+    "segs": [ {
+      "utf8": "to improve your memory. I've also"
+    } ]
+  }, {
+    "tStartMs": 241920,
+    "dDurationMs": 1160,
+    "segs": [ {
+      "utf8": "heard that doing"
+    } ]
+  }, {
+    "tStartMs": 243080,
+    "dDurationMs": 1660,
+    "segs": [ {
+      "utf8": "crossword puzzles and Sudoku"
+    } ]
+  }, {
+    "tStartMs": 244740,
+    "dDurationMs": 1760,
+    "segs": [ {
+      "utf8": "can help, especially when you're older."
+    } ]
+  }, {
+    "tStartMs": 246500,
+    "dDurationMs": 2050,
+    "segs": [ {
+      "utf8": "Rob: Yes, as we get older we can often"
+    } ]
+  }, {
+    "tStartMs": 248550,
+    "dDurationMs": 2590,
+    "segs": [ {
+      "utf8": "have more difficulty retrieving information"
+    } ]
+  }, {
+    "tStartMs": 251140,
+    "dDurationMs": 1962,
+    "segs": [ {
+      "utf8": "from our memory - and people with"
+    } ]
+  }, {
+    "tStartMs": 253102,
+    "dDurationMs": 2056,
+    "segs": [ {
+      "utf8": "Alzheimer's find it very difficult"
+    } ]
+  }, {
+    "tStartMs": 255160,
+    "dDurationMs": 2000,
+    "segs": [ {
+      "utf8": "to encode information - so any way"
+    } ]
+  }, {
+    "tStartMs": 257160,
+    "dDurationMs": 1940,
+    "segs": [ {
+      "utf8": "to keep our memory working is a good"
+    } ]
+  }, {
+    "tStartMs": 259113,
+    "dDurationMs": 2647,
+    "segs": [ {
+      "utf8": "thing. Basically we need brain training!"
+    } ]
+  }, {
+    "tStartMs": 261760,
+    "dDurationMs": 2105,
+    "segs": [ {
+      "utf8": "Neil: Brain training and eating the right"
+    } ]
+  }, {
+    "tStartMs": 263865,
+    "dDurationMs": 2015,
+    "segs": [ {
+      "utf8": "food, Rob! You might remember that"
+    } ]
+  }, {
+    "tStartMs": 265880,
+    "dDurationMs": 1660,
+    "segs": [ {
+      "utf8": "earlier I asked you, according to"
+    } ]
+  }, {
+    "tStartMs": 267540,
+    "dDurationMs": 2720,
+    "segs": [ {
+      "utf8": "the BBC Food website, which type of food"
+    } ]
+  }, {
+    "tStartMs": 270260,
+    "dDurationMs": 2360,
+    "segs": [ {
+      "utf8": "supports good memory function?"
+    } ]
+  }, {
+    "tStartMs": 272620,
+    "dDurationMs": 3500,
+    "segs": [ {
+      "utf8": "Is it... a) eggs, b) spinach, or c) bananas?"
+    } ]
+  }, {
+    "tStartMs": 276120,
+    "dDurationMs": 1340,
+    "segs": [ {
+      "utf8": "And Rob, you said..."
+    } ]
+  }, {
+    "tStartMs": 277460,
+    "dDurationMs": 3070,
+    "segs": [ {
+      "utf8": "Rob: I do remember and I said b) spinach."
+    } ]
+  }, {
+    "tStartMs": 280530,
+    "dDurationMs": 2620,
+    "segs": [ {
+      "utf8": "Neil: And that is sort of the wrong answer."
+    } ]
+  }, {
+    "tStartMs": 283150,
+    "dDurationMs": 2680,
+    "segs": [ {
+      "utf8": "In fact they were all correct - they are all"
+    } ]
+  }, {
+    "tStartMs": 285830,
+    "dDurationMs": 2485,
+    "segs": [ {
+      "utf8": "examples of food that can help support"
+    } ]
+  }, {
+    "tStartMs": 288320,
+    "dDurationMs": 2320,
+    "segs": [ {
+      "utf8": "good memory. Apparently, foods rich in"
+    } ]
+  }, {
+    "tStartMs": 290640,
+    "dDurationMs": 1740,
+    "segs": [ {
+      "utf8": "B vitamins are important as they"
+    } ]
+  }, {
+    "tStartMs": 292380,
+    "dDurationMs": 2160,
+    "segs": [ {
+      "utf8": "provide protection for the brain as we age"
+    } ]
+  }, {
+    "tStartMs": 294540,
+    "dDurationMs": 2300,
+    "segs": [ {
+      "utf8": "and support good memory function."
+    } ]
+  }, {
+    "tStartMs": 296840,
+    "dDurationMs": 2360,
+    "segs": [ {
+      "utf8": "I think it's time to change my diet!"
+    } ]
+  }, {
+    "tStartMs": 299200,
+    "dDurationMs": 1240,
+    "segs": [ {
+      "utf8": "Now on to the vocabulary"
+    } ]
+  }, {
+    "tStartMs": 300440,
+    "dDurationMs": 1800,
+    "segs": [ {
+      "utf8": "we looked at in this programme."
+    } ]
+  }, {
+    "tStartMs": 302400,
+    "dDurationMs": 1974,
+    "segs": [ {
+      "utf8": "Rob: So today we've been talking about"
+    } ]
+  }, {
+    "tStartMs": 304380,
+    "dDurationMs": 1580,
+    "segs": [ {
+      "utf8": "our memory - we use our memory"
+    } ]
+  }, {
+    "tStartMs": 305960,
+    "dDurationMs": 1180,
+    "segs": [ {
+      "utf8": "to remember things"
+    } ]
+  }, {
+    "tStartMs": 307140,
+    "dDurationMs": 2360,
+    "segs": [ {
+      "utf8": "and 'memories' is the noun for things"
+    } ]
+  }, {
+    "tStartMs": 309500,
+    "dDurationMs": 1460,
+    "segs": [ {
+      "utf8": "we remember from the past."
+    } ]
+  }, {
+    "tStartMs": 310960,
+    "dDurationMs": 2280,
+    "segs": [ {
+      "utf8": "Neil: Then we discussed a learning style"
+    } ]
+  }, {
+    "tStartMs": 313240,
+    "dDurationMs": 2160,
+    "segs": [ {
+      "utf8": "known as 'kinaesthetic', that is learning"
+    } ]
+  }, {
+    "tStartMs": 315400,
+    "dDurationMs": 860,
+    "segs": [ {
+      "utf8": "by 'doing' and"
+    } ]
+  }, {
+    "tStartMs": 316260,
+    "dDurationMs": 2460,
+    "segs": [ {
+      "utf8": "practising something over and over again."
+    } ]
+  }, {
+    "tStartMs": 318720,
+    "dDurationMs": 1595,
+    "segs": [ {
+      "utf8": "Rob: We heard from Professor"
+    } ]
+  }, {
+    "tStartMs": 320320,
+    "dDurationMs": 1640,
+    "segs": [ {
+      "utf8": "Daryl O'Connor, who talked about"
+    } ]
+  }, {
+    "tStartMs": 321960,
+    "dDurationMs": 2100,
+    "segs": [ {
+      "utf8": "contextual representation - when"
+    } ]
+  }, {
+    "tStartMs": 324060,
+    "dDurationMs": 1560,
+    "segs": [ {
+      "utf8": "something is 'contextual',"
+    } ]
+  }, {
+    "tStartMs": 325620,
+    "dDurationMs": 1380,
+    "segs": [ {
+      "utf8": "you see it in the situation"
+    } ]
+  }, {
+    "tStartMs": 327004,
+    "dDurationMs": 1386,
+    "segs": [ {
+      "utf8": "where it usually exists."
+    } ]
+  }, {
+    "tStartMs": 328390,
+    "dDurationMs": 2211,
+    "segs": [ {
+      "utf8": "Neil: Next we talked about 'encoding'."
+    } ]
+  }, {
+    "tStartMs": 330601,
+    "dDurationMs": 1755,
+    "segs": [ {
+      "utf8": "That is changing information"
+    } ]
+  }, {
+    "tStartMs": 332356,
+    "dDurationMs": 1254,
+    "segs": [ {
+      "utf8": "into a form that can"
+    } ]
+  }, {
+    "tStartMs": 333610,
+    "dDurationMs": 1850,
+    "segs": [ {
+      "utf8": "be stored and later recalled."
+    } ]
+  }, {
+    "tStartMs": 335460,
+    "dDurationMs": 2365,
+    "segs": [ {
+      "utf8": "Rob: And we mentioned 'intuitive sense' -"
+    } ]
+  }, {
+    "tStartMs": 337825,
+    "dDurationMs": 1917,
+    "segs": [ {
+      "utf8": "having an intuitive sense means"
+    } ]
+  }, {
+    "tStartMs": 339742,
+    "dDurationMs": 1298,
+    "segs": [ {
+      "utf8": "doing something 'based"
+    } ]
+  }, {
+    "tStartMs": 341040,
+    "dDurationMs": 2407,
+    "segs": [ {
+      "utf8": "on feelings rather than facts or proof' - so,"
+    } ]
+  }, {
+    "tStartMs": 343447,
+    "dDurationMs": 2243,
+    "segs": [ {
+      "utf8": "you just feel it is the best thing to do."
+    } ]
+  }, {
+    "tStartMs": 345690,
+    "dDurationMs": 1390,
+    "segs": [ {
+      "utf8": "Neil: And finally we mentioned"
+    } ]
+  }, {
+    "tStartMs": 347080,
+    "dDurationMs": 1940,
+    "segs": [ {
+      "utf8": "Alzheimer's - a disease affecting"
+    } ]
+  }, {
+    "tStartMs": 349020,
+    "dDurationMs": 1060,
+    "segs": [ {
+      "utf8": "the brain that makes it"
+    } ]
+  }, {
+    "tStartMs": 350080,
+    "dDurationMs": 1763,
+    "segs": [ {
+      "utf8": "difficult to remember things and"
+    } ]
+  }, {
+    "tStartMs": 351843,
+    "dDurationMs": 1707,
+    "segs": [ {
+      "utf8": "it gets worse as you get older."
+    } ]
+  }, {
+    "tStartMs": 353550,
+    "dDurationMs": 1417,
+    "segs": [ {
+      "utf8": "Rob: Well, there are lots of new words"
+    } ]
+  }, {
+    "tStartMs": 354967,
+    "dDurationMs": 1291,
+    "segs": [ {
+      "utf8": "to remember there - but that's all"
+    } ]
+  }, {
+    "tStartMs": 356260,
+    "dDurationMs": 1020,
+    "segs": [ {
+      "utf8": "for this programme."
+    } ]
+  }, {
+    "tStartMs": 357280,
+    "dDurationMs": 1790,
+    "segs": [ {
+      "utf8": "Neil: Don't forget to visit us on Facebook,"
+    } ]
+  }, {
+    "tStartMs": 359070,
+    "dDurationMs": 1530,
+    "segs": [ {
+      "utf8": "Twitter, Instagram and YouTube"
+    } ]
+  }, {
+    "tStartMs": 360620,
+    "dDurationMs": 780,
+    "segs": [ {
+      "utf8": "and our website:"
+    } ]
+  }, {
+    "tStartMs": 361400,
+    "dDurationMs": 2880,
+    "segs": [ {
+      "utf8": "bbclearningenglish.com. Bye for now."
+    } ]
+  }, {
+    "tStartMs": 364280,
+    "dDurationMs": 820,
+    "segs": [ {
+      "utf8": "Rob: Goodbye!"
+    } ]
+  } ]
+}
